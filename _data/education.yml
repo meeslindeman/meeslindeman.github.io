@@ -1,16 +1,16 @@
 # Degree
-- degree: MSc - Artificial Intelligence
+- degree: MSc &mdash; Artificial Intelligence
   uni: University of Amsterdam
   # location: Amsterdam, The Netherlands
   year: 2024 &mdash; current
   # grade: TBT
   summary: Covers advanced topics in machine learning, deep learning, natural language processing, information retrieval, reinforcement learning, and AI ethics.
 
-- degree: BSc - Bèta Gamma, major Artificial Intelligence
+- degree: BSc &mdash; Bèta Gamma, major Artificial Intelligence
   uni: University of Amsterdam
   # location: Amsterdam, The Netherlands
   year: 2019 &mdash; 2024
-  grade: Passed with 7.5 GPA
+  grade: "GPA: 7.5/10"
   summary: Gained a strong foundation in logic, calculus, linear algebra, programming, and basic machine learning.  
 
 - degree: High School Diploma
