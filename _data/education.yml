@@ -1,14 +1,14 @@
 # Degree
 - degree: MSc - Artificial Intelligence
   uni: University of Amsterdam
-  award: Amsterdam, The Netherlands
+  # award: Amsterdam, The Netherlands
   year: 2024 &mdash; current
   # awards: Passed with 7.5 GPA
   # summary: If you had any meaningful roles at college, feel free to write about them here
 
 - degree: BSc - Bèta Gamma, major Artificial Intelligence
   uni: University of Amsterdam
-  award: Amsterdam, The Netherlands
+  # award: Amsterdam, The Netherlands
   year: 2019 &mdash; 2024
   # awards: 
   summary: Passed with 7.5 GPA
