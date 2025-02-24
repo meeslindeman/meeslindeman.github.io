@@ -4,33 +4,33 @@
   position: IT Developer
   duration: Sept, 2023 &mdash; Present
   location: Amsterdam, The Netherlands
-  summary: Write about your core competencies in one or two sentences describing your position. If you held the position for a long time, it could be a longer section, including a couple bullet points	<ul class="resume-item-list"><li>A project you are proud of</li><li>Another awesome project</li><li>or a team or department you worked with</li></ul>
-
+  summary: Explored ways to integrate AI into the department, working on various research projects and small-scale implementations. Developed a Microsoft Azure-based chatbot to assist employees with FAQs and provided AI-related consultancy. As part of this, I started giving workshops on AI and launched the "AI for Dummies" initiative to support educational content.
+  
 # Director of Digital Stratgy
 - company: Hogeschool van Amsterdam
   position: Student Assistant
   duration: Oct, 2022 &mdash; Sept, 2023
   location: Amsterdam, The Netherlands
-  summary: If your stint was shorter, feel free to be brief and just call out the most meaningful points of your role. Be concise, and be meaninful. The person reading just needs enough to want to talk to you more about your experience.
+  summary: Conducted statistical research and provided IT support for student platforms. Assisted with small research projects and helped integrate AI solutions within the department, leading to a promotion to a more strategic role.
 
 # Communications Coordinator
 - company: Libelle Services
   position: Porter
   duration: May, 2018  &mdash; Jun, 2023
   location: Amsterdam, The Netherlands
-  summary: Led communication efforts across digital and traditional media channels for marketing and public relations, internal communication strategies, and coordinated support programs for the recipients of the center's services.
+  # summary: Led communication efforts across digital and traditional media channels for marketing and public relations, internal communication strategies, and coordinated support programs for the recipients of the center's services.
 
 # Communications Coordinator
 - company: SQPeople
   position: Sales Agent
   duration: Feb, 2017  &mdash; Dec, 2019
   location: Alkmaar, The Netherlands
-  summary: Led communication efforts across digital and traditional media channels for marketing and public relations, internal communication strategies, and coordinated support programs for the recipients of the center's services.
+  # summary: Led communication efforts across digital and traditional media channels for marketing and public relations, internal communication strategies, and coordinated support programs for the recipients of the center's services.
 
 # Communications Coordinator
 - company: Picturae
   position: Scanner
   duration: Jan, 2015  &mdash; Mar, 2017
   location: Alkmaar, The Netherlands
-  summary: Led communication efforts across digital and traditional media channels for marketing and public relations, internal communication strategies, and coordinated support programs for the recipients of the center's services.
+  # summary: Led communication efforts across digital and traditional media channels for marketing and public relations, internal communication strategies, and coordinated support programs for the recipients of the center's services.
 

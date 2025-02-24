@@ -3,14 +3,21 @@
 
 # jazznotes.io
 - project: Bachelor Thesis
-  role: Exploring Language Compositionality in Multi-Agent Systems
+  name: Exploring Language Compositionality in Multi-Agent Systems
   duration: 2024
-  # url: "#"
-  description: "Grade: 8.0"
+  url: "https://scripties.uba.uva.nl/search?id=record_54284"
+  misc: "8.0/10.0"
+  description: Investigated the emergence of compositional language in referential games between artificial agents, using Graph Neural Networks (GNNs) to model structured input. Explored how agents develop communication strategies to describe family relations, analyzing the impact of different training setups on language expressiveness and efficiency.
 
-# Springfield Community Outreach Group
-# - project: Springfield Community Outreach Group
-#   role: Co-Founder & Organizer
-#   duration: 2007 &mdash; Present
-#   # url: "#"
-#   description: SCOG is a local monthly meetup in Springfield where we share opportunities to volunteer in the community and organize support for families and neighborhoods in need of assistance that the community can provide.
+- project: AI for Dummies  
+  role: Creator & Instructor  
+  duration: 2024 &mdash; Present  
+  # url: "#"
+  description: AI for Dummies is an educational initiative that simplifies AI concepts for beginners through interactive lessons and workshops. It provides structured, intuitive explanations of key topics like machine learning, probability, and optimization, making AI accessible to a broader audience.  
+
+- project: Reproducibility Study
+  name: "Reassessing Fairness: A Reproducibility Study of NIFA's Impact on GNN Models"
+  duration: 2025
+  misc: ML Reproducibility Challenge (MLRC) 2025  
+  url: https://openreview.net/forum?id=l5fXUKi8GO  
+  description: Conducted as part of the ML Reproducibility Challenge (MLRC) 2025, this study evaluates the claims and results of [Original Paper Title]. Assessed implementation, experimental setup, and generalizability to provide insights into the robustness of the original findings. 
