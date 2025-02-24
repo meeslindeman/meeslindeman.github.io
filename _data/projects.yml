@@ -18,6 +18,6 @@
 - project: Reproducibility Study
   name: "Reassessing Fairness: A Reproducibility Study of NIFA's Impact on GNN Models"
   duration: 2025
-  misc: ML Reproducibility Challenge (MLRC) 2025  
+  misc: ML Reproducibility Challenge (MLRC)
   url: https://openreview.net/forum?id=l5fXUKi8GO  
-  description: Conducted as part of the ML Reproducibility Challenge (MLRC) 2025, this study evaluates the claims and results of [Original Paper Title]. Assessed implementation, experimental setup, and generalizability to provide insights into the robustness of the original findings. 
+  description: Conducted as part of the ML Reproducibility Challenge (MLRC) 2025, this study evaluates the claims and results of <href="https://arxiv.org/abs/2406.03052">Are Your Models Still Fair? Fairness Attacks on Graph Neural Networks via Node Injections</href>. Assessed implementation, experimental setup, and generalizability to provide insights into the robustness of the original findings. 
