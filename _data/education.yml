@@ -1,22 +1,19 @@
 # Degree
 - degree: MSc - Artificial Intelligence
   uni: University of Amsterdam
-  # award: Amsterdam, The Netherlands
+  # location: Amsterdam, The Netherlands
   year: 2024 &mdash; current
-  # awards: Passed with 7.5 GPA
-  # summary: If you had any meaningful roles at college, feel free to write about them here
+  # grade: TBT
+  summary: Covers advanced topics in machine learning, deep learning, natural language processing, information retrieval, reinforcement learning, and AI ethics.
 
 - degree: BSc - Bèta Gamma, major Artificial Intelligence
   uni: University of Amsterdam
-  # award: Amsterdam, The Netherlands
+  # location: Amsterdam, The Netherlands
   year: 2019 &mdash; 2024
-  # awards: 
-  summary: Passed with 7.5 GPA
-  # summary: If you had any meaningful roles at college, feel free to write about them here
+  grade: Passed with 7.5 GPA
+  summary: Gained a strong foundation in logic, calculus, linear algebra, programming, and basic machine learning.  
 
 - degree: High School Diploma
   uni: Jac. P. Thijsse College
   location: Castricum, The Netherlands
   year: 2017
-  # award: Most likely to succeed
-  # summary: You can choose to have either a single or multiple awards
