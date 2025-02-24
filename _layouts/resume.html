@@ -80,7 +80,6 @@
         <div class="resume-item" itemscope itemprop="alumniOf" itemtype="http://schema.org/CollegeOrUniversity">
           <h3 class="resume-item-title" itemprop="degree">{{ education.degree }}</h3>
           <h4 class="resume-item-details group" itemprop="description">{{ education.uni }} &bull; {{ education.year }}</h4>
-          <!-- <h6 class="resume-item-details location-title" itemprop="location">{{ education.location }}</h6> -->
           <h5 class="resume-item-details award-title" itemprop="description">{{ education.award }}</h5>
 
           {% if education.awards %}
@@ -162,7 +161,7 @@
       <section class="content-section">
 
         <header class="section-header">
-          <h2>Associations</h2>
+          <h2>Extracurricular</h2>
         </header>
 
         {% for association in site.data.associations %}
