@@ -10,7 +10,8 @@
   uni: University of Amsterdam
   location: Amsterdam, The Netherlands
   year: 2019 &mdash; 2024
-  awards: Passed with 7.5 GPA
+  # awards: 
+  summary: Passed with 7.5 GPA
   # summary: If you had any meaningful roles at college, feel free to write about them here
 
 - degree: High School Diploma
