@@ -1,19 +1,19 @@
 # Skills
 - skill: Programming  
-  summary: Python (i.e. NumPy, PyTorch, scikit-learn, OpenCV, Matplotlib, Pandas...), HTML, CSS, SQL
+  description: Python (i.e. NumPy, PyTorch, scikit-learn, OpenCV, Matplotlib, Pandas...), HTML, CSS, SQL
 
 - skill: AI Domains  
-  summary: Machine Learning, Deep Learning, NLP, Computer Vision, Reinforcement Learning, Optimization, GNNs  
+  description: Machine Learning, Deep Learning, NLP, Computer Vision, Reinforcement Learning, Optimization, GNNs  
 
 # - skill: Research & Development  
-#   summary: Reproducibility Studies, Experimental Design, Model Evaluation, Scientific Writing  
+#   description: Reproducibility Studies, Experimental Design, Model Evaluation, Scientific Writing  
 
 - skill: Tools  
-  summary: Git, Jupyter, VS Code, Conda 
+  description: Git, Jupyter, VS Code, Conda 
 
 - skill: Education & Communication  
-  summary: AI Workshops, Digital Content Creation, Science Communication
+  description: AI Workshops, Digital Content Creation, Science Communication
 
 - skill: Organizational & Strategic Skills  
-  summary: Project Planning, Technical Consulting, AI in Education, Collaboration in Research Teams  
+  description: Project Planning, Technical Consulting, AI in Education, Collaboration in Research Teams  
 
