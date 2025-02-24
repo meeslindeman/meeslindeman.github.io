@@ -1,14 +1,21 @@
 # Degree
-- degree: Bachelor of Arts, Human Rights
-  uni: Yale University
-  year: 2004 &mdash; 2008
-  awards:
-    - award: Summa Cumme Laude graduate
-  summary: If you had any meaningful roles at college, feel free to write about them here
+- degree: MSc - Artificial Intelligence
+  uni: University of Amsterdam
+  location: Amsterdam, The Netherlands
+  year: 2024 &mdash; current
+  # awards: Passed with 7.5 GPA
+  # summary: If you had any meaningful roles at college, feel free to write about them here
+
+- degree: BSc - Bèta Gamma, major Artificial Intelligence
+  uni: University of Amsterdam
+  location: Amsterdam, The Netherlands
+  year: 2019 &mdash; 2024
+  awards: Passed with 7.5 GPA
+  # summary: If you had any meaningful roles at college, feel free to write about them here
 
 - degree: High School Diploma
   uni: Jac. P. Thijsse College
   location: Castricum, The Netherlands
-  year: 2004
-  award: Most likely to succeed
-  summary: You can choose to have either a single or multiple awards
+  year: 2017
+  # award: Most likely to succeed
+  # summary: You can choose to have either a single or multiple awards
