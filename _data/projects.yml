@@ -8,11 +8,11 @@
   # url: "#"
   description: AI for Dummies is an educational initiative that simplifies AI concepts for beginners through interactive lessons and workshops. It provides structured, intuitive explanations of key topics like machine learning, probability, and optimization, making AI accessible to a broader audience.  
 
-- project: Reproducibility Study
+- project: "[In review]: Reproducibility Study"
   name: "Reassessing Fairness: A Reproducibility Study of NIFA's Impact on GNN Models"
   duration: 2025
   misc: ML Reproducibility Challenge (MLRC)
-  url: https://openreview.net/forum?id=l5fXUKi8GO  
+  # url: https://openreview.net/forum?id=l5fXUKi8GO  
   description: Conducted as part of the ML Reproducibility Challenge (MLRC), this study evaluates the claims and results of <a href="https://arxiv.org/abs/2406.03052"><em>Are Your Models Still Fair? Fairness Attacks on Graph Neural Networks via Node Injections</em></a>. Assessed implementation, experimental setup, and generalizability to provide insights into the robustness of the original findings.  
 
 - project: Bachelor Thesis
