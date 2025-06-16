@@ -5,7 +5,7 @@
   duration: 2025 &mdash; Present  
   technologies: Python, Node.js, React
   # url: "#"
-  description: AI for Dummies is an educational initiative that simplifies AI concepts for beginners through interactive lessons and workshops. It provides structured, intuitive explanations of key topics like machine learning, probability, and optimization, making AI accessible to a broader audience.  
+  description: AI for Dummies is an educational initiative I started to explain AI concepts to beginners. Sparked by growing interest and common misconceptions observed during my work at HvA, the project aims to deliver intuitive lessons and workshops on topics like machine learning, probability, and generative AI—making AI accessible to a broader audience. 
 
 - project: Bachelor Thesis
   name: Exploring Language Compositionality in Multi-Agent Systems
