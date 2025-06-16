@@ -144,21 +144,25 @@
           
           <h3 class="resume-item-title" itemprop="name">
             {% if project.url %}
-              <a href="{{ project.url }}" itemprop="url">{{ project.name }}</a>
+              <a href="{{ project.url }}" itemprop="url">{{ project.name | default: project.project }}</a>
             {% else %}
-              {{ project.name }}
+              {{ project.name | default: project.project }}
             {% endif %}
           </h3>
           
           <h4 class="resume-item-details" itemprop="description">
-            {{ project.role }} &bull; {{ project.duration }}
+            {{ project.role | default: project.project }} &bull; {{ project.duration }}
           </h4>
           
           {% if project.technologies %}
             <h5 class="resume-item-details award-title">{{ project.technologies }}</h5>
           {% endif %}
           
-          <p class="resume-item-copy" itemprop="description">{{ project.summary }}</p>
+          {% if project.misc %}
+            <h5 class="resume-item-details award-title" itemprop="description">{{ project.misc }}</h5>
+          {% endif %}
+          
+          <p class="resume-item-copy" itemprop="description">{{ project.description }}</p>
         </div>
         {% endfor %}
       </section>
