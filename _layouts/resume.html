@@ -118,9 +118,9 @@
           </h4>
           
           {% if publication.type or publication.status %}
-          <h5 class="resume-item-details award-subtitle">
+          <p class="resume-item-details award-subtitle">
             {{ publication.type }}{% if publication.status %} ({{ publication.status }}){% endif %}
-          </h5>
+          </p>
           {% endif %}
           
           <p class="resume-item-copy" itemprop="description">{{ publication.summary }}</p>
