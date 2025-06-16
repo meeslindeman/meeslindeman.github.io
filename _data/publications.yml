@@ -1,24 +1,31 @@
 # Publications
-# - project: "[In review]: Publication"
-#   name: "On the Optimality of Discrete Object Naming: a Kinship Case Study"
-#   duration: 2025
-#   misc: To be continued...
-#   # url: 
-#   description: To be continued...  
 
-# - project: "[Accepted]: Reproducibility Study"
-#   name: "Reassessing Fairness: A Reproducibility Study of NIFA's Impact on GNN Models"
-#   duration: 2025
-#   misc: ML Reproducibility Challenge (MLRC)
-#   # url: https://openreview.net/forum?id=l5fXUKi8GO  
-#   description: Conducted as part of the ML Reproducibility Challenge (MLRC), this study evaluates the claims and results of <a href="https://arxiv.org/abs/2406.03052"><em>Are Your Models Still Fair? Fairness Attacks on Graph Neural Networks via Node Injections</em></a>. Assessed implementation, experimental setup, and generalizability to provide insights into the robustness of the original findings.  
-
-- title: "Title of Your Paper"
-  authors: "Your Name, Co-author Name"
-  venue: "Conference/Journal Name"
+- title: "On the Optimality of Discrete Object Naming: a Kinship Case Study"
+  authors: "Phong Le, Mees Lindeman, Raquel G. Alhama"
+  venue: "EMNLP"
   year: "2024"
-  type: "Conference Paper" # or "Journal Article", "Preprint", "Workshop Paper"
-  url: "https://link-to-paper.com" # optional
-  doi: "10.1000/example" # optional
-  status: "Published" # or "Under Review", "Preprint"
-  summary: "Brief description of the research contribution and findings."
+  type: "Conference Paper" 
+  # url: "https://link-to-paper.com" 
+  # doi: "10.1000/example" 
+  status: "Under Review" # or "Under Review", "Preprint"
+  summary: "Presented a novel information-theoretic framework for discrete naming systems, relaxing assumptions of optimal listeners and universal communicative need. Theoretical and empirical results—using kinship semantics and referential games—demonstrate that optimal trade-offs between informativeness and complexity emerge when listener and speaker models align."
+
+- title: "Reassessing Fairness: A Reproducibility Study of NIFA's Impact on GNN Models"
+  authors: "Mees Lindeman, Ruben Figge, Sjoerd Gunneweg, Aaron Kuin"
+  venue: "TMLR" 
+  year: "2025"
+  type: "Journal Article" 
+  # url: "https://link-to-paper.com"
+  # doi: "10.1000/example"
+  status: "Accepted" # or "Under Review", "Preprint"
+  summary: "Selected for inclusion in the ML Reproducibility Challenge 2025. This study evaluates the claims and results of <a href='https://arxiv.org/abs/2406.03052'><em>Are Your Models Still Fair? Fairness Attacks on Graph Neural Networks via Node Injections</em></a>. Assessed implementation, experimental setup, and generalizability to provide insights into the robustness of the original findings."
+
+# - title: "Title of Your Paper"
+#   authors: "Your Name, Co-author Name"
+#   venue: "Conference/Journal Name"
+#   year: "2024"
+#   type: "Conference Paper" # or "Journal Article", "Preprint", "Workshop Paper"
+#   url: "https://link-to-paper.com" # optional
+#   doi: "10.1000/example" # optional
+#   status: "Published" # or "Under Review", "Preprint"
+#   summary: "Brief description of the research contribution and findings."

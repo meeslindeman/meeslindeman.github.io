@@ -1,8 +1,9 @@
 # Projects
+
 - project: AI for Dummies  
   role: Creator & Instructor  
   duration: 2025 &mdash; Present  
-  technologies: Python, Jupyter, Streamlit, GitHub
+  technologies: Python, Node.js, React
   # url: "#"
   description: AI for Dummies is an educational initiative that simplifies AI concepts for beginners through interactive lessons and workshops. It provides structured, intuitive explanations of key topics like machine learning, probability, and optimization, making AI accessible to a broader audience.  
 
@@ -10,6 +11,6 @@
   name: Exploring Language Compositionality in Multi-Agent Systems
   duration: 2024
   url: "https://scripties.uba.uva.nl/search?id=record_54284"
-  technologies: Python, Jupyter, Streamlit, GitHub
+  technologies: Python
   misc: "Grade: 8.0/10"
   description: Investigated the emergence of compositional language in referential games between artificial agents, using Graph Neural Networks (GNNs) to model structured input. Explored how agents develop communication strategies to describe family relations, analyzing the impact of different training setups on language expressiveness and efficiency.
