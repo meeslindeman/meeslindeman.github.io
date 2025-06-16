@@ -97,6 +97,39 @@
       <!-- end Education -->
       {% endif %}
 
+      {% if site.resume_section_publications %}
+      <!-- begin Publications -->
+      <section class="content-section">
+        <header class="section-header">
+          <h2>Publications</h2>
+        </header>
+
+        {% for publication in site.data.publications %}
+        <div class="resume-item" itemscope itemtype="http://schema.org/ScholarlyArticle">
+          <h3 class="resume-item-title" itemprop="name">
+            {% if publication.url %}
+              <a href="{{ publication.url }}" itemprop="url">{{ publication.title }}</a>
+            {% else %}
+              {{ publication.title }}
+            {% endif %}
+          </h3>
+          
+          <h4 class="resume-item-details" itemprop="author">
+            {{ publication.authors }} &bull; {{ publication.venue }} &bull; {{ publication.year }}
+          </h4>
+          
+          {% if publication.type or publication.status %}
+          <h5 class="resume-item-details award-title">
+            {{ publication.type }}{% if publication.status %} ({{ publication.status }}){% endif %}
+          </h5>
+          {% endif %}
+          
+          <p class="resume-item-copy" itemprop="description">{{ publication.summary }}</p>
+        </div>
+        {% endfor %}
+      </section>
+      <!-- end Publications -->
+      {% endif %}
 
       {% if site.resume_section_projects %}
       <!-- begin Projects -->
@@ -111,21 +144,21 @@
           
           <h3 class="resume-item-title" itemprop="name">
             {% if project.url %}
-              <a href="{{ project.url }}" itemprop="url">{{ project.name | default: project.project }}</a>
+              <a href="{{ project.url }}" itemprop="url">{{ project.name }}</a>
             {% else %}
-              {{ project.name | default: project.project }}
+              {{ project.name }}
             {% endif %}
           </h3>
           
           <h4 class="resume-item-details" itemprop="description">
-            {{ project.role | default: project.project }} &bull; {{ project.duration }}
+            {{ project.role }} &bull; {{ project.duration }}
           </h4>
           
-          {% if project.misc %}
-            <h5 class="resume-item-details award-title" itemprop="description">{{ project.misc }}</h5>
+          {% if project.technologies %}
+            <h5 class="resume-item-details award-title">{{ project.technologies }}</h5>
           {% endif %}
           
-          <p class="resume-item-copy" itemprop="description">{{ project.description }}</p>
+          <p class="resume-item-copy" itemprop="description">{{ project.summary }}</p>
         </div>
         {% endfor %}
       </section>
@@ -150,44 +183,44 @@
       <!-- end Skills -->
       {% endif %}
 
-      {% if site.resume_section_recognition %}
-      <!-- begin Recognition -->
+      {% if site.resume_section_certificates %}
+      <!-- begin Certificates -->
       <section class="content-section">
 
         <header class="section-header">
-          <h2>Certficates</h2>
+          <h2>Certificates</h2>
         </header>
 
-        {% for recognition in site.data.recognitions %}
+        {% for certificate in site.data.certificates %}
         <div class="resume-item">
-          <h3 class="resume-item-title" itemprop="award">{{ recognition.award }}</h3>
-          <h4 class="resume-item-details">{{ recognition.organization }} &bull; {{ recognition.year }}</h4>
-          <p class="resume-item-copy">{{ recognition.summary }}</p>
+          <h3 class="resume-item-title" itemprop="award">{{ certificate.award }}</h3>
+          <h4 class="resume-item-details">{{ certificate.organization }} &bull; {{ certificate.year }}</h4>
+          <p class="resume-item-copy">{{ certificate.summary }}</p>
         </div>
         {% endfor %}
 
       </section>
-      <!-- end Recognition -->
+      <!-- end Certificates -->
       {% endif %}
 
-      {% if site.resume_section_associations %}
-      <!-- begin Associations -->
+      {% if site.resume_section_extracurricular %}
+      <!-- begin Extracurricular -->
       <section class="content-section">
 
         <header class="section-header">
           <h2>Extracurricular</h2>
         </header>
 
-        {% for association in site.data.associations %}
+        {% for activity in site.data.extracurricular %}
         <div class="resume-item" itemscope itemprop="memberOf" itemtype="http://schema.org/Organization">
-          <h3 class="resume-item-title" itemprop="name">{% if association.url %}<a href="{{ association.url }}">{{ association.organization }}</a>{% else %}{{ association.organization }}{% endif %}</h3>
-          <h4 class="resume-item-details" itemprop="description">{{ association.role }} &bull; {{ association.year }}</h4>
-          <p class="resume-item-copy">{{ association.summary }}</p>
+          <h3 class="resume-item-title" itemprop="name">{% if activity.url %}<a href="{{ activity.url }}">{{ activity.organization }}</a>{% else %}{{ activity.organization }}{% endif %}</h3>
+          <h4 class="resume-item-details" itemprop="description">{{ activity.role }} &bull; {{ activity.year }}</h4>
+          <p class="resume-item-copy">{{ activity.summary }}</p>
         </div>
         {% endfor %}
 
       </section>
-      <!-- end Associations -->
+      <!-- end Extracurricular -->
       {% endif %}
 
       {% if site.resume_section_interests %}
