@@ -118,7 +118,7 @@
           </h4>
           
           {% if publication.type or publication.status %}
-          <h5 class="resume-item-details award-title">
+          <h5 class="resume-item-details award-subtitle">
             {{ publication.type }}{% if publication.status %} ({{ publication.status }}){% endif %}
           </h5>
           {% endif %}
@@ -153,15 +153,16 @@
             {% if project.role %}{{ project.role }} &bull; {% endif %}{{ project.duration }}
           </h4>
           
-          {% if project.technologies %}
-            <h5 class="resume-item-details award-title">{{ project.technologies }}</h5>
-          {% endif %}
-          
           {% if project.misc %}
             <p class="resume-item-details award-subtitle">{{ project.misc }}</p>
           {% endif %}
           
           <p class="resume-item-copy" itemprop="description">{{ project.description }}</p>
+
+          {% if project.technologies %}
+            <p class="resume-item-copy">Experience: {{ project.technologies }}</p>
+          {% endif %}
+
         </div>
         {% endfor %}
       </section>
