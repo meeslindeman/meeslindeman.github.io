@@ -18,7 +18,7 @@
   url: "https://openreview.net/pdf?id=l5fXUKi8GO"
   # doi: "10.1000/example"
   status: "Accepted" # or "Under Review", "Preprint"
-  summary: "Published in TMLR (2025). Selected for presentation at the ML Reproducibility Challenge 2025. This study evaluates the claims and results of <a href='https://arxiv.org/abs/2406.03052'><em>Are Your Models Still Fair? Fairness Attacks on Graph Neural Networks via Node Injections</em></a>. Assessed implementation, experimental setup, and generalizability to provide insights into the robustness of the original findings."
+  summary: "Published in TMLR (2025). Selected for presentation at the ML Reproducibility Challenge 2025 at Princeton University. This study evaluates the claims and results of <a href='https://arxiv.org/abs/2406.03052'><em>Are Your Models Still Fair? Fairness Attacks on Graph Neural Networks via Node Injections</em></a>. Assessed implementation, experimental setup, and generalizability to provide insights into the robustness of the original findings."
 
 # - title: "Title of Your Paper"
 #   authors: "Your Name, Co-author Name"
