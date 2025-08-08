@@ -12,7 +12,7 @@
   role: Creator & Instructor
   duration: 2025 &mdash; Present
   technologies: Node.js, React, Python
-  description: AI for Dummies is an educational initiative I started to explain AI concepts to beginners. Sparked by growing interest and common misconceptions observed during my work at HvA, the project aims to deliver intuitive lessons and workshops on topics like machine learning, probability, and generative AI. 
+  description: AI for Dummies is an educational initiative I started to explain AI concepts to beginners. Sparked by growing interest and common misconceptions observed during my work at HvA, the project aims to deliver intuitive lessons and providing backup to workshops on topics like machine learning, probability, and generative AI. 
 
 - project: Exploring Language Compositionality in Multi-Agent Systems
   role: Bachelor Thesis
