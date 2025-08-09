@@ -22,11 +22,13 @@
 
   .avatar {
     width: 95px;
+    height: 95px; /* same as width for perfect circle */
     max-width: 100%;
     overflow: hidden;
     @include border-radius(100px);
     margin: 0 auto;
     display: block;
+    object-fit: cover;
   }
 
   .header-name {
