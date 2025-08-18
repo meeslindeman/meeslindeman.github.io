@@ -1,0 +1,83 @@
+# Resume Data
+jobs:
+  - company: Amsterdam University of Applied Sciences 
+    position: IT Developer
+    duration: Sept, 2023 &mdash; Present
+    location: Amsterdam, The Netherlands
+    summary: Explored opportunities to integrate AI within the department by contributing to research initiatives and small-scale implementations. Developed a Microsoft Azure-based chatbot to assist employees with frequently asked questions and provided ongoing AI consultancy. To support awareness and adoption, I initiated and led the "AI for Dummies" workshop series, making key AI concepts accessible to all colleagues. Additionally, I built simple, functional web tools to help team members prototype and present their AI-driven ideas.
+    
+  - company: Amsterdam University of Applied Sciences 
+    position: Student Assistant
+    duration: Oct, 2022 &mdash; Sept, 2023
+    location: Amsterdam, The Netherlands
+    summary: Conducted statistical research and provided IT support for student platforms. Assisted with small research projects and helped integrate AI solutions within the department, leading to a promotion to a more strategic role.
+
+education:
+  - degree: MSc &mdash; Artificial Intelligence
+    uni: University of Amsterdam
+    location: Amsterdam, The Netherlands
+    year: 2024 &mdash; 2026 (Expected)
+    grade: ""
+    summary: Covers advanced topics in machine learning, deep learning, natural language processing, information retrieval, and reinforcement learning.
+    
+  - degree: BSc &mdash; Bèta Gamma, major Artificial Intelligence
+    uni: University of Amsterdam
+    location: Amsterdam, The Netherlands
+    year: 2019 &mdash; 2024
+    grade: "GPA: 7.5/10"
+    summary: Gained a strong foundation in logic, calculus, linear algebra, programming, and basic machine learning.
+    
+  - degree: High School Diploma 
+    uni: Jac. P. Thijsse College
+    location: Castricum, The Netherlands
+    year: 2017
+    grade: ""
+    summary: VWO (Preparatory Scientific Education).
+
+skills:
+  programming:
+    - Python
+    - PyTorch
+    - NumPy
+    - scikit-learn
+    - OpenCV
+    - Matplotlib
+    - Pandas
+    - JavaScript
+    - HTML/CSS
+    - SQL
+    
+  frameworks_tools:
+    - Docker
+    - Singularity
+    - Microsoft Azure
+    - Node.js
+    - React
+    - Git
+    - Linux
+    
+  research_areas:
+    - Machine Learning
+    - Deep Learning
+    - Natural Language Processing
+    - Computer Vision
+    - Reinforcement Learning
+    - Statistical Analysis
+
+certificates:
+  - award: "Language A: language and literature"
+    organization: International Baccalaureate
+    year: 2017
+    summary: Earned as part of the International Baccalaureate program, recognizing advanced skills in literary analysis and communication.
+    
+  - award: Certificate in Advanced English (CAE)
+    organization: Cambridge English
+    year: 2014
+    summary: Achieved through Cambridge English, demonstrating proficiency in academic and professional English at an advanced level.
+
+extracurricular:
+  - organization: Semester High School
+    role: Iowa, USA
+    year: 2017 &mdash; 2018
+    url: ""
+    summary: During a gap year in my studies, I attended a semester of High School in the United States, where I had the opportunity to enhance my English skills and embrace diverse experiences and cultures.

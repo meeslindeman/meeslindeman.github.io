@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume - Mees Lindeman</title>
+    <meta name="description" content="Resume of Mees Lindeman - MSc Student in Artificial Intelligence at University of Amsterdam">
+    <meta name="keywords" content="Mees Lindeman, Resume, CV, AI, Machine Learning, University of Amsterdam">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/resume.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- YAML Parser -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="site-title">Mees Lindeman</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="resume.html" class="active">Resume</a></li>
+                    <li><a href="publications.html">Publications</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="resume-container">
+        <!-- Resume Header -->
+        <header class="resume-header">
+            <div class="resume-title-section">
+                <h1 class="resume-title">Resume</h1>
+                <p class="resume-subtitle">Academic and Professional Experience</p>
+            </div>
+            <div class="resume-actions">
+                <a href="assets/docs/cv.pdf" class="download-btn" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+                <button onclick="window.print()" class="print-btn">
+                    <i class="fas fa-print"></i> Print
+                </button>
+            </div>
+        </header>
+
+        <!-- Resume Content -->
+        <main class="resume-content">
+            <!-- Personal Info Summary -->
+            <section class="resume-section personal-summary" id="personal-summary">
+                <!-- Will be loaded dynamically -->
+            </section>
+
+            <!-- Professional Experience -->
+            <section class="resume-section">
+                <h2 class="section-title">
+                    <i class="fas fa-briefcase"></i>
+                    Professional Experience
+                </h2>
+                <div class="section-content" id="jobs-content">
+                    <!-- Jobs will be loaded dynamically -->
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section class="resume-section">
+                <h2 class="section-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    Education
+                </h2>
+                <div class="section-content" id="education-content">
+                    <!-- Education will be loaded dynamically -->
+                </div>
+            </section>
+
+            <!-- Projects -->
+            <section class="resume-section">
+                <h2 class="section-title">
+                    <i class="fas fa-laptop-code"></i>
+                    Selected Projects
+                </h2>
+                <div class="section-content" id="projects-content">
+                    <!-- Projects will be loaded dynamically -->
+                </div>
+            </section>
+
+            <!-- Publications -->
+            <section class="resume-section">
+                <h2 class="section-title">
+                    <i class="fas fa-file-alt"></i>
+                    Publications
+                </h2>
+                <div class="section-content" id="publications-content">
+                    <!-- Publications will be loaded dynamically -->
+                </div>
+            </section>
+
+            <!-- Skills -->
+            <section class="resume-section">
+                <h2 class="section-title">
+                    <i class="fas fa-tools"></i>
+                    Technical Skills
+                </h2>
+                <div class="section-content" id="skills-content">
+                    <!-- Skills will be loaded dynamically -->
+                </div>
+            </section>
+
+            <!-- Certificates -->
+            <section class="resume-section">
+                <h2 class="section-title">
+                    <i class="fas fa-certificate"></i>
+                    Certificates & Awards
+                </h2>
+                <div class="section-content" id="certificates-content">
+                    <!-- Certificates will be loaded dynamically -->
+                </div>
+            </section>
+
+            <!-- Extracurricular -->
+            <section class="resume-section">
+                <h2 class="section-title">
+                    <i class="fas fa-globe"></i>
+                    Extracurricular Activities
+                </h2>
+                <div class="section-content" id="extracurricular-content">
+                    <!-- Extracurricular will be loaded dynamically -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <nav class="footer-nav">
+                <a href="index.html">Home</a>
+                <a href="resume.html">Resume</a>
+                <a href="publications.html">Publications</a>
+                <a href="projects.html">Projects</a>
+            </nav>
+            <p>&copy; 2025 Mees Lindeman. All rights reserved.</p>
+            <p>Last updated: <span id="last-updated"></span></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/resume-loader.js"></script>
+</body>
+</html>
