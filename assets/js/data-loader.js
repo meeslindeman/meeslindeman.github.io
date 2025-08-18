@@ -17,6 +17,8 @@ class DataLoader {
      * Load all YAML data files
      */
     async loadAllData() {
+        console.log('Starting to load YAML data...');
+        
         try {
             this.loadPromises = [
                 this.loadYAML('_data/personal.yml', 'personal'),
@@ -26,6 +28,7 @@ class DataLoader {
             ];
 
             await Promise.all(this.loadPromises);
+            console.log('All YAML data loaded successfully:', this.data);
             this.renderAllContent();
         } catch (error) {
             console.error('Error loading data:', error);
@@ -38,14 +41,18 @@ class DataLoader {
      */
     async loadYAML(filepath, dataKey) {
         try {
+            console.log(`Loading ${filepath}...`);
             const response = await fetch(filepath);
             if (!response.ok) {
                 throw new Error(`Failed to load ${filepath}: ${response.status}`);
             }
             const yamlText = await response.text();
+            console.log(`Raw YAML content for ${dataKey}:`, yamlText.substring(0, 200) + '...');
+            
             this.data[dataKey] = jsyaml.load(yamlText);
+            console.log(`Parsed ${dataKey} data:`, this.data[dataKey]);
         } catch (error) {
-            console.warn(`Could not load ${filepath}, using fallback data`);
+            console.warn(`Could not load ${filepath}, using fallback data:`, error);
             this.data[dataKey] = this.getFallbackData(dataKey);
         }
     }
@@ -64,10 +71,12 @@ class DataLoader {
                     email: "mees@lindeman.nu",
                     graduation_year: 2025,
                     social: {
-                        linkedin: "#",
+                        linkedin: "https://linkedin.com/in/meeslindeman",
                         github: "https://github.com/meeslindeman",
-                        scholar: "#",
-                        orcid: "#"
+                        scholar: "https://scholar.google.com/citations?user=YOUR_ID",
+                        orcid: "https://orcid.org/YOUR-ORCID-ID",
+                        twitter: "https://twitter.com/meeslindeman",
+                        researchgate: "https://www.researchgate.net/profile/Mees-Lindeman"
                     },
                     bio: {
                         long: "I'm a Master's student in Artificial Intelligence at the University of Amsterdam with a strong interest in the conceptual and often overlooked questions in AI. I enjoy diving into complex problems, especially those that challenge standard assumptions or reveal unexpected structure in learning systems.\n\nMy main motivation lies in understanding how and why AI systems behave the way they do—and where they might be pushed in new directions. Alongside my academic work, I currently hold a part-time role focused on making AI more approachable to colleagues through research initiatives and educational workshops."
@@ -76,7 +85,38 @@ class DataLoader {
             },
             publications: { publications: [] },
             projects: { projects: [] },
-            news: { news: [] }
+            news: { 
+                news: [
+                    {
+                        date: "2025-03-01",
+                        type: "publication",
+                        title: "Paper accepted to TMLR",
+                        description: "Our reproducibility study on fairness attacks in Graph Neural Networks has been accepted to Transactions on Machine Learning Research (TMLR)",
+                        link: "#"
+                    },
+                    {
+                        date: "2025-02-15",
+                        type: "talk",
+                        title: "Selected for ML Reproducibility Challenge",
+                        description: "Selected to present at the Machine Learning Reproducibility Challenge at Princeton University",
+                        link: "#"
+                    },
+                    {
+                        date: "2025-01-15",
+                        type: "project",
+                        title: "Started Master's Thesis",
+                        description: "Began thesis project on vision-based robotic manipulation with learned 3D geometry",
+                        link: "#"
+                    },
+                    {
+                        date: "2024-12-01",
+                        type: "project",
+                        title: "Launched AI for Dummies",
+                        description: "Started educational workshop series at HvA to make AI concepts accessible to colleagues",
+                        link: "#"
+                    }
+                ]
+            }
         };
         return fallbacks[dataKey] || {};
     }
@@ -139,7 +179,17 @@ class DataLoader {
      */
     renderSocialLinks(social) {
         const socialContainer = document.getElementById('social-links');
-        if (!socialContainer || !social) return;
+        if (!socialContainer) {
+            console.error('Social links container not found');
+            return;
+        }
+        
+        if (!social) {
+            console.warn('No social data provided');
+            return;
+        }
+
+        console.log('Rendering social links with data:', social);
 
         const socialIcons = {
             linkedin: { icon: 'fab fa-linkedin', title: 'LinkedIn' },
@@ -150,11 +200,22 @@ class DataLoader {
             researchgate: { icon: 'fab fa-researchgate', title: 'ResearchGate' }
         };
 
-        socialContainer.innerHTML = Object.entries(social)
-            .filter(([key, url]) => url && url !== '#' && !url.includes('YOUR'))
+        const validLinks = Object.entries(social)
+            .filter(([key, url]) => {
+                const isValid = url && url !== '#' && !url.includes('YOUR');
+                console.log(`Social link ${key}: ${url} - Valid: ${isValid}`);
+                return isValid;
+            });
+
+        console.log('Valid social links:', validLinks);
+
+        socialContainer.innerHTML = validLinks
             .map(([key, url]) => {
                 const iconData = socialIcons[key];
-                if (!iconData) return '';
+                if (!iconData) {
+                    console.warn(`No icon data found for social platform: ${key}`);
+                    return '';
+                }
                 
                 return `
                     <a href="${url}" title="${iconData.title}" aria-label="${iconData.title} Profile" target="_blank" rel="noopener noreferrer">
@@ -162,6 +223,8 @@ class DataLoader {
                     </a>
                 `;
             }).join('');
+
+        console.log('Social links rendered successfully');
     }
 
     /**
@@ -184,21 +247,28 @@ class DataLoader {
      */
     renderRecentUpdates() {
         const updatesContainer = document.getElementById('recent-updates');
-        if (!updatesContainer) return;
+        if (!updatesContainer) {
+            console.error('Recent updates container not found');
+            return;
+        }
+
+        console.log('Rendering recent updates with data:', this.data.news);
 
         // Get news items only
         const newsItems = this.data.news?.news || [];
+        console.log('News items found:', newsItems);
+
+        if (newsItems.length === 0) {
+            console.warn('No news items found, showing fallback message');
+            updatesContainer.innerHTML = '<li class="news-item"><span class="news-content">No recent updates available. Check console for loading errors.</span></li>';
+            return;
+        }
 
         // Sort by date (most recent first)
         const sortedNews = newsItems.sort((a, b) => new Date(b.date) - new Date(a.date));
 
         // Take only the 8 most recent
         const recentUpdates = sortedNews.slice(0, 8);
-
-        if (recentUpdates.length === 0) {
-            updatesContainer.innerHTML = '<li class="news-item"><span class="news-content">No recent updates available.</span></li>';
-            return;
-        }
 
         updatesContainer.innerHTML = recentUpdates.map(update => `
             <li class="news-item">
@@ -211,6 +281,8 @@ class DataLoader {
                 </span>
             </li>
         `).join('');
+
+        console.log('Recent updates rendered successfully');
     }
 
     /**
@@ -227,7 +299,12 @@ class DataLoader {
      */
     renderFallbackContent() {
         console.warn('Using fallback content due to data loading issues');
-        // Render basic fallback content here if needed
+        
+        // Force render with fallback data
+        this.renderPersonalInfo();
+        this.renderRecentUpdates();
+        
+        console.log('Fallback content rendered');
     }
 }
 
