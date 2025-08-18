@@ -1,5 +1,5 @@
 ---
-layout: publications
+layout: page
 title: Publications
 subtitle: Peer-reviewed papers, journal articles, and academic contributions
 description: Publications by Mees Lindeman - Research papers, journal articles, and academic contributions
@@ -7,53 +7,5 @@ keywords: Mees Lindeman, Publications, Research Papers, AI, Machine Learning, Ac
 permalink: /publications/
 ---
 
-<ul class="content-list">
-    {% assign sorted_publications = site.data.publications.publications | sort: 'year' | reverse %}
-    {% for publication in sorted_publications %}
-    <li class="content-item">
-        <div class="item-header">
-            <h3 class="item-title">{{ publication.title }}</h3>
-            {% if publication.authors %}
-                <div class="item-meta">
-                    {% if publication.authors contains 'Mees Lindeman' %}
-                        {{ publication.authors | replace: 'Mees Lindeman', '<strong>Mees Lindeman</strong>' }}
-                    {% else %}
-                        {{ publication.authors }}
-                    {% endif %}
-                </div>
-            {% endif %}
-            <div class="item-venue">
-                <em>{{ publication.venue }}</em> ({{ publication.year }})
-                {% if publication.type %} • {{ publication.type }}{% endif %}
-            </div>
-        </div>
-
-        {% if publication.summary %}
-            <div class="item-summary">{{ publication.summary }}</div>
-        {% endif %}
-
-        {% if publication.url or publication.doi %}
-            <div class="item-links">
-                {% if publication.url %}
-                    <a href="{{ publication.url }}" target="_blank" rel="noopener noreferrer" class="item-link">
-                        <i class="fas fa-external-link-alt"></i> Paper
-                    </a>
-                {% endif %}
-                {% if publication.doi %}
-                    <a href="https://doi.org/{{ publication.doi }}" target="_blank" rel="noopener noreferrer" class="item-link">
-                        <i class="fas fa-link"></i> DOI
-                    </a>
-                {% endif %}
-            </div>
-        {% endif %}
-    </li>
-    {% endfor %}
-</ul>
-
-{% if site.data.publications.publications.size == 0 %}
-<div class="empty-state">
-    <i class="fas fa-file-alt"></i>
-    <h3>No Publications Found</h3>
-    <p>No publications are currently available.</p>
-</div>
-{% endif %}
+{% assign sorted_publications = site.data.publications.publications | sort: 'year' | reverse %}
+{% include content-list.html items=sorted_publications type="publication" %}

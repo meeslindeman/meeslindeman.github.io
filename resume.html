@@ -8,22 +8,22 @@ permalink: /resume/
 
 <!-- Professional Experience -->
 <section class="resume-section">
-    <h2 class="section-title">
+    <h2 class="resume-section__title">
         <i class="fas fa-briefcase"></i>
         Professional Experience
     </h2>
-    <div class="section-content">
+    <div class="resume-section__content">
         {% for job in site.data.resume.jobs %}
         <div class="resume-item">
-            <div class="resume-item-header">
-                <div class="resume-item-main">
-                    <div class="resume-item-title">{{ job.position }}</div>
-                    <div class="resume-item-subtitle">{{ job.company }}</div>
-                    <div class="resume-item-meta">{{ job.location }}</div>
+            <div class="resume-item__header">
+                <div class="resume-item__main">
+                    <div class="resume-item__title">{{ job.position }}</div>
+                    <div class="resume-item__subtitle">{{ job.company }}</div>
+                    <div class="resume-item__meta">{{ job.location }}</div>
                 </div>
-                <div class="resume-item-date">{{ job.duration }}</div>
+                <div class="resume-item__date">{{ job.duration }}</div>
             </div>
-            <div class="resume-item-description">{{ job.summary }}</div>
+            <div class="resume-item__description">{{ job.summary }}</div>
         </div>
         {% endfor %}
     </div>
@@ -31,25 +31,25 @@ permalink: /resume/
 
 <!-- Education -->
 <section class="resume-section">
-    <h2 class="section-title">
+    <h2 class="resume-section__title">
         <i class="fas fa-graduation-cap"></i>
         Education
     </h2>
-    <div class="section-content">
+    <div class="resume-section__content">
         {% for edu in site.data.resume.education %}
         <div class="resume-item">
-            <div class="resume-item-header">
-                <div class="resume-item-main">
-                    <div class="resume-item-title">{{ edu.degree }}</div>
-                    <div class="resume-item-subtitle">{{ edu.uni }}</div>
-                    <div class="resume-item-meta">
+            <div class="resume-item__header">
+                <div class="resume-item__main">
+                    <div class="resume-item__title">{{ edu.degree }}</div>
+                    <div class="resume-item__subtitle">{{ edu.uni }}</div>
+                    <div class="resume-item__meta">
                         {% if edu.location %}{{ edu.location }}{% endif %}
                         {% if edu.grade %} • {{ edu.grade }}{% endif %}
                     </div>
                 </div>
-                <div class="resume-item-date">{{ edu.year }}</div>
+                <div class="resume-item__date">{{ edu.year }}</div>
             </div>
-            <div class="resume-item-description">{{ edu.summary }}</div>
+            <div class="resume-item__description">{{ edu.summary }}</div>
         </div>
         {% endfor %}
     </div>
@@ -57,27 +57,27 @@ permalink: /resume/
 
 <!-- Selected Projects -->
 <section class="resume-section">
-    <h2 class="section-title">
+    <h2 class="resume-section__title">
         <i class="fas fa-laptop-code"></i>
         Selected Projects
     </h2>
-    <div class="section-content">
+    <div class="resume-section__content">
         {% assign featured_projects = site.data.projects.projects | where: "featured", true | sort: 'date' | reverse | slice: 0, 3 %}
         {% for project in featured_projects %}
         <div class="resume-project">
-            <div class="project-title">{{ project.project }}</div>
-            <div class="project-meta"><strong>Role:</strong> {{ project.role }}</div>
-            <div class="project-duration">{{ project.duration }}</div>
+            <div class="resume-project__title">{{ project.project }}</div>
+            <div class="resume-project__meta"><strong>Role:</strong> {{ project.role }}</div>
+            <div class="resume-project__duration">{{ project.duration }}</div>
             {% if project.technologies %}
-                <div class="tech-tags">
+                <div class="resume-project__tags">
                     {% assign techs = project.technologies | split: ', ' %}
                     {% for tech in techs %}
-                        <span class="tech-tag">{{ tech | strip }}</span>
+                        <span class="tag tag--tech">{{ tech | strip }}</span>
                     {% endfor %}
                 </div>
             {% endif %}
-            <div class="project-description">{{ project.description }}</div>
-            {% if project.misc %}<div class="project-meta">{{ project.misc }}</div>{% endif %}
+            <div class="resume-project__description">{{ project.description }}</div>
+            {% if project.misc %}<div class="resume-project__meta">{{ project.misc }}</div>{% endif %}
         </div>
         {% endfor %}
     </div>
@@ -85,16 +85,16 @@ permalink: /resume/
 
 <!-- Publications -->
 <section class="resume-section">
-    <h2 class="section-title">
+    <h2 class="resume-section__title">
         <i class="fas fa-file-alt"></i>
         Publications
     </h2>
-    <div class="section-content">
+    <div class="resume-section__content">
         {% for pub in site.data.publications.publications %}
         <div class="resume-publication">
-            <div class="pub-title">{{ pub.title }}</div>
+            <div class="resume-publication__title">{{ pub.title }}</div>
             {% if pub.authors %}
-                <div class="pub-authors">
+                <div class="resume-publication__authors">
                     {% if pub.authors contains 'Mees Lindeman' %}
                         {{ pub.authors | replace: 'Mees Lindeman', '<strong>Mees Lindeman</strong>' }}
                     {% else %}
@@ -102,11 +102,11 @@ permalink: /resume/
                     {% endif %}
                 </div>
             {% endif %}
-            <div class="pub-venue">
+            <div class="resume-publication__venue">
                 <em>{{ pub.venue }}</em> ({{ pub.year }})
                 {% if pub.type %} • {{ pub.type }}{% endif %}
             </div>
-            {% if pub.summary %}<div class="pub-summary">{{ pub.summary }}</div>{% endif %}
+            {% if pub.summary %}<div class="resume-publication__summary">{{ pub.summary }}</div>{% endif %}
         </div>
         {% endfor %}
     </div>
@@ -114,18 +114,18 @@ permalink: /resume/
 
 <!-- Technical Skills -->
 <section class="resume-section">
-    <h2 class="section-title">
+    <h2 class="resume-section__title">
         <i class="fas fa-tools"></i>
         Technical Skills
     </h2>
-    <div class="section-content">
+    <div class="resume-section__content">
         <div class="skills-grid">
             {% if site.data.resume.skills.programming %}
             <div class="skill-category">
-                <h4>Programming Languages & Libraries</h4>
-                <div class="skill-tags">
+                <h4 class="skill-category__title">Programming Languages & Libraries</h4>
+                <div class="skill-category__tags">
                     {% for skill in site.data.resume.skills.programming %}
-                        <span class="skill-tag">{{ skill }}</span>
+                        <span class="tag tag--skill">{{ skill }}</span>
                     {% endfor %}
                 </div>
             </div>
@@ -133,10 +133,10 @@ permalink: /resume/
             
             {% if site.data.resume.skills.frameworks_tools %}
             <div class="skill-category">
-                <h4>Frameworks & Tools</h4>
-                <div class="skill-tags">
+                <h4 class="skill-category__title">Frameworks & Tools</h4>
+                <div class="skill-category__tags">
                     {% for skill in site.data.resume.skills.frameworks_tools %}
-                        <span class="skill-tag">{{ skill }}</span>
+                        <span class="tag tag--skill">{{ skill }}</span>
                     {% endfor %}
                 </div>
             </div>
@@ -144,10 +144,10 @@ permalink: /resume/
             
             {% if site.data.resume.skills.research_areas %}
             <div class="skill-category">
-                <h4>Research Areas</h4>
-                <div class="skill-tags">
+                <h4 class="skill-category__title">Research Areas</h4>
+                <div class="skill-category__tags">
                     {% for skill in site.data.resume.skills.research_areas %}
-                        <span class="skill-tag">{{ skill }}</span>
+                        <span class="tag tag--skill">{{ skill }}</span>
                     {% endfor %}
                 </div>
             </div>
@@ -158,21 +158,21 @@ permalink: /resume/
 
 <!-- Certificates & Awards -->
 <section class="resume-section">
-    <h2 class="section-title">
+    <h2 class="resume-section__title">
         <i class="fas fa-certificate"></i>
         Certificates & Awards
     </h2>
-    <div class="section-content">
+    <div class="resume-section__content">
         {% for cert in site.data.resume.certificates %}
         <div class="resume-item">
-            <div class="resume-item-header">
-                <div class="resume-item-main">
-                    <div class="resume-item-title">{{ cert.award }}</div>
-                    <div class="resume-item-subtitle">{{ cert.organization }}</div>
+            <div class="resume-item__header">
+                <div class="resume-item__main">
+                    <div class="resume-item__title">{{ cert.award }}</div>
+                    <div class="resume-item__subtitle">{{ cert.organization }}</div>
                 </div>
-                <div class="resume-item-date">{{ cert.year }}</div>
+                <div class="resume-item__date">{{ cert.year }}</div>
             </div>
-            <div class="resume-item-description">{{ cert.summary }}</div>
+            <div class="resume-item__description">{{ cert.summary }}</div>
         </div>
         {% endfor %}
     </div>
@@ -180,21 +180,21 @@ permalink: /resume/
 
 <!-- Extracurricular Activities -->
 <section class="resume-section">
-    <h2 class="section-title">
+    <h2 class="resume-section__title">
         <i class="fas fa-globe"></i>
         Extracurricular Activities
     </h2>
-    <div class="section-content">
+    <div class="resume-section__content">
         {% for activity in site.data.resume.extracurricular %}
         <div class="resume-item">
-            <div class="resume-item-header">
-                <div class="resume-item-main">
-                    <div class="resume-item-title">{{ activity.organization }}</div>
-                    <div class="resume-item-subtitle">{{ activity.role }}</div>
+            <div class="resume-item__header">
+                <div class="resume-item__main">
+                    <div class="resume-item__title">{{ activity.organization }}</div>
+                    <div class="resume-item__subtitle">{{ activity.role }}</div>
                 </div>
-                <div class="resume-item-date">{{ activity.year }}</div>
+                <div class="resume-item__date">{{ activity.year }}</div>
             </div>
-            <div class="resume-item-description">{{ activity.summary }}</div>
+            <div class="resume-item__description">{{ activity.summary }}</div>
         </div>
         {% endfor %}
     </div>

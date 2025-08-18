@@ -1,117 +1,55 @@
 ---
-layout: default
+layout: home
 title: Home
 description: Mees Lindeman - MSc Student in Artificial Intelligence at University of Amsterdam, exploring conceptual questions in AI systems.
 ---
 
-<!-- Main Content -->
-<div class="page-wrapper">
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <div class="profile-photo">
-            <img src="{{ '/assets/images/profile.jpg' | relative_url }}" alt="{{ site.author.name }}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div class="profile-placeholder">
-                <i class="fas fa-user"></i>
-            </div>
-        </div>
-        
-        <div class="profile-info">
-            <h1>{{ site.author.name }}</h1>
-            <p class="title">{{ site.author.title }}</p>
-            
-            <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="mailto:{{ site.email }}">{{ site.email }}</a>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>{{ site.author.location }}</span>
-                </div>
-                <div class="contact-item">
-                    <i class="fas fa-university"></i>
-                    <span>{{ site.author.institution }}</span>
-                </div>
-            </div>
-            
-            <div class="social-links">
-                {% if site.social.linkedin %}
-                <a href="{{ site.social.linkedin }}" title="LinkedIn" aria-label="LinkedIn Profile" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-linkedin"></i>
-                </a>
-                {% endif %}
-                {% if site.social.github %}
-                <a href="{{ site.social.github }}" title="GitHub" aria-label="GitHub Profile" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-github"></i>
-                </a>
-                {% endif %}
-                {% if site.social.scholar %}
-                <a href="{{ site.social.scholar }}" title="Google Scholar" aria-label="Google Scholar Profile" target="_blank" rel="noopener noreferrer">
-                    <i class="fas fa-graduation-cap"></i>
-                </a>
-                {% endif %}
-                {% if site.social.orcid %}
-                <a href="{{ site.social.orcid }}" title="ORCID" aria-label="ORCID Profile" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-orcid"></i>
-                </a>
-                {% endif %}
-                {% if site.social.researchgate %}
-                <a href="{{ site.social.researchgate }}" title="ResearchGate" aria-label="ResearchGate Profile" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-researchgate"></i>
-                </a>
-                {% endif %}
-            </div>
-        </div>
-    </aside>
-
-    <!-- Main Content -->
-    <div class="main-content">
-        <section class="content-section intro-section">
-            <h2>About Me</h2>
-            {% if site.data.personal.personal.bio.long %}
-                {% assign bio_paragraphs = site.data.personal.personal.bio.long | split: '
+<section class="content-section">
+    <h2 class="content-section__title">About Me</h2>
+    
+    {% if site.data.personal.personal.bio.long %}
+        {% assign bio_paragraphs = site.data.personal.personal.bio.long | split: '
 
 ' %}
-                {% for paragraph in bio_paragraphs %}
-                    {% if paragraph != '' %}
-                        <p class="intro-text">{{ paragraph | strip }}</p>
-                    {% endif %}
-                {% endfor %}
-            {% else %}
-                <p class="intro-text">
-                    I'm a Master's student in Artificial Intelligence at the University of Amsterdam with a strong interest in the conceptual and often overlooked questions in AI. I enjoy diving into complex problems, especially those that challenge standard assumptions or reveal unexpected structure in learning systems.
-                </p>
-                <p class="intro-text">
-                    My main motivation lies in understanding how and why AI systems behave the way they do—and where they might be pushed in new directions. Alongside my academic work, I currently hold a part-time role focused on making AI more approachable to colleagues through research initiatives and educational workshops.
-                </p>
+        {% for paragraph in bio_paragraphs %}
+            {% if paragraph != '' %}
+                <p class="content-section__text">{{ paragraph | strip }}</p>
             {% endif %}
-        </section>
+        {% endfor %}
+    {% else %}
+        <p class="content-section__text">
+            I'm a Master's student in Artificial Intelligence at the University of Amsterdam with a strong interest in the conceptual and often overlooked questions in AI. I enjoy diving into complex problems, especially those that challenge standard assumptions or reveal unexpected structure in learning systems.
+        </p>
+        <p class="content-section__text">
+            My main motivation lies in understanding how and why AI systems behave the way they do—and where they might be pushed in new directions. Alongside my academic work, I currently hold a part-time role focused on making AI more approachable to colleagues through research initiatives and educational workshops.
+        </p>
+    {% endif %}
+</section>
 
-        <section class="content-section">
-            <h2>Recent Updates</h2>
-            <ul class="news-list">
-                {% assign sorted_news = site.data.news.news | sort: 'date' | reverse %}
-                {% for update in sorted_news limit: 8 %}
-                <li class="news-item">
-                    <span class="news-date">{{ update.date | date: "%B %Y" }}</span>
-                    <div class="news-content">
-                        {% if update.link and update.link != '#' %}
-                            <a href="{{ update.link }}" target="_blank" rel="noopener noreferrer">
-                                {{ update.title | default: update.description }}
-                            </a>
-                            {% if update.description and update.title %}
-                                <div class="news-description">{{ update.description }}</div>
-                            {% endif %}
-                        {% else %}
-                            <div class="news-title">{{ update.title | default: update.description }}</div>
-                            {% if update.description and update.title %}
-                                <div class="news-description">{{ update.description }}</div>
-                            {% endif %}
-                        {% endif %}
-                    </div>
-                </li>
-                {% endfor %}
-            </ul>
-        </section>
-    </div>
-</div>
+<section class="content-section">
+    <h2 class="content-section__title">Recent Updates</h2>
+    
+    <ul class="news-list">
+        {% assign sorted_news = site.data.news.news | sort: 'date' | reverse %}
+        {% for update in sorted_news limit: 8 %}
+        <li class="news-list__item">
+            <span class="news-list__date">{{ update.date | date: "%B %Y" }}</span>
+            <div class="news-list__content">
+                {% if update.link and update.link != '#' %}
+                    <a href="{{ update.link }}" target="_blank" rel="noopener noreferrer" class="news-list__link">
+                        {{ update.title | default: update.description }}
+                    </a>
+                    {% if update.description and update.title %}
+                        <div class="news-list__description">{{ update.description }}</div>
+                    {% endif %}
+                {% else %}
+                    <div class="news-list__title">{{ update.title | default: update.description }}</div>
+                    {% if update.description and update.title %}
+                        <div class="news-list__description">{{ update.description }}</div>
+                    {% endif %}
+                {% endif %}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+</section>

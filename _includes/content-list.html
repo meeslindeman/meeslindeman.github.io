@@ -1,0 +1,82 @@
+<!-- Usage: {% include content-list.html items=site.data.publications.publications type="publication" %} -->
+
+<ul class="content-list">
+    {% for item in include.items %}
+    <li class="content-list__item">
+        <div class="item-header">
+            <h3 class="item-header__title">
+                {% if include.type == "publication" %}
+                    {{ item.title }}
+                {% elsif include.type == "project" %}
+                    {{ item.project }}
+                {% endif %}
+            </h3>
+            
+            {% if include.type == "publication" and item.authors %}
+                <div class="item-header__meta">
+                    {% if item.authors contains 'Mees Lindeman' %}
+                        {{ item.authors | replace: 'Mees Lindeman', '<strong>Mees Lindeman</strong>' }}
+                    {% else %}
+                        {{ item.authors }}
+                    {% endif %}
+                </div>
+            {% elsif include.type == "project" and item.role %}
+                <div class="item-header__meta">
+                    <strong>Role:</strong> {{ item.role }}
+                </div>
+            {% endif %}
+            
+            <div class="item-header__venue">
+                {% if include.type == "publication" %}
+                    <em>{{ item.venue }}</em> ({{ item.year }})
+                    {% if item.type %} • {{ item.type }}{% endif %}
+                {% elsif include.type == "project" %}
+                    {{ item.duration }}
+                    {% if item.misc %}<br><small>{{ item.misc }}</small>{% endif %}
+                {% endif %}
+            </div>
+        </div>
+
+        {% assign description = item.summary | default: item.description %}
+        {% if description %}
+            <div class="item-content">
+                <p>{{ description }}</p>
+            </div>
+        {% endif %}
+
+        {% if include.type == "project" and item.technologies %}
+            <div class="item-tags">
+                {% assign techs = item.technologies | split: ', ' %}
+                {% for tech in techs %}
+                    <span class="tag tag--tech">{{ tech | strip }}</span>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% assign item_url = item.url %}
+        {% if item_url or item.doi %}
+            <div class="item-links">
+                {% if item_url %}
+                    <a href="{{ item_url }}" target="_blank" rel="noopener noreferrer" class="item-link">
+                        {% if item_url contains 'github.com' %}
+                            <i class="fab fa-github"></i> GitHub
+                        {% else %}
+                            <i class="fas fa-external-link-alt"></i> 
+                            {% if include.type == "publication" %}Paper{% else %}View Project{% endif %}
+                        {% endif %}
+                    </a>
+                {% endif %}
+                {% if item.doi %}
+                    <a href="https://doi.org/{{ item.doi }}" target="_blank" rel="noopener noreferrer" class="item-link">
+                        <i class="fas fa-link"></i> DOI
+                    </a>
+                {% endif %}
+            </div>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+
+{% if include.items.size == 0 %}
+    {% include empty-state.html type=include.type %}
+{% endif %}
