@@ -42,7 +42,6 @@ skills:
     - OpenCV
     - Matplotlib
     - Pandas
-    - JavaScript
     - HTML/CSS
     - SQL
     
@@ -53,18 +52,18 @@ skills:
     - Node.js
     - React
     - Git
-    - Linux
 
 certificates:
   - award: "Language A: language and literature"
     organization: International Baccalaureate
     year: 2017
-    summary: Earned as part of the International Baccalaureate program, recognizing advanced skills in literary analysis and communication.
+    summary: Completed as part of the International Baccalaureate Diploma Programme, this certificate demonstrates advanced skills in critical reading, comparative literary analysis, and written/oral communication. 
     
   - award: Certificate in Advanced English (CAE)
     organization: Cambridge English
     year: 2014
-    summary: Achieved through Cambridge English, demonstrating proficiency in academic and professional English at an advanced level.
+    summary: An internationally recognized qualification demonstrating strong skills in English communication, including reading, writing, speaking, and understanding complex texts in academic and professional settings.
+
 
 extracurricular:
   - organization: Semester High School
