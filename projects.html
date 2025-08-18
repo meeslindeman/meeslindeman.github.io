@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Mees Lindeman</title>
+    <title>Projects - Mees Lindeman</title>
     <meta name="description" content="Projects by Mees Lindeman - AI research projects, coursework, and educational initiatives">
     <meta name="keywords" content="Mees Lindeman, Projects, AI, Machine Learning, Research Projects">
     
@@ -12,7 +12,7 @@
     
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/projects.css">
+    <link rel="stylesheet" href="assets/css/content-pages.css">
     
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -45,36 +45,18 @@
     </header>
 
     <!-- Main Content -->
-    <div class="projects-container">
+    <div class="content-container">
         <!-- Projects Header -->
-        <header class="projects-header">
-            <h1 class="projects-title">Projects</h1>
-            <p class="projects-subtitle">Academic research projects, coursework, and educational initiatives</p>
+        <header class="content-header">
+            <h1 class="content-title">Projects</h1>
+            <p class="content-subtitle">Academic research projects, coursework, and educational initiatives</p>
         </header>
 
-        <!-- Filter Controls -->
-        <section class="filter-section">
-            <div class="filter-controls">
-                <button class="filter-btn active" data-filter="all">
-                    <i class="fas fa-th"></i> All Projects
-                </button>
-                <button class="filter-btn" data-filter="ongoing">
-                    <i class="fas fa-play"></i> Ongoing
-                </button>
-                <button class="filter-btn" data-filter="completed">
-                    <i class="fas fa-check"></i> Completed
-                </button>
-                <button class="filter-btn" data-filter="featured">
-                    <i class="fas fa-star"></i> Featured
-                </button>
-            </div>
-        </section>
-
-        <!-- Projects Grid -->
-        <main class="projects-content">
-            <div class="projects-grid" id="projects-grid">
+        <!-- Projects List -->
+        <main class="content-main">
+            <ul class="content-list" id="projects-list">
                 <!-- Projects will be loaded dynamically -->
-            </div>
+            </ul>
         </main>
 
         <!-- Loading State -->
