@@ -245,23 +245,26 @@ img {
 }
 
 .profile__social a {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: #fef3e2;
     color: #f59e0b;
-    border-radius: 6px;
+    border-radius: 50%;
     transition: all 0.2s ease;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    border: 2px solid transparent;
 }
 
 .profile__social a:hover {
     background: #f59e0b;
     color: white;
     transform: translateY(-1px);
+    border-color: #f59e0b;
 }
+
 
 /* ===================================
    CONTENT SECTIONS
@@ -1018,4 +1021,10 @@ img {
 
 .footer-links a:hover {
     color: #f59e0b;
+}
+
+a[target="_blank"]::after,
+a.external-link::after {
+    content: none !important;
+    display: none !important;
 }
