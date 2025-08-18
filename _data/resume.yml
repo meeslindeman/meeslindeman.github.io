@@ -17,7 +17,7 @@ education:
     uni: University of Amsterdam
     location: Amsterdam, The Netherlands
     year: 2024 &mdash; 2026 (Expected)
-    grade: ""
+    # grade: ""
     summary: Covers advanced topics in machine learning, deep learning, natural language processing, information retrieval, and reinforcement learning.
     
   - degree: BSc &mdash; Bèta Gamma, major Artificial Intelligence
@@ -31,7 +31,7 @@ education:
     uni: Jac. P. Thijsse College
     location: Castricum, The Netherlands
     year: 2017
-    grade: ""
+    # grade: ""
     summary: VWO (Preparatory Scientific Education).
 
 skills:

@@ -581,6 +581,54 @@ const PALETTES = {
     'color-border': '#e5e7eb',
     'color-muted': '#374151',
     'color-muted-2': '#d1d5db'
+  },
+    pastel: {
+    'color-primary': '#ec4899',
+    'color-primary-dark': '#db2777',
+    'primary-rgb': '236, 72, 153',
+    'color-text': '#374151',
+    'color-text-light': '#6b7280',
+    'color-text-dark': '#111827',
+    'color-bg': '#fff7f9',
+    'color-bg-alt': '#ffffff',
+    'color-white': '#ffffff',
+    'color-accent-bg': '#fce7f3',
+    'color-accent-border': '#fbcfe8',
+    'color-border': '#f3f4f6',
+    'color-muted': '#6b7280',
+    'color-muted-2': '#e5e7eb'
+  },
+  earthy: {
+    'color-primary': '#92400e',
+    'color-primary-dark': '#b45309',
+    'primary-rgb': '146, 64, 14',
+    'color-text': '#3f3f46',
+    'color-text-light': '#6b7280',
+    'color-text-dark': '#1c1917',
+    'color-bg': '#fafaf9',
+    'color-bg-alt': '#f5f5f4',
+    'color-white': '#ffffff',
+    'color-accent-bg': '#fef3c7',
+    'color-accent-border': '#fde68a',
+    'color-border': '#e7e5e4',
+    'color-muted': '#57534e',
+    'color-muted-2': '#d6d3d1'
+  },
+  neon: {
+    'color-primary': '#a21caf',
+    'color-primary-dark': '#c026d3',
+    'primary-rgb': '162, 28, 175',
+    'color-text': '#0f172a',
+    'color-text-light': '#475569',
+    'color-text-dark': '#020617',
+    'color-bg': '#fdf4ff',
+    'color-bg-alt': '#faf5ff',
+    'color-white': '#ffffff',
+    'color-accent-bg': '#f5d0fe',
+    'color-accent-border': '#e9d5ff',
+    'color-border': '#e9d5ff',
+    'color-muted': '#6b21a8',
+    'color-muted-2': '#d8b4fe'
   }
 };
 
