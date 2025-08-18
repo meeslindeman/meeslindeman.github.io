@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+<body>
+    {% include header.html %}
+    
+    <!-- Main Content -->
+    <div class="resume-container">
+        <!-- Resume Header -->
+        <header class="resume-header">
+            <div class="resume-title-section">
+                <h1 class="resume-title">{{ page.title }}</h1>
+                <p class="resume-subtitle">{{ page.subtitle }}</p>
+            </div>
+            <div class="resume-actions">
+                <a href="{{ '/assets/docs/cv.pdf' | relative_url }}" class="download-btn" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-download"></i> Download PDF
+                </a>
+                <a href="mailto:{{ site.email }}" class="contact-btn">
+                    <i class="fas fa-envelope"></i> Get in Touch
+                </a>
+            </div>
+        </header>
+
+        <!-- Resume Content -->
+        <main class="resume-content">
+            {{ content }}
+        </main>
+    </div>
+    
+    {% include footer.html %}
+</body>
+</html>

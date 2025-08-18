@@ -1,0 +1,25 @@
+<footer class="site-footer">
+    <div class="footer-container">
+        <nav class="footer-nav">
+            {% for nav_item in site.navigation %}
+            <a href="{{ nav_item.url | relative_url }}">{{ nav_item.title }}</a>
+            {% endfor %}
+        </nav>
+        <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
+        <p>Last updated: <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: "%B %d, %Y" }}</time></p>
+    </div>
+</footer>
+
+<!-- JavaScript -->
+<script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+
+<!-- Google Analytics -->
+{% if site.google_analytics %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '{{ site.google_analytics }}');
+</script>
+{% endif %}

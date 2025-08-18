@@ -1,89 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Publications - Mees Lindeman</title>
-    <meta name="description" content="Publications by Mees Lindeman - Research papers, journal articles, and academic contributions">
-    <meta name="keywords" content="Mees Lindeman, Publications, Research Papers, AI, Machine Learning, Academic Papers">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/content-pages.css">
-    
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- YAML Parser -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
-</head>
-<body>
-    <!-- Navigation -->
-    <header class="site-header">
-        <div class="header-container">
-            <a href="index.html" class="site-title">Mees Lindeman</a>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="resume.html">Resume</a></li>
-                    <li><a href="publications.html" class="active">Publications</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                </ul>
-            </nav>
-            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
-                <i class="fas fa-bars"></i>
-            </button>
-        </div>
-    </header>
+---
+layout: publications
+title: Publications
+subtitle: Peer-reviewed papers, journal articles, and academic contributions
+description: Publications by Mees Lindeman - Research papers, journal articles, and academic contributions
+keywords: Mees Lindeman, Publications, Research Papers, AI, Machine Learning, Academic Papers
+permalink: /publications/
+---
 
-    <!-- Main Content -->
-    <div class="content-container">
-        <!-- Publications Header -->
-        <header class="content-header">
-            <h1 class="content-title">Publications</h1>
-            <p class="content-subtitle">Peer-reviewed papers, journal articles, and academic contributions</p>
-        </header>
-
-        <!-- Publications List -->
-        <main class="content-main">
-            <ul class="content-list" id="publications-list">
-                <!-- Publications will be loaded dynamically -->
-            </ul>
-        </main>
-
-        <!-- Loading State -->
-        <div class="loading-container" id="loading-container">
-            <div class="loading-spinner">
-                <i class="fas fa-spinner fa-spin"></i>
-                <p>Loading publications...</p>
+<ul class="content-list">
+    {% assign sorted_publications = site.data.publications.publications | sort: 'year' | reverse %}
+    {% for publication in sorted_publications %}
+    <li class="content-item">
+        <div class="item-header">
+            <h3 class="item-title">{{ publication.title }}</h3>
+            {% if publication.authors %}
+                <div class="item-meta">
+                    {% if publication.authors contains 'Mees Lindeman' %}
+                        {{ publication.authors | replace: 'Mees Lindeman', '<strong>Mees Lindeman</strong>' }}
+                    {% else %}
+                        {{ publication.authors }}
+                    {% endif %}
+                </div>
+            {% endif %}
+            <div class="item-venue">
+                <em>{{ publication.venue }}</em> ({{ publication.year }})
+                {% if publication.type %} • {{ publication.type }}{% endif %}
             </div>
         </div>
-    </div>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-container">
-            <nav class="footer-nav">
-                <a href="index.html">Home</a>
-                <a href="resume.html">Resume</a>
-                <a href="publications.html">Publications</a>
-                <a href="projects.html">Projects</a>
-            </nav>
-            <p>&copy; 2025 Mees Lindeman. All rights reserved.</p>
-            <p>Last updated: <span id="last-updated"></span></p>
-        </div>
-    </footer>
+        {% if publication.summary %}
+            <div class="item-summary">{{ publication.summary }}</div>
+        {% endif %}
 
-    <!-- JavaScript -->
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/publications-loader.js"></script>
-</body>
-</html>
+        {% if publication.url or publication.doi %}
+            <div class="item-links">
+                {% if publication.url %}
+                    <a href="{{ publication.url }}" target="_blank" rel="noopener noreferrer" class="item-link">
+                        <i class="fas fa-external-link-alt"></i> Paper
+                    </a>
+                {% endif %}
+                {% if publication.doi %}
+                    <a href="https://doi.org/{{ publication.doi }}" target="_blank" rel="noopener noreferrer" class="item-link">
+                        <i class="fas fa-link"></i> DOI
+                    </a>
+                {% endif %}
+            </div>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+
+{% if site.data.publications.publications.size == 0 %}
+<div class="empty-state">
+    <i class="fas fa-file-alt"></i>
+    <h3>No Publications Found</h3>
+    <p>No publications are currently available.</p>
+</div>
+{% endif %}

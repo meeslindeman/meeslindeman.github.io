@@ -6,12 +6,27 @@ description: >-
   exploring conceptual questions in AI systems.
 baseurl: ""
 url: "https://meeslindeman.github.io"
-twitter_username: # your_twitter_username
-github_username: meeslindeman
-linkedin_username: # your_linkedin_username
+
+# Personal information
+author:
+  name: Mees Lindeman
+  title: MSc Student, Artificial Intelligence
+  institution: University of Amsterdam
+  location: Amsterdam, Netherlands
+  graduation_year: 2025
+
+# Social links
+social:
+  linkedin: https://linkedin.com/in/meeslindeman
+  github: https://github.com/meeslindeman
+  scholar: https://scholar.google.com/citations?user=YOUR_ID
+  orcid: https://orcid.org/YOUR-ORCID-ID
+  twitter: https://twitter.com/meeslindeman
+  researchgate: https://www.researchgate.net/profile/Mees-Lindeman
 
 # Build settings
 markdown: kramdown
+highlighter: rouge
 theme: minima
 plugins:
   - jekyll-feed
@@ -28,23 +43,24 @@ exclude:
   - vendor/gems/
   - vendor/ruby/
   - README.md
+  - .gitignore
 
-# Collections
+# Collections for structured content
 collections:
   publications:
     output: true
     permalink: /:collection/:name/
-  research:
+  projects:
     output: true
     permalink: /:collection/:name/
 
-# Defaults
+# Defaults for front matter
 defaults:
   - scope:
       path: ""
-      type: "posts"
+      type: "pages"
     values:
-      layout: "post"
+      layout: "default"
   - scope:
       path: ""
       type: "publications"
@@ -52,6 +68,29 @@ defaults:
       layout: "publication"
   - scope:
       path: ""
-      type: "research"
+      type: "projects"
     values:
-      layout: "research"
+      layout: "project"
+
+# Site navigation
+navigation:
+  - title: Home
+    url: /
+  - title: Resume
+    url: /resume/
+  - title: Publications
+    url: /publications/
+  - title: Projects
+    url: /projects/
+
+# SEO and social
+google_analytics: # Add your GA tracking ID
+twitter:
+  username: meeslindeman
+  card: summary
+
+# Jekyll admin (optional)
+jekyll_admin:
+  hidden_links:
+    - posts
+    - pages

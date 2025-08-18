@@ -1,89 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects - Mees Lindeman</title>
-    <meta name="description" content="Projects by Mees Lindeman - AI research projects, coursework, and educational initiatives">
-    <meta name="keywords" content="Mees Lindeman, Projects, AI, Machine Learning, Research Projects">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/content-pages.css">
-    
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- YAML Parser -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
-</head>
-<body>
-    <!-- Navigation -->
-    <header class="site-header">
-        <div class="header-container">
-            <a href="index.html" class="site-title">Mees Lindeman</a>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="resume.html">Resume</a></li>
-                    <li><a href="publications.html">Publications</a></li>
-                    <li><a href="projects.html" class="active">Projects</a></li>
-                </ul>
-            </nav>
-            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
-                <i class="fas fa-bars"></i>
-            </button>
+---
+layout: projects
+title: Projects
+subtitle: Academic research projects, coursework, and educational initiatives
+description: Projects by Mees Lindeman - AI research projects, coursework, and educational initiatives
+keywords: Mees Lindeman, Projects, AI, Machine Learning, Research Projects
+permalink: /projects/
+---
+
+<ul class="content-list">
+    {% assign sorted_projects = site.data.projects.projects | sort: 'date' | reverse %}
+    {% for project in sorted_projects %}
+    <li class="content-item">
+        <div class="item-header">
+            <h3 class="item-title">{{ project.project }}</h3>
+            <div class="item-meta"><strong>Role:</strong> {{ project.role }}</div>
+            <div class="item-venue">{{ project.duration }}</div>
+            {% if project.misc %}<div class="item-meta">{{ project.misc }}</div>{% endif %}
         </div>
-    </header>
 
-    <!-- Main Content -->
-    <div class="content-container">
-        <!-- Projects Header -->
-        <header class="content-header">
-            <h1 class="content-title">Projects</h1>
-            <p class="content-subtitle">Academic research projects, coursework, and educational initiatives</p>
-        </header>
+        <div class="item-description">{{ project.description }}</div>
 
-        <!-- Projects List -->
-        <main class="content-main">
-            <ul class="content-list" id="projects-list">
-                <!-- Projects will be loaded dynamically -->
-            </ul>
-        </main>
-
-        <!-- Loading State -->
-        <div class="loading-container" id="loading-container">
-            <div class="loading-spinner">
-                <i class="fas fa-spinner fa-spin"></i>
-                <p>Loading projects...</p>
+        {% if project.technologies %}
+            <div class="tech-tags">
+                {% assign techs = project.technologies | split: ', ' %}
+                {% for tech in techs %}
+                    <span class="tech-tag">{{ tech | strip }}</span>
+                {% endfor %}
             </div>
-        </div>
-    </div>
+        {% endif %}
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-container">
-            <nav class="footer-nav">
-                <a href="index.html">Home</a>
-                <a href="resume.html">Resume</a>
-                <a href="publications.html">Publications</a>
-                <a href="projects.html">Projects</a>
-            </nav>
-            <p>&copy; 2025 Mees Lindeman. All rights reserved.</p>
-            <p>Last updated: <span id="last-updated"></span></p>
-        </div>
-    </footer>
+        {% if project.url and project.url != '' %}
+            <div class="item-links">
+                {% if project.url contains 'github.com' %}
+                    <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer" class="item-link">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                {% else %}
+                    <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer" class="item-link">
+                        <i class="fas fa-external-link-alt"></i> View Project
+                    </a>
+                {% endif %}
+            </div>
+        {% endif %}
+    </li>
+    {% endfor %}
+</ul>
 
-    <!-- JavaScript -->
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/projects-loader.js"></script>
-</body>
-</html>
+{% if site.data.projects.projects.size == 0 %}
+<div class="empty-state">
+    <i class="fas fa-folder-open"></i>
+    <h3>No Projects Found</h3>
+    <p>No projects are currently available.</p>
+</div>
+{% endif %}

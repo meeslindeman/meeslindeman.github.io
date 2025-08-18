@@ -1,163 +1,201 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resume | Mees Lindeman</title>
-    <meta name="description" content="Resume of Mees Lindeman - MSc Student in Artificial Intelligence at University of Amsterdam">
-    <meta name="keywords" content="Mees Lindeman, Resume, CV, AI, Machine Learning, University of Amsterdam">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
-    
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/resume.css">
-    
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- YAML Parser -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
-</head>
-<body>
-    <!-- Navigation -->
-    <header class="site-header">
-        <div class="header-container">
-            <a href="index.html" class="site-title">Mees Lindeman</a>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="resume.html" class="active">Resume</a></li>
-                    <li><a href="publications.html">Publications</a></li>
-                    <li><a href="projects.html">Projects</a></li>
-                </ul>
-            </nav>
-            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
-                <i class="fas fa-bars"></i>
-            </button>
+---
+layout: resume
+title: Resume
+subtitle: Academic and Professional Experience
+description: Resume of Mees Lindeman - MSc Student in Artificial Intelligence at University of Amsterdam
+permalink: /resume/
+---
+
+<!-- Professional Experience -->
+<section class="resume-section">
+    <h2 class="section-title">
+        <i class="fas fa-briefcase"></i>
+        Professional Experience
+    </h2>
+    <div class="section-content">
+        {% for job in site.data.resume.jobs %}
+        <div class="resume-item">
+            <div class="resume-item-header">
+                <div class="resume-item-main">
+                    <div class="resume-item-title">{{ job.position }}</div>
+                    <div class="resume-item-subtitle">{{ job.company }}</div>
+                    <div class="resume-item-meta">{{ job.location }}</div>
+                </div>
+                <div class="resume-item-date">{{ job.duration }}</div>
+            </div>
+            <div class="resume-item-description">{{ job.summary }}</div>
         </div>
-    </header>
-
-    <!-- Main Content -->
-    <div class="resume-container">
-        <!-- Resume Header -->
-        <header class="resume-header">
-            <div class="resume-title-section">
-                <h1 class="resume-title">Resume</h1>
-            </div>
-            <div class="resume-actions">
-                <a href="assets/docs/cv.pdf" class="download-btn" target="_blank" rel="noopener noreferrer">
-                    <i class="fas fa-download"></i> Download PDF
-                </a>
-                <a href="mailto:mees@lindeman.nu" class="contact-btn">
-                    <i class="fas fa-envelope"></i> Get in Touch
-                </a>
-            </div>
-        </header>
-
-        <!-- Resume Content -->
-        <main class="resume-content">
-            <!-- Professional Experience -->
-            <section class="resume-section">
-                <h2 class="section-title">
-                    <i class="fas fa-briefcase"></i>
-                    Professional Experience
-                </h2>
-                <div class="section-content" id="jobs-content">
-                    <!-- Jobs will be loaded dynamically -->
-                </div>
-            </section>
-
-            <!-- Education -->
-            <section class="resume-section">
-                <h2 class="section-title">
-                    <i class="fas fa-graduation-cap"></i>
-                    Education
-                </h2>
-                <div class="section-content" id="education-content">
-                    <!-- Education will be loaded dynamically -->
-                </div>
-            </section>
-
-            <!-- Projects -->
-            <section class="resume-section">
-                <h2 class="section-title">
-                    <i class="fas fa-laptop-code"></i>
-                    Selected Projects
-                </h2>
-                <div class="section-content" id="projects-content">
-                    <!-- Projects will be loaded dynamically -->
-                </div>
-            </section>
-
-            <!-- Publications -->
-            <section class="resume-section">
-                <h2 class="section-title">
-                    <i class="fas fa-file-alt"></i>
-                    Publications
-                </h2>
-                <div class="section-content" id="publications-content">
-                    <!-- Publications will be loaded dynamically -->
-                </div>
-            </section>
-
-            <!-- Skills -->
-            <section class="resume-section">
-                <h2 class="section-title">
-                    <i class="fas fa-tools"></i>
-                    Technical Skills
-                </h2>
-                <div class="section-content" id="skills-content">
-                    <!-- Skills will be loaded dynamically -->
-                </div>
-            </section>
-
-            <!-- Certificates -->
-            <section class="resume-section">
-                <h2 class="section-title">
-                    <i class="fas fa-certificate"></i>
-                    Certificates & Awards
-                </h2>
-                <div class="section-content" id="certificates-content">
-                    <!-- Certificates will be loaded dynamically -->
-                </div>
-            </section>
-
-            <!-- Extracurricular -->
-            <section class="resume-section">
-                <h2 class="section-title">
-                    <i class="fas fa-globe"></i>
-                    Extracurricular Activities
-                </h2>
-                <div class="section-content" id="extracurricular-content">
-                    <!-- Extracurricular will be loaded dynamically -->
-                </div>
-            </section>
-        </main>
+        {% endfor %}
     </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="footer-container">
-            <nav class="footer-nav">
-                <a href="index.html">Home</a>
-                <a href="resume.html">Resume</a>
-                <a href="publications.html">Publications</a>
-                <a href="projects.html">Projects</a>
-            </nav>
-            <p>&copy; 2025 Mees Lindeman. All rights reserved.</p>
-            <p>Last updated: <span id="last-updated"></span></p>
+<!-- Education -->
+<section class="resume-section">
+    <h2 class="section-title">
+        <i class="fas fa-graduation-cap"></i>
+        Education
+    </h2>
+    <div class="section-content">
+        {% for edu in site.data.resume.education %}
+        <div class="resume-item">
+            <div class="resume-item-header">
+                <div class="resume-item-main">
+                    <div class="resume-item-title">{{ edu.degree }}</div>
+                    <div class="resume-item-subtitle">{{ edu.uni }}</div>
+                    <div class="resume-item-meta">
+                        {% if edu.location %}{{ edu.location }}{% endif %}
+                        {% if edu.grade %} • {{ edu.grade }}{% endif %}
+                    </div>
+                </div>
+                <div class="resume-item-date">{{ edu.year }}</div>
+            </div>
+            <div class="resume-item-description">{{ edu.summary }}</div>
         </div>
-    </footer>
+        {% endfor %}
+    </div>
+</section>
 
-    <!-- JavaScript -->
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/resume-loader.js"></script>
-</body>
-</html>
+<!-- Selected Projects -->
+<section class="resume-section">
+    <h2 class="section-title">
+        <i class="fas fa-laptop-code"></i>
+        Selected Projects
+    </h2>
+    <div class="section-content">
+        {% assign featured_projects = site.data.projects.projects | where: "featured", true | sort: 'date' | reverse | slice: 0, 3 %}
+        {% for project in featured_projects %}
+        <div class="resume-project">
+            <div class="project-title">{{ project.project }}</div>
+            <div class="project-meta"><strong>Role:</strong> {{ project.role }}</div>
+            <div class="project-duration">{{ project.duration }}</div>
+            {% if project.technologies %}
+                <div class="tech-tags">
+                    {% assign techs = project.technologies | split: ', ' %}
+                    {% for tech in techs %}
+                        <span class="tech-tag">{{ tech | strip }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="project-description">{{ project.description }}</div>
+            {% if project.misc %}<div class="project-meta">{{ project.misc }}</div>{% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Publications -->
+<section class="resume-section">
+    <h2 class="section-title">
+        <i class="fas fa-file-alt"></i>
+        Publications
+    </h2>
+    <div class="section-content">
+        {% for pub in site.data.publications.publications %}
+        <div class="resume-publication">
+            <div class="pub-title">{{ pub.title }}</div>
+            {% if pub.authors %}
+                <div class="pub-authors">
+                    {% if pub.authors contains 'Mees Lindeman' %}
+                        {{ pub.authors | replace: 'Mees Lindeman', '<strong>Mees Lindeman</strong>' }}
+                    {% else %}
+                        {{ pub.authors }}
+                    {% endif %}
+                </div>
+            {% endif %}
+            <div class="pub-venue">
+                <em>{{ pub.venue }}</em> ({{ pub.year }})
+                {% if pub.type %} • {{ pub.type }}{% endif %}
+            </div>
+            {% if pub.summary %}<div class="pub-summary">{{ pub.summary }}</div>{% endif %}
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Technical Skills -->
+<section class="resume-section">
+    <h2 class="section-title">
+        <i class="fas fa-tools"></i>
+        Technical Skills
+    </h2>
+    <div class="section-content">
+        <div class="skills-grid">
+            {% if site.data.resume.skills.programming %}
+            <div class="skill-category">
+                <h4>Programming Languages & Libraries</h4>
+                <div class="skill-tags">
+                    {% for skill in site.data.resume.skills.programming %}
+                        <span class="skill-tag">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            
+            {% if site.data.resume.skills.frameworks_tools %}
+            <div class="skill-category">
+                <h4>Frameworks & Tools</h4>
+                <div class="skill-tags">
+                    {% for skill in site.data.resume.skills.frameworks_tools %}
+                        <span class="skill-tag">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            
+            {% if site.data.resume.skills.research_areas %}
+            <div class="skill-category">
+                <h4>Research Areas</h4>
+                <div class="skill-tags">
+                    {% for skill in site.data.resume.skills.research_areas %}
+                        <span class="skill-tag">{{ skill }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- Certificates & Awards -->
+<section class="resume-section">
+    <h2 class="section-title">
+        <i class="fas fa-certificate"></i>
+        Certificates & Awards
+    </h2>
+    <div class="section-content">
+        {% for cert in site.data.resume.certificates %}
+        <div class="resume-item">
+            <div class="resume-item-header">
+                <div class="resume-item-main">
+                    <div class="resume-item-title">{{ cert.award }}</div>
+                    <div class="resume-item-subtitle">{{ cert.organization }}</div>
+                </div>
+                <div class="resume-item-date">{{ cert.year }}</div>
+            </div>
+            <div class="resume-item-description">{{ cert.summary }}</div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+<!-- Extracurricular Activities -->
+<section class="resume-section">
+    <h2 class="section-title">
+        <i class="fas fa-globe"></i>
+        Extracurricular Activities
+    </h2>
+    <div class="section-content">
+        {% for activity in site.data.resume.extracurricular %}
+        <div class="resume-item">
+            <div class="resume-item-header">
+                <div class="resume-item-main">
+                    <div class="resume-item-title">{{ activity.organization }}</div>
+                    <div class="resume-item-subtitle">{{ activity.role }}</div>
+                </div>
+                <div class="resume-item-date">{{ activity.year }}</div>
+            </div>
+            <div class="resume-item-description">{{ activity.summary }}</div>
+        </div>
+        {% endfor %}
+    </div>
+</section>

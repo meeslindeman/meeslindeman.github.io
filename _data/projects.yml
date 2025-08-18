@@ -25,7 +25,7 @@ projects:
     duration: 2024
     technologies: Python, PyTorch
     misc: "Grade: 8.0/10"
-    url: "https://scripties.uba.uva.nl/search?id=record_54284"
+    url: "https://github.com/meeslindeman/bachelor-thesis"
     description: Investigated the emergence of compositional language in referential games between artificial agents, using Graph Neural Networks (GNNs) to model structured input. Explored how agents develop communication strategies to describe family relations, analyzing the impact of different training setups on language expressiveness and efficiency.
     status: completed
     featured: false
