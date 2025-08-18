@@ -1,0 +1,37 @@
+# News Data
+news:
+  - date: 2025-03-01
+    type: "publication"
+    title: "Paper accepted to TMLR"
+    description: "Our reproducibility study on fairness attacks in Graph Neural Networks has been accepted to Transactions on Machine Learning Research (TMLR)"
+    link: "#"
+    
+  - date: 2025-02-15
+    type: "talk"
+    title: "Selected for ML Reproducibility Challenge"
+    description: "Selected to present at the Machine Learning Reproducibility Challenge at Princeton University"
+    link: "#"
+    
+  - date: 2025-01-15
+    type: "project"
+    title: "Started Master's Thesis"
+    description: "Began thesis project on vision-based robotic manipulation with learned 3D geometry"
+    link: "#"
+    
+  - date: 2024-12-01
+    type: "project"
+    title: "Launched AI for Dummies"
+    description: "Started educational workshop series at HvA to make AI concepts accessible to colleagues"
+    link: "#"
+    
+  - date: 2024-11-20
+    type: "achievement"
+    title: "Promoted to AI Consultant"
+    description: "Promoted to strategic AI consultant role at HvA based on performance and expertise"
+    link: "#"
+    
+  - date: 2024-06-15
+    type: "publication"
+    title: "Completed Bachelor Thesis"
+    description: "Successfully defended thesis on compositional language emergence in multi-agent systems with grade 8.0/10"
+    link: "#"

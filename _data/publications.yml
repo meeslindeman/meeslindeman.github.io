@@ -1,0 +1,73 @@
+# Publications Data
+publications:
+  - title: "Are Your Models Still Fair? Fairness Attacks on Graph Neural Networks via Node Injections: A Reproducibility Study"
+    authors: 
+      - name: "Mees Lindeman"
+        is_self: true
+      - name: "Ruben Figge"
+        is_self: false
+      - name: "Sjoerd Gunneweg"
+        is_self: false
+      - name: "Jurgen de Heus"
+        is_self: false
+    venue: "Transactions on Machine Learning Research (TMLR)"
+    year: 2025
+    type: "journal"
+    status: "published"
+    abstract: "This study evaluates the claims and results of fairness attacks on Graph Neural Networks via node injections. Selected for presentation at the 2025 Machine Learning Reproducibility Challenge held at Princeton University, we assessed implementation, experimental setup, and generalizability to provide insights into the robustness of the original findings."
+    links:
+      paper: "#"
+      code: "#"
+      data: "#"
+      slides: "#"
+      talk: "#"
+    tags:
+      - "Graph Neural Networks"
+      - "Fairness"
+      - "Reproducibility"
+      - "Node Injection"
+    featured: true
+    date: 2025-03-01
+    
+  - title: "Vision-Based Robotic Manipulation with Learned 3D Geometry"
+    authors:
+      - name: "Mees Lindeman"
+        is_self: true
+    venue: "Master's Thesis, University of Amsterdam"
+    year: 2025
+    type: "thesis"
+    status: "in_progress"
+    abstract: "This thesis investigates whether learned 3D geometry from RGB images can replace depth sensors in few-shot robotic manipulation tasks. By integrating MASt3R, a state-of-the-art 3D reconstruction method, into the RVT-2 robotic vision pipeline, we evaluate performance without RGB-D sensors and demonstrate robust manipulation under challenging visual conditions, potentially offering a more flexible and cost-effective alternative to traditional calibrated setups."
+    links:
+      draft: "#"
+      code: "#"
+      demo: "#"
+    tags:
+      - "Computer Vision"
+      - "Robotics"
+      - "3D Reconstruction"
+      - "Few-Shot Learning"
+    featured: true
+    date: 2025-01-15
+
+  - title: "Compositional Language Emergence in Multi-Agent Referential Games"
+    authors:
+      - name: "Mees Lindeman"
+        is_self: true
+    venue: "Course Project Report, University of Amsterdam"
+    year: 2024
+    type: "report"
+    status: "completed"
+    grade: "8.0/10"
+    abstract: "This project investigated the emergence of compositional language in referential games between artificial agents, using Graph Neural Networks to model structured input. We explored how agents develop communication strategies to describe family relations and analyzed the impact of different training setups on language expressiveness and efficiency, contributing to our understanding of emergent communication in multi-agent systems."
+    links:
+      report: "#"
+      code: "#"
+      results: "#"
+    tags:
+      - "Multi-Agent Systems"
+      - "Natural Language Processing"
+      - "Compositional Learning"
+      - "Communication"
+    featured: false
+    date: 2024-06-15

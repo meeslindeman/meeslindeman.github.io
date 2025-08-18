@@ -443,8 +443,132 @@ a:hover {
     font-size: 0.9rem;
 }
 
+.footer-nav {
+    margin-bottom: 1rem;
+}
+
+.footer-nav a {
+    color: #666;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.footer-nav a:hover {
+    color: #0066cc;
+}
+
 .footer-container p {
     margin-bottom: 0.5rem;
+}
+
+/* Featured Work Grid */
+.featured-grid {
+    display: grid;
+    gap: 2rem;
+}
+
+/* Technology Tags */
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.tech-tag {
+    background: #e8f4f8;
+    color: #0066cc;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border: 1px solid #b3d9e6;
+}
+
+/* Loading States */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #0066cc;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Error States */
+.error-message {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 1rem;
+    border-radius: 6px;
+    border: 1px solid #f5c6cb;
+    margin: 1rem 0;
+}
+
+/* Status Indicators */
+.status-badge {
+    display: inline-block;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-left: 0.5rem;
+}
+
+.status-published {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-in-progress {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.status-completed {
+    background: #cce5ff;
+    color: #004085;
+}
+
+/* External Link Icons */
+.external-icon {
+    opacity: 0.6;
+    font-size: 0.8em;
+}
+
+/* Skip Link for Accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #000;
+    color: #fff;
+    padding: 8px;
+    text-decoration: none;
+    z-index: 1000;
+    border-radius: 4px;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+    top: 6px;
 }
 
 /* Responsive Design */
