@@ -4,13 +4,4 @@ news:
     title: "Paper accepted to TMLR"
     description: "Our reproducibility study on fairness attacks in Graph Neural Networks has been accepted"
     link: "https://link-to-paper.com"
-    
-  - date: 2025-02-15
-    type: "talk"
-    title: "Selected for ML Reproducibility Challenge"
-    description: "Will present at Princeton University"
-    
-  - date: 2025-01-10
-    type: "achievement"
-    title: "Started Master's Thesis"
-    description: "Began thesis project on vision-based robotic manipulation"
+  

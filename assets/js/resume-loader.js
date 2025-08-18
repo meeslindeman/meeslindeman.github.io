@@ -129,14 +129,14 @@ class ResumeLoader {
             publications: { 
                 publications: [
                     {
-                        title: "Are Your Models Still Fair? Fairness Attacks on Graph Neural Networks via Node Injections: A Reproducibility Study",
-                        authors: [
-                            {name: "Mees Lindeman", is_self: true},
-                            {name: "Ruben Figge", is_self: false}
-                        ],
-                        venue: "Transactions on Machine Learning Research (TMLR)",
-                        year: 2025,
-                        abstract: "This study evaluates the claims and results of fairness attacks on Graph Neural Networks via node injections."
+                        title: "Reassessing Fairness: A Reproducibility Study of NIFA's Impact on GNN Models",
+                        authors: "Mees Lindeman, Ruben Figge, Sjoerd Gunneweg, Aaron Kuin",
+                        venue: "TMLR",
+                        year: "2025",
+                        type: "Journal Article",
+                        url: "https://openreview.net/pdf?id=l5fXUKi8GO",
+                        status: "Accepted",
+                        summary: "Published in TMLR (2025). Selected for presentation at the 2025 Machine Learning Reproducibility Challenge held at Princeton University. This study evaluates the claims and results of fairness attacks on Graph Neural Networks via node injections."
                     }
                 ]
             },
@@ -333,9 +333,13 @@ class ResumeLoader {
      */
     renderPublications() {
         const container = document.getElementById('publications-content');
-        if (!container) return;
+        if (!container) {
+            console.error('Publications container not found');
+            return;
+        }
 
         const publications = this.data.publications?.publications || [];
+        console.log('Publications data:', publications);
 
         if (publications.length === 0) {
             container.innerHTML = '<p>No publications available.</p>';
@@ -343,19 +347,49 @@ class ResumeLoader {
         }
 
         container.innerHTML = publications.map(pub => {
-            const authors = pub.authors?.map(author => 
-                author.is_self ? `<strong>${author.name}</strong>` : author.name
-            ).join(', ') || '';
+            // Handle authors - check if it's a string or array
+            let authorsDisplay = '';
+            if (typeof pub.authors === 'string') {
+                // String format: highlight your name
+                authorsDisplay = pub.authors.replace(/\bMees Lindeman\b/g, '<strong>Mees Lindeman</strong>');
+            } else if (Array.isArray(pub.authors)) {
+                // Array format: use the old logic
+                authorsDisplay = pub.authors.map(author => 
+                    author.is_self ? `<strong>${author.name}</strong>` : author.name
+                ).join(', ');
+            }
+
+            // Create status badge
+            const statusClass = pub.status ? pub.status.toLowerCase().replace(' ', '-') : '';
+            const statusBadge = pub.status ? `<span class="status-badge status-${statusClass}">${pub.status}</span>` : '';
+
+            // Create links if available
+            const links = [];
+            if (pub.url) {
+                links.push(`<a href="${pub.url}" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-external-link-alt"></i> Paper</a>`);
+            }
+            if (pub.doi) {
+                links.push(`<a href="https://doi.org/${pub.doi}" target="_blank" rel="noopener noreferrer" class="pub-link"><i class="fas fa-link"></i> DOI</a>`);
+            }
 
             return `
                 <div class="resume-publication">
-                    <div class="pub-title">${pub.title}</div>
-                    ${authors ? `<div class="pub-authors">${authors}</div>` : ''}
-                    <div class="pub-venue">${pub.venue}, ${pub.year}</div>
-                    <div class="pub-abstract">${pub.abstract}</div>
+                    <div class="pub-title">
+                        ${pub.title}
+                        ${statusBadge}
+                    </div>
+                    ${authorsDisplay ? `<div class="pub-authors">${authorsDisplay}</div>` : ''}
+                    <div class="pub-venue">
+                        <em>${pub.venue}</em> (${pub.year})
+                        ${pub.type ? ` • ${pub.type}` : ''}
+                    </div>
+                    ${pub.summary ? `<div class="pub-summary">${pub.summary}</div>` : ''}
+                    ${links.length > 0 ? `<div class="pub-links">${links.join('')}</div>` : ''}
                 </div>
             `;
         }).join('');
+
+        console.log('Publications rendered successfully');
     }
 
     /**
