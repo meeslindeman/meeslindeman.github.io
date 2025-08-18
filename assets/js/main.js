@@ -177,7 +177,6 @@ function handleExternalLinks() {
     const links = document.querySelectorAll('a[href^="http"]');
     
     links.forEach(link => {
-        // Check if it's an external link (not same domain)
         try {
             const linkUrl = new URL(link.href);
             const currentUrl = new URL(window.location.href);
@@ -185,22 +184,14 @@ function handleExternalLinks() {
             if (linkUrl.hostname !== currentUrl.hostname) {
                 link.setAttribute('target', '_blank');
                 link.setAttribute('rel', 'noopener noreferrer');
-                
-                // Add external link icon if not already present
-                if (!link.querySelector('.external-icon')) {
-                    const icon = document.createElement('i');
-                    icon.className = 'fas fa-external-link-alt external-icon';
-                    icon.style.marginLeft = '0.25rem';
-                    icon.style.fontSize = '0.8em';
-                    link.appendChild(icon);
-                }
+                // icon injection removed
             }
         } catch (e) {
-            // Invalid URL, skip
             console.warn('Invalid URL found:', link.href);
         }
     });
 }
+
 
 /**
  * Initialize accessibility features
