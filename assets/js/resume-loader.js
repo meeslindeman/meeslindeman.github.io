@@ -66,21 +66,92 @@ class ResumeLoader {
                     institution: "University of Amsterdam",
                     location: "Amsterdam, Netherlands",
                     email: "mees@lindeman.nu",
-                    graduation_year: 2025,
-                    bio: {
-                        long: "I'm a Master's student in Artificial Intelligence at the University of Amsterdam with a strong interest in the conceptual and often overlooked questions in AI."
-                    }
+                    graduation_year: 2025
                 }
             },
             resume: {
-                jobs: [],
-                education: [],
-                skills: { programming: [], frameworks_tools: [], research_areas: [] },
-                certificates: [],
-                extracurricular: []
+                jobs: [
+                    {
+                        company: "Amsterdam University of Applied Sciences",
+                        position: "IT Developer",
+                        duration: "Sept, 2023 — Present",
+                        location: "Amsterdam, The Netherlands",
+                        summary: "Explored opportunities to integrate AI within the department by contributing to research initiatives and small-scale implementations. Developed a Microsoft Azure-based chatbot to assist employees with frequently asked questions and provided ongoing AI consultancy."
+                    },
+                    {
+                        company: "Amsterdam University of Applied Sciences",
+                        position: "Student Assistant", 
+                        duration: "Oct, 2022 — Sept, 2023",
+                        location: "Amsterdam, The Netherlands",
+                        summary: "Conducted statistical research and provided IT support for student platforms. Assisted with small research projects and helped integrate AI solutions within the department, leading to a promotion to a more strategic role."
+                    }
+                ],
+                education: [
+                    {
+                        degree: "MSc — Artificial Intelligence",
+                        uni: "University of Amsterdam",
+                        location: "Amsterdam, The Netherlands",
+                        year: "2024 — 2026 (Expected)",
+                        grade: "",
+                        summary: "Covers advanced topics in machine learning, deep learning, natural language processing, information retrieval, and reinforcement learning."
+                    },
+                    {
+                        degree: "BSc — Bèta Gamma, major Artificial Intelligence",
+                        uni: "University of Amsterdam", 
+                        location: "Amsterdam, The Netherlands",
+                        year: "2019 — 2024",
+                        grade: "GPA: 7.5/10",
+                        summary: "Gained a strong foundation in logic, calculus, linear algebra, programming, and basic machine learning."
+                    }
+                ],
+                skills: {
+                    programming: ["Python", "PyTorch", "NumPy", "scikit-learn", "JavaScript", "HTML/CSS"],
+                    frameworks_tools: ["Docker", "Microsoft Azure", "Node.js", "React", "Git"],
+                    research_areas: ["Machine Learning", "Deep Learning", "Computer Vision", "NLP"]
+                },
+                certificates: [
+                    {
+                        award: "Language A: language and literature",
+                        organization: "International Baccalaureate",
+                        year: "2017",
+                        summary: "Earned as part of the International Baccalaureate program, recognizing advanced skills in literary analysis and communication."
+                    }
+                ],
+                extracurricular: [
+                    {
+                        organization: "Semester High School",
+                        role: "Iowa, USA",
+                        year: "2017 — 2018",
+                        summary: "During a gap year in my studies, I attended a semester of High School in the United States, where I had the opportunity to enhance my English skills and embrace diverse experiences and cultures."
+                    }
+                ]
             },
-            publications: { publications: [] },
-            projects: { projects: [] }
+            publications: { 
+                publications: [
+                    {
+                        title: "Are Your Models Still Fair? Fairness Attacks on Graph Neural Networks via Node Injections: A Reproducibility Study",
+                        authors: [
+                            {name: "Mees Lindeman", is_self: true},
+                            {name: "Ruben Figge", is_self: false}
+                        ],
+                        venue: "Transactions on Machine Learning Research (TMLR)",
+                        year: 2025,
+                        abstract: "This study evaluates the claims and results of fairness attacks on Graph Neural Networks via node injections."
+                    }
+                ]
+            },
+            projects: { 
+                projects: [
+                    {
+                        project: "AI for Dummies",
+                        role: "Creator & Instructor",
+                        duration: "2025 — Present",
+                        technologies: "Node.js, React, Python",
+                        description: "AI for Dummies is an educational initiative I started to explain AI concepts to beginners.",
+                        featured: true
+                    }
+                ]
+            }
         };
         return fallbacks[dataKey] || {};
     }
@@ -89,7 +160,6 @@ class ResumeLoader {
      * Render all resume content
      */
     renderResumeContent() {
-        this.renderPersonalSummary();
         this.renderJobs();
         this.renderEducation();
         this.renderProjects();
@@ -147,9 +217,13 @@ class ResumeLoader {
      */
     renderJobs() {
         const container = document.getElementById('jobs-content');
-        if (!container) return;
+        if (!container) {
+            console.error('Jobs container not found');
+            return;
+        }
 
         const jobs = this.data.resume?.jobs || [];
+        console.log('Rendering jobs:', jobs);
 
         if (jobs.length === 0) {
             container.innerHTML = '<p>No job experience available.</p>';
@@ -169,6 +243,8 @@ class ResumeLoader {
                 <div class="resume-item-description">${job.summary}</div>
             </div>
         `).join('');
+
+        console.log('Jobs rendered successfully');
     }
 
     /**
@@ -365,7 +441,6 @@ class ResumeLoader {
         console.warn('Using fallback content for resume');
         
         // Force render with fallback data
-        this.renderPersonalSummary();
         this.renderJobs();
         this.renderEducation();
         this.renderProjects();
