@@ -87,7 +87,6 @@ class DataLoader {
     renderAllContent() {
         this.renderPersonalInfo();
         this.renderRecentUpdates();
-        this.renderFeaturedWork();
     }
 
     /**
@@ -147,11 +146,12 @@ class DataLoader {
             github: { icon: 'fab fa-github', title: 'GitHub' },
             scholar: { icon: 'fas fa-graduation-cap', title: 'Google Scholar' },
             orcid: { icon: 'fab fa-orcid', title: 'ORCID' },
-            twitter: { icon: 'fab fa-twitter', title: 'Twitter' }
+            twitter: { icon: 'fab fa-twitter', title: 'Twitter' },
+            researchgate: { icon: 'fab fa-researchgate', title: 'ResearchGate' }
         };
 
         socialContainer.innerHTML = Object.entries(social)
-            .filter(([key, url]) => url && url !== '#')
+            .filter(([key, url]) => url && url !== '#' && !url.includes('YOUR'))
             .map(([key, url]) => {
                 const iconData = socialIcons[key];
                 if (!iconData) return '';
@@ -180,172 +180,37 @@ class DataLoader {
     }
 
     /**
-     * Render recent updates (combined news, publications, projects)
+     * Render recent updates (only from news.yml)
      */
     renderRecentUpdates() {
         const updatesContainer = document.getElementById('recent-updates');
         if (!updatesContainer) return;
 
-        // Combine all recent items
-        const allUpdates = [];
-
-        // Add recent news
-        if (this.data.news?.news) {
-            allUpdates.push(...this.data.news.news.map(item => ({
-                ...item,
-                source: 'news'
-            })));
-        }
-
-        // Add recent publications
-        if (this.data.publications?.publications) {
-            this.data.publications.publications
-                .filter(pub => pub.featured)
-                .forEach(pub => {
-                    allUpdates.push({
-                        date: pub.date,
-                        type: 'publication',
-                        title: `New Publication: ${pub.title.substring(0, 50)}...`,
-                        description: `Published in ${pub.venue}`,
-                        link: pub.links?.paper || '#',
-                        source: 'publication'
-                    });
-                });
-        }
-
-        // Add recent projects
-        if (this.data.projects?.projects) {
-            this.data.projects.projects
-                .filter(proj => proj.featured)
-                .forEach(proj => {
-                    allUpdates.push({
-                        date: proj.date,
-                        type: 'project',
-                        title: `New Project: ${proj.project.substring(0, 50)}...`,
-                        description: proj.role,
-                        link: proj.url || '#',
-                        source: 'project'
-                    });
-                });
-        }
+        // Get news items only
+        const newsItems = this.data.news?.news || [];
 
         // Sort by date (most recent first)
-        allUpdates.sort((a, b) => new Date(b.date) - new Date(a.date));
+        const sortedNews = newsItems.sort((a, b) => new Date(b.date) - new Date(a.date));
 
-        // Take only the 6 most recent
-        const recentUpdates = allUpdates.slice(0, 6);
+        // Take only the 8 most recent
+        const recentUpdates = sortedNews.slice(0, 8);
+
+        if (recentUpdates.length === 0) {
+            updatesContainer.innerHTML = '<li class="news-item"><span class="news-content">No recent updates available.</span></li>';
+            return;
+        }
 
         updatesContainer.innerHTML = recentUpdates.map(update => `
             <li class="news-item">
                 <span class="news-date">${this.formatDate(update.date)}</span>
                 <span class="news-content">
                     ${update.link && update.link !== '#' 
-                        ? `<a href="${update.link}">${update.title || update.description}</a>`
+                        ? `<a href="${update.link}" target="_blank" rel="noopener noreferrer">${update.title || update.description}</a>`
                         : update.title || update.description
                     }
                 </span>
             </li>
         `).join('');
-    }
-
-    /**
-     * Render featured work (publications and projects)
-     */
-    renderFeaturedWork() {
-        const featuredContainer = document.getElementById('featured-work');
-        if (!featuredContainer) return;
-
-        const featuredItems = [];
-
-        // Add featured publications
-        if (this.data.publications?.publications) {
-            featuredItems.push(...this.data.publications.publications
-                .filter(pub => pub.featured)
-                .map(pub => this.createPublicationCard(pub))
-            );
-        }
-
-        // Add featured projects
-        if (this.data.projects?.projects) {
-            featuredItems.push(...this.data.projects.projects
-                .filter(proj => proj.featured)
-                .map(proj => this.createProjectCard(proj))
-            );
-        }
-
-        // Sort by date (most recent first)
-        featuredItems.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-        featuredContainer.innerHTML = featuredItems.map(item => item.html).join('');
-    }
-
-    /**
-     * Create publication card HTML
-     */
-    createPublicationCard(pub) {
-        const authors = pub.authors?.map(author => 
-            author.is_self ? `<strong>${author.name}</strong>` : author.name
-        ).join(', ') || '';
-
-        const links = pub.links ? Object.entries(pub.links)
-            .filter(([key, url]) => url && url !== '#')
-            .map(([key, url]) => {
-                const icons = {
-                    paper: 'fas fa-file-alt',
-                    code: 'fas fa-code',
-                    data: 'fas fa-chart-bar',
-                    slides: 'fas fa-presentation',
-                    talk: 'fas fa-video',
-                    demo: 'fas fa-play'
-                };
-                return `<a href="${url}" class="research-link">
-                    <i class="${icons[key] || 'fas fa-link'}"></i> ${key.charAt(0).toUpperCase() + key.slice(1)}
-                </a>`;
-            }).join('') : '';
-
-        return {
-            date: pub.date,
-            html: `
-                <article class="research-item">
-                    <h3 class="research-title">${pub.title}</h3>
-                    ${authors ? `<p class="research-authors">${authors}</p>` : ''}
-                    <p class="research-venue">${pub.venue}, ${pub.year}</p>
-                    <p class="research-abstract">${pub.abstract}</p>
-                    ${links ? `<div class="research-links">${links}</div>` : ''}
-                </article>
-            `
-        };
-    }
-
-    /**
-     * Create project card HTML
-     */
-    createProjectCard(proj) {
-        const technologies = proj.technologies ? 
-            proj.technologies.split(', ').map(tech => 
-                `<span class="tech-tag">${tech}</span>`
-            ).join('') : '';
-
-        const links = proj.url ? 
-            `<div class="research-links">
-                <a href="${proj.url}" class="research-link">
-                    <i class="fas fa-external-link-alt"></i> View Project
-                </a>
-            </div>` : '';
-
-        return {
-            date: proj.date,
-            html: `
-                <article class="research-item">
-                    <h3 class="research-title">${proj.project}</h3>
-                    <p class="research-authors">${proj.role} • ${proj.duration}</p>
-                    ${proj.misc ? `<p class="research-venue">${proj.misc}</p>` : ''}
-                    <p class="research-abstract">${proj.description}</p>
-                    ${technologies ? `<div class="tech-tags">${technologies}</div>` : ''}
-                    ${links}
-                </article>
-            `
-        };
     }
 
     /**

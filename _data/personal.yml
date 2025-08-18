@@ -9,11 +9,12 @@ personal:
   
   # Social Links
   social:
-    linkedin: "#"
+    linkedin: "https://linkedin.com/in/meeslindeman"
     github: "https://github.com/meeslindeman"
-    scholar: "#"
-    orcid: "#"
-    twitter: "#"  # optional
+    scholar: "https://scholar.google.com/citations?user=YOUR_ID"
+    orcid: "https://orcid.org/YOUR-ORCID-ID"
+    twitter: "https://twitter.com/meeslindeman"  # optional
+    researchgate: "https://www.researchgate.net/profile/Mees-Lindeman"  # optional
   
   # About sections
   bio:
