@@ -4,9 +4,3 @@ news:
     title: "Paper accepted to TMLR"
     description: "Our reproducibility study on fairness attacks in Graph Neural Networks has been accepted"
     link: "https://link-to-paper.com"
-
-  - date: 2025-03-01
-    type: "publication"
-    title: "Paper accepted to TMLR"
-    description: "Our reproducibility study on fairness attacks in Graph Neural Networks has been accepted"
-    link: "https://link-to-paper.com"
