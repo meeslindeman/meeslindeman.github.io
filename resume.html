@@ -65,7 +65,15 @@ permalink: /resume/
         {% assign featured_projects = site.data.projects.projects | where: "featured", true | sort: 'date' | reverse | slice: 0, 3 %}
         {% for project in featured_projects %}
         <div class="resume-project">
-            <div class="resume-project__title">{{ project.project }}</div>
+            <div class="resume-project__title">
+            {% if project.url %}
+                <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer">{{ project.project }}</a>
+            {% elsif project.code %}
+                <a href="{{ project.code }}" target="_blank" rel="noopener noreferrer">{{ project.project }}</a>
+            {% else %}
+                {{ project.project }}
+            {% endif %}
+            </div>
             <div class="resume-project__meta">{{ project.role }} • {{ project.duration }}</div>
             
             <div class="resume-project__description">{{ project.description }}</div>
@@ -92,7 +100,15 @@ permalink: /resume/
     <div class="resume-section__content">
         {% for pub in site.data.publications.publications %}
         <div class="resume-publication">
-            <div class="resume-publication__title">{{ pub.title }}</div>
+            <div class="resume-project__title">
+            {% if pub.url %}
+                <a href="{{ pub.url }}" target="_blank" rel="noopener noreferrer">{{ pub.title }}</a>
+            {% elsif pub.code %}
+                <a href="{{ pub.code }}" target="_blank" rel="noopener noreferrer">{{ pub.title }}</a>
+            {% else %}
+                {{ pub.title }}
+            {% endif %}
+            </div>
             {% if pub.authors %}
                 <div class="resume-publication__authors">
                     {{ pub.authors }}
