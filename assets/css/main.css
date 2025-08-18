@@ -971,3 +971,51 @@ img {
         justify-content: center;
     }
 }
+
+/* ===================================
+   FOOTER STYLES
+   =================================== */
+
+.site-footer {
+    background: #fefefe;
+    border-top: 1px solid #f3f4f6;
+    padding: 2rem 1.5rem;
+    margin-top: 4rem;
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+.footer-text {
+    margin: 0;
+    color: #6b7280;
+    font-size: 0.85rem;
+}
+
+.footer-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-links a {
+    color: #6b7280;
+    font-weight: 500;
+    font-size: 0.85rem;
+    transition: color 0.2s ease;
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    color: #f59e0b;
+}
