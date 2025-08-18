@@ -94,13 +94,21 @@ description: Mees Lindeman - MSc Student in Artificial Intelligence at Universit
                 {% for update in sorted_news limit: 8 %}
                 <li class="news-item">
                     <span class="news-date">{{ update.date | date: "%B %Y" }}</span>
-                    <span class="news-content">
+                    <div class="news-content">
                         {% if update.link and update.link != '#' %}
-                            <a href="{{ update.link }}" target="_blank" rel="noopener noreferrer">{{ update.title | default: update.description }}</a>
+                            <a href="{{ update.link }}" target="_blank" rel="noopener noreferrer">
+                                {{ update.title | default: update.description }}
+                            </a>
+                            {% if update.description and update.title %}
+                                <div class="news-description">{{ update.description }}</div>
+                            {% endif %}
                         {% else %}
-                            {{ update.title | default: update.description }}
+                            <div class="news-title">{{ update.title | default: update.description }}</div>
+                            {% if update.description and update.title %}
+                                <div class="news-description">{{ update.description }}</div>
+                            {% endif %}
                         {% endif %}
-                    </span>
+                    </div>
                 </li>
                 {% endfor %}
             </ul>

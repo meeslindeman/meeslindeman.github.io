@@ -1,4 +1,4 @@
-/* ===== PURE BLACK/WHITE MINIMAL CSS - FIXED DARK MODE ===== */
+/* ===== PURE BLACK/WHITE MINIMAL CSS - COMPLETE WITH ALL FIXES ===== */
 
 /* CSS Custom Properties for Theme Variables */
 :root {
@@ -28,31 +28,6 @@
 
 /* Dark Minimal Theme - Pure White/Black */
 :root[data-theme="dark"] {
-  --bg-primary: #000000;
-  --bg-secondary: #1a1a1a;
-  --bg-tertiary: #262626;
-  --bg-sidebar: #1a1a1a;
-  
-  --text-primary: #ffffff;
-  --text-secondary: #e6e6e6;
-  --text-muted: #aaaaaa;
-  --text-light: #888888;
-  
-  --border-primary: #333333;
-  --border-secondary: #2a2a2a;
-  --border-light: #444444;
-  
-  --accent-primary: #ffffff;
-  --accent-hover: #cccccc;
-  --accent-light: #1a1a1a;
-  
-  --shadow-light: 0 2px 8px rgba(255,255,255,0.1);
-  --shadow-medium: 0 4px 16px rgba(255,255,255,0.1);
-  --shadow-heavy: 0 8px 32px rgba(255,255,255,0.1);
-}
-
-/* Alternative approach - also target html element */
-html[data-theme="dark"] {
   --bg-primary: #000000;
   --bg-secondary: #1a1a1a;
   --bg-tertiary: #262626;
@@ -429,6 +404,34 @@ a:active {
   color: var(--text-primary);
   flex: 1;
   font-size: 0.95rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.news-title {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+}
+
+.news-description {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin-top: 0.25rem;
+}
+
+/* Style linked news titles */
+.news-content a {
+  font-weight: 600;
+  color: var(--accent-primary);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.news-content a:hover {
+  text-decoration: underline;
 }
 
 /* ===== CONTENT PAGES (PUBLICATIONS/PROJECTS) ===== */
@@ -882,6 +885,162 @@ a:focus,
 button:focus {
   outline: 2px solid var(--accent-primary);
   outline-offset: 2px;
+}
+
+/* ===== FINAL FIXES ===== */
+
+/* Remove focus outline boxes from navigation */
+.main-nav a:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.main-nav a:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  background: rgba(128, 128, 128, 0.1);
+  border-radius: 4px;
+}
+
+.site-title:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.theme-toggle:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.theme-toggle:focus-visible {
+  background: var(--accent-hover);
+  color: var(--bg-primary);
+}
+
+/* Remove any potential container lines or borders */
+.header-container::before,
+.header-container::after,
+.page-wrapper::before,
+.page-wrapper::after,
+.content-container::before,
+.content-container::after {
+  display: none !important;
+}
+
+/* Remove any border or outline from main containers */
+.site-header,
+.page-wrapper,
+.content-container,
+.main-content {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Remove any pseudo-elements that might create lines */
+body::before,
+body::after,
+html::before,
+html::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Force remove any potential blue borders or lines */
+* {
+  border-color: var(--border-primary) !important;
+}
+
+*::before,
+*::after {
+  border-color: var(--border-primary) !important;
+  content: none !important;
+}
+
+/* Remove focus rectangles from all interactive elements */
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+a:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Remove any potential container or wrapper outlines */
+.container,
+.wrapper,
+.main,
+main,
+section,
+article,
+div {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Ensure no phantom borders appear */
+.site-header::before,
+.site-header::after {
+  display: none !important;
+}
+
+/* Remove any grid or flexbox debug outlines */
+.page-wrapper > *,
+.header-container > *,
+.content-container > * {
+  border: none !important;
+  outline: none !important;
+}
+
+/* Clean up any potential CSS that might add visual artifacts */
+.site-header {
+  border-top: none !important;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+/* Remove tap highlight on mobile */
+* {
+  -webkit-tap-highlight-color: transparent !important;
+  -webkit-touch-callout: none !important;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  -ms-user-select: none !important;
+  user-select: none !important;
+}
+
+/* But allow text selection for content */
+p, h1, h2, h3, h4, h5, h6, span, div, .content-item, .item-description, .item-summary, .intro-text {
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  user-select: text !important;
+}
+
+/* Remove external link icons from social links */
+.social-links a .external-icon {
+  display: none !important;
+}
+
+/* Remove any auto-generated content after social links */
+.social-links a::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Ensure only the main icon shows in social links */
+.social-links a {
+  position: relative;
+}
+
+.social-links a i:not(:first-child) {
+  display: none !important;
+}
+
+/* Remove external link icons that might be added by JavaScript */
+.social-links .fas.fa-external-link-alt,
+.social-links .external-icon {
+  display: none !important;
 }
 
 /* ===== PRINT STYLES ===== */
