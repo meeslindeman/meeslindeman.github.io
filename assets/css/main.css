@@ -5,15 +5,18 @@
 /* ================================
    COLOR VARIABLES
    ================================ */
-:root{
-  --color-primary:#2563eb;
-  --color-primary-dark:#3b82f6;
-  --primary-rgb:37,99,235;
-  --color-text:#374151; --color-text-light:#6b7280; --color-text-dark:#0f172a;
-  --color-bg:#f9fafb; --color-bg-alt:#ffffff; --color-white:#ffffff;
-  --color-accent-bg:#e0f2fe; --color-accent-border:#bae6fd; --color-border:#e5e7eb;
-  --color-muted:#4b5563; --color-muted-2:#cbd5e1;
+:root {
+  --color-bg: #f9fafc;
+  --color-text: #1e293b;
+  --color-text-light: #475569;
+  --color-border: #e2e8f0;
+
+  --color-primary: #2563eb; /* vivid but not harsh */
+  --primary-rgb: 37, 99, 235;
+
+  --color-accent: #14b8a6;  /* teal accent */
 }
+
 
 /* ===================================
    BASE RESET
