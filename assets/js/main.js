@@ -205,49 +205,49 @@ function handleExternalLinks() {
 /**
  * Initialize accessibility features
  */
-function initAccessibility() {
-    // Add skip link functionality
-    addSkipLink();
+// function initAccessibility() {
+//     // Add skip link functionality
+//     addSkipLink();
     
-    // Improve keyboard navigation
-    improveKeyboardNavigation();
+//     // Improve keyboard navigation
+//     improveKeyboardNavigation();
     
-    // Add ARIA labels where needed
-    addAriaLabels();
+//     // Add ARIA labels where needed
+//     addAriaLabels();
     
-    // Handle focus management
-    initFocusManagement();
-}
+//     // Handle focus management
+//     initFocusManagement();
+// }
 
 /**
  * Add skip link for screen readers
  */
-function addSkipLink() {
-    // Check if skip link already exists
-    if (document.querySelector('.skip-link')) return;
+// function addSkipLink() {
+//     // Check if skip link already exists
+//     if (document.querySelector('.skip-link')) return;
     
-    const skipLink = document.createElement('a');
-    skipLink.href = '#main-content';
-    skipLink.textContent = 'Skip to main content';
-    skipLink.className = 'skip-link';
+//     const skipLink = document.createElement('a');
+//     skipLink.href = '#main-content';
+//     skipLink.textContent = 'Skip to main content';
+//     skipLink.className = 'skip-link';
     
-    // Show on focus
-    skipLink.addEventListener('focus', function() {
-        this.style.top = '6px';
-    });
+//     // Show on focus
+//     skipLink.addEventListener('focus', function() {
+//         this.style.top = '6px';
+//     });
     
-    skipLink.addEventListener('blur', function() {
-        this.style.top = '-40px';
-    });
+//     skipLink.addEventListener('blur', function() {
+//         this.style.top = '-40px';
+//     });
     
-    document.body.insertBefore(skipLink, document.body.firstChild);
+//     document.body.insertBefore(skipLink, document.body.firstChild);
     
-    // Add id to main content if not present
-    const mainContent = document.querySelector('.main-content');
-    if (mainContent && !mainContent.id) {
-        mainContent.id = 'main-content';
-    }
-}
+//     // Add id to main content if not present
+//     const mainContent = document.querySelector('.main-content');
+//     if (mainContent && !mainContent.id) {
+//         mainContent.id = 'main-content';
+//     }
+// }
 
 /**
  * Improve keyboard navigation
