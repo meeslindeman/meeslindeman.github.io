@@ -1,20 +1,18 @@
 <header class="site-header">
     <div class="header-container">
-        <a href="{{ '/' | relative_url }}" class="site-title">{{ site.title }}</a>
+        <a href="{{ '/' | relative_url }}" class="site-title">{{ site.title | default: site.author.name }}</a>
+        
         <nav class="main-nav">
+            <button class="mobile-menu-toggle" aria-expanded="false" aria-label="Toggle navigation menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
             <ul>
-                {% for nav_item in site.navigation %}
-                <li>
-                    <a href="{{ nav_item.url | relative_url }}" 
-                       {% if page.url == nav_item.url or (nav_item.url != '/' and page.url contains nav_item.url) %}class="active"{% endif %}>
-                        {{ nav_item.title }}
-                    </a>
-                </li>
-                {% endfor %}
+                <li><a href="{{ '/' | relative_url }}" {% if page.url == '/' %}class="active"{% endif %}>Home</a></li>
+                <li><a href="{{ '/publications.html' | relative_url }}" {% if page.url contains 'publications' %}class="active"{% endif %}>Publications</a></li>
+                <li><a href="{{ '/projects.html' | relative_url }}" {% if page.url contains 'projects' %}class="active"{% endif %}>Projects</a></li>
+                <li><a href="{{ '/resume.html' | relative_url }}" {% if page.url contains 'resume' %}class="active"{% endif %}>Resume</a></li>
             </ul>
         </nav>
-        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
-            <i class="fas fa-bars"></i>
-        </button>
     </div>
 </header>

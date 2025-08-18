@@ -1,23 +1,18 @@
-// Main JavaScript functionality
+// Enhanced Main JavaScript functionality with theme support
 document.addEventListener('DOMContentLoaded', function() {
     
-    // Update last modified date
+    // Initialize all functionality
     updateLastModified();
-    
-    // Mobile menu functionality
     initMobileMenu();
-    
-    // Smooth scrolling for anchor links
     initSmoothScrolling();
-    
-    // Add loading animations
     initLoadingAnimations();
-    
-    // Handle external links
     handleExternalLinks();
-    
-    // Initialize accessibility features
     initAccessibility();
+    initEmailProtection();
+    initLazyLoading();
+    initPerformanceMonitoring();
+    initErrorHandling();
+    initAnalytics();
 });
 
 /**
@@ -103,7 +98,7 @@ function initSmoothScrolling() {
             if (targetElement) {
                 event.preventDefault();
                 
-                const headerHeight = document.querySelector('.site-header').offsetHeight;
+                const headerHeight = document.querySelector('.site-header')?.offsetHeight || 0;
                 const targetPosition = targetElement.offsetTop - headerHeight - 20;
                 
                 window.scrollTo({
@@ -119,7 +114,7 @@ function initSmoothScrolling() {
 }
 
 /**
- * Initialize loading animations
+ * Initialize loading animations with theme-aware effects
  */
 function initLoadingAnimations() {
     // Add fade-in class to elements as they become visible
@@ -133,12 +128,13 @@ function initLoadingAnimations() {
             if (entry.isIntersecting) {
                 entry.target.style.opacity = '1';
                 entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('animate-in');
             }
         });
     }, observerOptions);
     
     // Observe elements that should animate in
-    const animatedElements = document.querySelectorAll('.research-item, .news-item, .quick-link');
+    const animatedElements = document.querySelectorAll('.content-item, .research-item, .news-item, .quick-link, .resume-item');
     animatedElements.forEach((element, index) => {
         // Set initial state
         element.style.opacity = '0';
@@ -157,21 +153,26 @@ function handleExternalLinks() {
     
     links.forEach(link => {
         // Check if it's an external link (not same domain)
-        const linkUrl = new URL(link.href);
-        const currentUrl = new URL(window.location.href);
-        
-        if (linkUrl.hostname !== currentUrl.hostname) {
-            link.setAttribute('target', '_blank');
-            link.setAttribute('rel', 'noopener noreferrer');
+        try {
+            const linkUrl = new URL(link.href);
+            const currentUrl = new URL(window.location.href);
             
-            // Add external link icon if not already present
-            if (!link.querySelector('.external-icon')) {
-                const icon = document.createElement('i');
-                icon.className = 'fas fa-external-link-alt external-icon';
-                icon.style.marginLeft = '0.25rem';
-                icon.style.fontSize = '0.8em';
-                link.appendChild(icon);
+            if (linkUrl.hostname !== currentUrl.hostname) {
+                link.setAttribute('target', '_blank');
+                link.setAttribute('rel', 'noopener noreferrer');
+                
+                // Add external link icon if not already present
+                if (!link.querySelector('.external-icon')) {
+                    const icon = document.createElement('i');
+                    icon.className = 'fas fa-external-link-alt external-icon';
+                    icon.style.marginLeft = '0.25rem';
+                    icon.style.fontSize = '0.8em';
+                    link.appendChild(icon);
+                }
             }
+        } catch (e) {
+            // Invalid URL, skip
+            console.warn('Invalid URL found:', link.href);
         }
     });
 }
@@ -197,21 +198,13 @@ function initAccessibility() {
  * Add skip link for screen readers
  */
 function addSkipLink() {
+    // Check if skip link already exists
+    if (document.querySelector('.skip-link')) return;
+    
     const skipLink = document.createElement('a');
     skipLink.href = '#main-content';
     skipLink.textContent = 'Skip to main content';
     skipLink.className = 'skip-link';
-    skipLink.style.cssText = `
-        position: absolute;
-        top: -40px;
-        left: 6px;
-        background: #000;
-        color: #fff;
-        padding: 8px;
-        text-decoration: none;
-        z-index: 1000;
-        border-radius: 4px;
-    `;
     
     // Show on focus
     skipLink.addEventListener('focus', function() {
@@ -236,10 +229,12 @@ function addSkipLink() {
  */
 function improveKeyboardNavigation() {
     // Add keyboard support for custom interactive elements
-    const interactiveElements = document.querySelectorAll('.quick-link, .research-item');
+    const interactiveElements = document.querySelectorAll('.quick-link, .research-item, .content-item');
     
     interactiveElements.forEach(element => {
-        element.setAttribute('tabindex', '0');
+        if (!element.getAttribute('tabindex')) {
+            element.setAttribute('tabindex', '0');
+        }
         
         element.addEventListener('keydown', function(event) {
             if (event.key === 'Enter' || event.key === ' ') {
@@ -277,6 +272,16 @@ function addAriaLabels() {
             item.setAttribute('role', 'listitem');
         });
     }
+    
+    // Add role to content lists
+    const contentLists = document.querySelectorAll('.content-list');
+    contentLists.forEach(list => {
+        list.setAttribute('role', 'list');
+        const items = list.querySelectorAll('.content-item');
+        items.forEach(item => {
+            item.setAttribute('role', 'listitem');
+        });
+    });
 }
 
 /**
@@ -317,44 +322,16 @@ function initEmailProtection() {
     const emailLinks = document.querySelectorAll('a[href^="mailto:"]');
     
     emailLinks.forEach(link => {
-        // Simple email obfuscation
-        const email = link.href.replace('mailto:', '');
-        const obfuscated = email.split('').map(char => 
-            Math.random() > 0.5 ? '&#' + char.charCodeAt(0) + ';' : char
-        ).join('');
-        
-        link.innerHTML = obfuscated;
-    });
-}
-
-/**
- * Initialize theme toggle (if implementing dark mode)
- */
-function initThemeToggle() {
-    const themeToggle = document.querySelector('.theme-toggle');
-    
-    if (themeToggle) {
-        // Check for saved theme preference
-        const savedTheme = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
-        if (savedTheme) {
-            document.documentElement.setAttribute('data-theme', savedTheme);
-        } else if (prefersDark) {
-            document.documentElement.setAttribute('data-theme', 'dark');
+        // Simple email obfuscation - only obfuscate display text, not href
+        const email = link.textContent;
+        if (email && email.includes('@')) {
+            const obfuscated = email.split('').map(char => 
+                Math.random() > 0.5 ? '&#' + char.charCodeAt(0) + ';' : char
+            ).join('');
+            
+            link.innerHTML = obfuscated;
         }
-        
-        themeToggle.addEventListener('click', function() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            // Update button text/icon
-            this.textContent = newTheme === 'dark' ? '☀️' : '🌙';
-        });
-    }
+    });
 }
 
 /**
@@ -363,18 +340,24 @@ function initThemeToggle() {
 function initLazyLoading() {
     const images = document.querySelectorAll('img[data-src]');
     
+    if (images.length === 0) return;
+    
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const img = entry.target;
                 img.src = img.dataset.src;
                 img.classList.remove('lazy');
+                img.classList.add('loaded');
                 observer.unobserve(img);
             }
         });
     });
     
-    images.forEach(img => imageObserver.observe(img));
+    images.forEach(img => {
+        img.classList.add('lazy');
+        imageObserver.observe(img);
+    });
 }
 
 /**
@@ -383,14 +366,16 @@ function initLazyLoading() {
 function initPerformanceMonitoring() {
     // Log page load time
     window.addEventListener('load', function() {
-        const loadTime = performance.now();
-        console.log(`Page loaded in ${Math.round(loadTime)}ms`);
-        
-        // Optional: Send to analytics
-        // analytics.track('page_load_time', { duration: loadTime });
+        if (performance && performance.now) {
+            const loadTime = performance.now();
+            console.log(`Page loaded in ${Math.round(loadTime)}ms`);
+            
+            // Optional: Send to analytics
+            // analytics.track('page_load_time', { duration: loadTime });
+        }
     });
     
-    // Monitor Core Web Vitals
+    // Monitor Core Web Vitals if available
     if ('web-vitals' in window) {
         // This would require the web-vitals library
         // webVitals.getLCP(console.log);
@@ -427,21 +412,34 @@ function initAnalytics() {
     
     // Example with Google Analytics
     /*
-    gtag('config', 'GA_MEASUREMENT_ID', {
-        anonymize_ip: true,
-        respect_dnt: true
-    });
+    if (typeof gtag !== 'undefined') {
+        gtag('config', 'GA_MEASUREMENT_ID', {
+            anonymize_ip: true,
+            respect_dnt: true
+        });
+    }
     */
 }
 
-// Initialize additional features when DOM is ready
-document.addEventListener('DOMContentLoaded', function() {
-    initEmailProtection();
-    initLazyLoading();
-    initPerformanceMonitoring();
-    initErrorHandling();
-    initAnalytics();
-});
+/**
+ * Theme-aware utilities
+ */
+function getThemeAwareColor(lightColor, darkColor) {
+    const theme = document.body.getAttribute('data-theme');
+    return theme === 'dark' ? darkColor : lightColor;
+}
+
+/**
+ * Initialize theme-dependent features
+ */
+function initThemeDependentFeatures() {
+    // Update any theme-dependent animations or colors
+    const animatedElements = document.querySelectorAll('.animate-in');
+    animatedElements.forEach(element => {
+        // Add theme-aware styling if needed
+        element.style.setProperty('--animation-delay', '0.1s');
+    });
+}
 
 // Service worker registration for PWA functionality
 if ('serviceWorker' in navigator) {
@@ -455,3 +453,14 @@ if ('serviceWorker' in navigator) {
             });
     });
 }
+
+// Listen for theme changes and update theme-dependent features
+document.addEventListener('themeChange', function(event) {
+    initThemeDependentFeatures();
+});
+
+// Expose utilities for other scripts
+window.AcademicSite = {
+    getThemeAwareColor: getThemeAwareColor,
+    initThemeDependentFeatures: initThemeDependentFeatures
+};
