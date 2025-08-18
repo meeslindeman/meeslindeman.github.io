@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /assets/docs/
+Allow: /
+
+Sitemap: https://meeslindeman.github.io/sitemap.xml

@@ -1,63 +1,57 @@
 # Site settings
-title: "Mees Lindeman - Resume"
-description: "A resume for Mees Lindeman"
+title: Mees Lindeman
+email: mees@lindeman.nu
+description: >-
+  MSc Student in Artificial Intelligence at University of Amsterdam, 
+  exploring conceptual questions in AI systems.
+baseurl: ""
+url: "https://meeslindeman.github.io"
+twitter_username: # your_twitter_username
+github_username: meeslindeman
+linkedin_username: # your_linkedin_username
 
 # Build settings
 markdown: kramdown
-sass:
-  sass_dir: _sass
-  style: compressed
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
 
-# Resume settings
-resume_avatar:                  "true"
-resume_name:                    "Mees Lindeman"
-resume_title:                   "MSc. AI Student"
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - README.md
 
-# used for the contact button in _layouts/resume.html
-resume_contact_email:           "mees@lindeman.nu"
+# Collections
+collections:
+  publications:
+    output: true
+    permalink: /:collection/:name/
+  research:
+    output: true
+    permalink: /:collection/:name/
 
-# the next two items are used for schema itemprops in _layouts/resume.html
-resume_contact_telephone:       "555-7334"
-resume_contact_address:         "742 Evergreen Terrace, Springfield"
-
-resume_header_contact_info:     "Amsterdam, the Netherlands • mees@lindeman.nu"
-display_header_contact_info:    "true"
-
-resume_header_intro: "<p>I'm a Master's student in Artificial Intelligence at the University of Amsterdam with a strong interest in the conceptual and often overlooked questions in AI. I enjoy diving into complex problems, especially those that challenge standard assumptions or reveal unexpected structure in learning systems. I've contributed to research projects that resulted in academic publications, and I'm eager to keep exploring these kinds of questions through further study. Alongside my academic work, I currently hold a part-time role focused on making AI more approachable to my colleagues. My main motivation, however, lies in understanding how and why AI systems behave the way they do—and where they might be pushed in new directions.</p>"
-
-# use "yes" to display the email contact button,
-# "no" to display an "I'm not looking for work" message,
-# or remove the resume_looking_for_work option entirely
-# to leave blank
-# resume_looking_for_work:        "yes"
-
-# Decide which sections to use
-# comment out to hide
-resume_section_experience:      true
-resume_section_education:       true
-resume_section_publications:    true
-resume_section_projects:        true
-resume_section_skills:          true
-resume_section_certificates: true
-resume_section_extracurricular: true
-
-# Resume social links
-# uncomment the options you wish to display, and add your own URL
-resume_social_links:
-  resume_email:                 "mailto:mees@lindeman.nu"
-  resume_github_url:            "https://github.com/meeslindeman"
-  # resume_twitter_url:           "http://twitter.com/jglovier"
-  # resume_dribbble_url:          "https://dribbble.com/jag"
-  # resume_facebook_url:          "insert Facebook URL here"
-  resume_linkedin_url:          "https://www.linkedin.com/in/mees-lindeman-939208155/"
-  # resume_instagram_url:         "insert your Instagram URL here"
-  # resume_website_url:           "http://joelglovier.com"
-  # resume_medium_url:            "https://medium.com/@jglovier"
-resume_print_social_links:      true
-
-# Design settings
-resume_theme:                   default
-
-# Note: when editing locally, remember to restart
-# your Jekyll server when you edit this file. Changes
-# to _config.yml are only recognized when the server starts
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "publications"
+    values:
+      layout: "publication"
+  - scope:
+      path: ""
+      type: "research"
+    values:
+      layout: "research"
