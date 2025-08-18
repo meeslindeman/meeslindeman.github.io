@@ -613,22 +613,6 @@ const PALETTES = {
     'color-border': '#e7e5e4',
     'color-muted': '#57534e',
     'color-muted-2': '#d6d3d1'
-  },
-  neon: {
-    'color-primary': '#a21caf',
-    'color-primary-dark': '#c026d3',
-    'primary-rgb': '162, 28, 175',
-    'color-text': '#0f172a',
-    'color-text-light': '#475569',
-    'color-text-dark': '#020617',
-    'color-bg': '#fdf4ff',
-    'color-bg-alt': '#faf5ff',
-    'color-white': '#ffffff',
-    'color-accent-bg': '#f5d0fe',
-    'color-accent-border': '#e9d5ff',
-    'color-border': '#e9d5ff',
-    'color-muted': '#6b21a8',
-    'color-muted-2': '#d8b4fe'
   }
 };
 

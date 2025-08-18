@@ -430,11 +430,12 @@ img {
 }
 
 .news-list__item:hover {
-    background: #fefbf7; /* keeps your original subtle warm hover */
+    background: var(--color-accent-bg);   /* uses current palette */
     margin: 0 -1rem;
     padding-left: 1rem;
     padding-right: 1rem;
     border-radius: 6px;
+    border-color: var(--color-accent-border);
 }
 
 .news-list__item:last-child { border-bottom: none; }

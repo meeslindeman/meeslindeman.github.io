@@ -1,4 +1,3 @@
-# Projects Data
 projects:
   - project: Enhancing Few-Shot Robotic Manipulation by Replacing Depth Sensors with Learned 3D Geometry from MASt3R
     role: Deep Learning 2 Course Project
