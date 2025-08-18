@@ -967,26 +967,24 @@ a.external-link::after {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: .5rem;
+  gap: 1rem;
   height: 40px;                 /* match nav item height */
-  padding: 0.75rem 1rem;        /* match link padding */
+  padding: 0 1rem;        /* match link padding */
   font: inherit;                /* match typography */
   line-height: 1;
   color: var(--color-text-light);
   background: none;
-  border: 1px solid var(--color-border);
-  border-radius: 8px;
+  border: none;                 /* removed border */
+  border-radius: 0;             /* remove radius so it behaves like text links */
   cursor: pointer;
-  transition: background .2s ease, color .2s ease, box-shadow .2s ease, border-color .2s ease;
+  transition: color .2s ease;
   -webkit-appearance: none;
   background-clip: padding-box;
 }
 
 .theme-toggle:hover {
-  background: rgba(var(--primary-rgb), 0.05);
-  color: var(--color-primary);
-  border-color: rgba(var(--primary-rgb), 0.25);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  color: var(--color-primary);  /* same hover effect as nav links */
+  background: none;
 }
 
 .theme-toggle:focus-visible {
