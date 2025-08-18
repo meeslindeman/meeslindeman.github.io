@@ -1,4 +1,4 @@
-// Enhanced Main JavaScript functionality with theme support
+// Complete Main JavaScript functionality for Jekyll Academic Site
 document.addEventListener('DOMContentLoaded', function() {
     
     // Initialize all functionality
@@ -40,7 +40,8 @@ function initMobileMenu() {
     const mainNav = document.querySelector('.main-nav');
     
     if (mobileToggle && mainNav) {
-        mobileToggle.addEventListener('click', function() {
+        mobileToggle.addEventListener('click', function(e) {
+            e.preventDefault();
             mainNav.classList.toggle('active');
             
             // Update aria-expanded attribute
@@ -77,6 +78,19 @@ function initMobileMenu() {
                     icon.className = 'fas fa-bars';
                 }
             }
+        });
+        
+        // Close mobile menu when clicking on nav links
+        const navLinks = mainNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                mainNav.classList.remove('active');
+                mobileToggle.setAttribute('aria-expanded', 'false');
+                const icon = mobileToggle.querySelector('i');
+                if (icon) {
+                    icon.className = 'fas fa-bars';
+                }
+            });
         });
     }
 }
@@ -117,6 +131,17 @@ function initSmoothScrolling() {
  * Initialize loading animations with theme-aware effects
  */
 function initLoadingAnimations() {
+    // Check if IntersectionObserver is supported
+    if (!('IntersectionObserver' in window)) {
+        // Fallback for older browsers - just show all elements
+        const animatedElements = document.querySelectorAll('.content-item, .research-item, .news-item, .quick-link, .resume-item');
+        animatedElements.forEach(element => {
+            element.style.opacity = '1';
+            element.style.transform = 'translateY(0)';
+        });
+        return;
+    }
+
     // Add fade-in class to elements as they become visible
     const observerOptions = {
         threshold: 0.1,
@@ -342,6 +367,17 @@ function initLazyLoading() {
     
     if (images.length === 0) return;
     
+    // Check if IntersectionObserver is supported
+    if (!('IntersectionObserver' in window)) {
+        // Fallback for older browsers
+        images.forEach(img => {
+            img.src = img.dataset.src;
+            img.classList.remove('lazy');
+            img.classList.add('loaded');
+        });
+        return;
+    }
+    
     const imageObserver = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -441,6 +477,48 @@ function initThemeDependentFeatures() {
     });
 }
 
+/**
+ * Debounce function for performance
+ */
+function debounce(func, wait, immediate) {
+    let timeout;
+    return function executedFunction() {
+        const context = this;
+        const args = arguments;
+        const later = function() {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        const callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+}
+
+/**
+ * Handle resize events
+ */
+function handleResize() {
+    const mobileToggle = document.querySelector('.mobile-menu-toggle');
+    const mainNav = document.querySelector('.main-nav');
+    
+    // Close mobile menu on resize to desktop
+    if (window.innerWidth > 768 && mainNav && mainNav.classList.contains('active')) {
+        mainNav.classList.remove('active');
+        if (mobileToggle) {
+            mobileToggle.setAttribute('aria-expanded', 'false');
+            const icon = mobileToggle.querySelector('i');
+            if (icon) {
+                icon.className = 'fas fa-bars';
+            }
+        }
+    }
+}
+
+// Add resize listener with debounce
+window.addEventListener('resize', debounce(handleResize, 250));
+
 // Service worker registration for PWA functionality
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', function() {
@@ -462,5 +540,23 @@ document.addEventListener('themeChange', function(event) {
 // Expose utilities for other scripts
 window.AcademicSite = {
     getThemeAwareColor: getThemeAwareColor,
-    initThemeDependentFeatures: initThemeDependentFeatures
+    initThemeDependentFeatures: initThemeDependentFeatures,
+    debounce: debounce
 };
+
+// Initialize print styles
+window.addEventListener('beforeprint', function() {
+    // Hide dynamic elements before printing
+    const dynamicElements = document.querySelectorAll('.theme-toggle, .mobile-menu-toggle');
+    dynamicElements.forEach(el => {
+        el.style.display = 'none';
+    });
+});
+
+window.addEventListener('afterprint', function() {
+    // Restore dynamic elements after printing
+    const dynamicElements = document.querySelectorAll('.theme-toggle, .mobile-menu-toggle');
+    dynamicElements.forEach(el => {
+        el.style.display = '';
+    });
+});
