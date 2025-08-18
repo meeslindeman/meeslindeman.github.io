@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications | Mees Lindeman</title>
+    <meta name="description" content="Publications by Mees Lindeman - Research papers, journal articles, and academic contributions">
+    <meta name="keywords" content="Mees Lindeman, Publications, Research Papers, AI, Machine Learning, Academic Publications">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/publications.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- YAML Parser -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="site-title">Mees Lindeman</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="resume.html">Resume</a></li>
+                    <li><a href="publications.html" class="active">Publications</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="publications-container">
+        <!-- Publications Header -->
+        <header class="publications-header">
+            <h1 class="publications-title">Publications</h1>
+            <p class="publications-subtitle">Research papers, journal articles, and academic contributions</p>
+        </header>
+
+        <!-- Statistics Section -->
+        <section class="pub-stats" id="pub-stats">
+            <!-- Stats will be loaded dynamically -->
+        </section>
+
+        <!-- Filter Controls -->
+        <section class="filter-section">
+            <div class="filter-controls">
+                <button class="filter-btn active" data-filter="all">
+                    <i class="fas fa-th"></i> All Publications
+                </button>
+                <button class="filter-btn" data-filter="journal">
+                    <i class="fas fa-book"></i> Journal Articles
+                </button>
+                <button class="filter-btn" data-filter="conference">
+                    <i class="fas fa-users"></i> Conference Papers
+                </button>
+                <button class="filter-btn" data-filter="preprint">
+                    <i class="fas fa-file-alt"></i> Preprints
+                </button>
+                <button class="filter-btn" data-filter="thesis">
+                    <i class="fas fa-graduation-cap"></i> Thesis & Reports
+                </button>
+            </div>
+        </section>
+
+        <!-- Publications Content -->
+        <main class="publications-content">
+            <div class="publications-list" id="publications-list">
+                <!-- Publications will be loaded dynamically -->
+            </div>
+        </main>
+
+        <!-- Loading State -->
+        <div class="loading-container" id="loading-container">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Loading publications...</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <nav class="footer-nav">
+                <a href="index.html">Home</a>
+                <a href="resume.html">Resume</a>
+                <a href="publications.html">Publications</a>
+                <a href="projects.html">Projects</a>
+            </nav>
+            <p>&copy; 2025 Mees Lindeman. All rights reserved.</p>
+            <p>Last updated: <span id="last-updated"></span></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/publications-loader.js"></script>
+</body>
+</html>
