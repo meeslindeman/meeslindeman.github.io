@@ -71,11 +71,8 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Remove any potential blue lines or borders */
-body::before,
-body::after,
-*::before,
-*::after {
+/* Force color inheritance and prevent blue elements */
+* {
   border-color: var(--border-primary) !important;
 }
 
@@ -83,7 +80,7 @@ body::after,
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.3;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
 }
 
 h1 { font-size: 2rem; }
@@ -93,27 +90,23 @@ h4 { font-size: 1.25rem; }
 
 p {
   margin-bottom: 1rem;
-  color: var(--text-secondary);
+  color: var(--text-secondary) !important;
 }
 
 a {
-  color: var(--accent-primary);
+  color: var(--accent-primary) !important;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 a:hover {
-  color: var(--accent-hover);
+  color: var(--accent-hover) !important;
   text-decoration: underline;
 }
 
-/* Remove any blue from links */
-a:visited {
-  color: var(--accent-primary);
-}
-
+a:visited,
 a:active {
-  color: var(--accent-primary);
+  color: var(--accent-primary) !important;
 }
 
 /* ===== HEADER NAVIGATION ===== */
@@ -140,13 +133,13 @@ a:active {
 .site-title {
   font-size: 1.3rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .site-title:hover {
-  color: var(--accent-hover);
+  color: var(--accent-hover) !important;
 }
 
 .main-nav {
@@ -163,7 +156,7 @@ a:active {
 }
 
 .main-nav a {
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   text-decoration: none;
   font-weight: 500;
   padding: 0.5rem 0;
@@ -173,10 +166,9 @@ a:active {
 
 .main-nav a:hover,
 .main-nav a.active {
-  color: var(--accent-hover);
+  color: var(--accent-hover) !important;
 }
 
-/* Remove blue line under active nav items */
 .main-nav a.active::after {
   content: '';
   position: absolute;
@@ -199,14 +191,14 @@ a:active {
   gap: 0.5rem;
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   transition: all 0.2s ease;
   margin-left: 1rem;
 }
 
 .theme-toggle:hover {
   background: var(--accent-primary);
-  color: var(--bg-primary);
+  color: var(--bg-primary) !important;
   border-color: var(--accent-primary);
 }
 
@@ -219,7 +211,7 @@ a:active {
   background: none;
   border: none;
   font-size: 1.2rem;
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   cursor: pointer;
   padding: 0.5rem;
 }
@@ -281,12 +273,12 @@ a:active {
   font-weight: 600;
   text-align: center;
   margin-bottom: 0.25rem;
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
 }
 
 .profile-info .title {
   text-align: center;
-  color: var(--text-muted);
+  color: var(--text-muted) !important;
   font-size: 0.9rem;
   margin-bottom: 1.5rem;
   font-weight: 400;
@@ -302,18 +294,18 @@ a:active {
   gap: 0.5rem;
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: var(--text-secondary) !important;
 }
 
 .contact-item i {
   width: 14px;
-  color: var(--text-muted);
+  color: var(--text-muted) !important;
   flex-shrink: 0;
   font-size: 0.8rem;
 }
 
 .contact-item a {
-  color: var(--accent-primary);
+  color: var(--accent-primary) !important;
   text-decoration: none;
 }
 
@@ -334,7 +326,7 @@ a:active {
   width: 32px;
   height: 32px;
   background: var(--bg-primary);
-  color: var(--text-muted);
+  color: var(--text-muted) !important;
   border-radius: 50%;
   text-decoration: none;
   transition: all 0.2s ease;
@@ -344,7 +336,7 @@ a:active {
 
 .social-links a:hover {
   background: var(--accent-primary);
-  color: var(--bg-primary);
+  color: var(--bg-primary) !important;
   border-color: var(--accent-primary);
   transform: translateY(-1px);
 }
@@ -362,7 +354,7 @@ a:active {
   font-size: 1.6rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   border-bottom: 1px solid var(--border-primary);
   padding-bottom: 0.5rem;
 }
@@ -371,7 +363,7 @@ a:active {
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1rem;
-  color: var(--text-secondary);
+  color: var(--text-secondary) !important;
   text-align: justify;
 }
 
@@ -391,7 +383,7 @@ a:active {
   border-left: 3px solid var(--accent-primary);
 }
 
-[data-theme="dark"] .news-item {
+html[data-theme="dark"] .news-item {
   background: rgba(255,255,255,0.02);
 }
 
@@ -402,14 +394,14 @@ a:active {
 
 .news-date {
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: var(--text-muted) !important;
   font-weight: 500;
   min-width: 80px;
   flex-shrink: 0;
 }
 
 .news-content {
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   flex: 1;
   font-size: 0.95rem;
 }
@@ -431,13 +423,13 @@ a:active {
 .content-title {
   font-size: 2.2rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   margin-bottom: 0.5rem;
 }
 
 .content-subtitle {
   font-size: 1.1rem;
-  color: var(--text-muted);
+  color: var(--text-muted) !important;
   font-weight: 400;
 }
 
@@ -472,32 +464,32 @@ a:active {
 .item-title {
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   margin-bottom: 0.5rem;
   line-height: 1.3;
 }
 
 .item-title a {
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   text-decoration: none;
 }
 
 .item-title a:hover {
-  color: var(--accent-hover);
+  color: var(--accent-hover) !important;
 }
 
 .item-meta {
-  color: var(--text-muted);
+  color: var(--text-muted) !important;
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
 }
 
 .item-meta strong {
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
 }
 
 .item-venue {
-  color: var(--text-muted);
+  color: var(--text-muted) !important;
   font-style: italic;
   font-size: 0.9rem;
   margin-bottom: 0.75rem;
@@ -505,7 +497,7 @@ a:active {
 
 .item-description,
 .item-summary {
-  color: var(--text-secondary);
+  color: var(--text-secondary) !important;
   line-height: 1.6;
   margin-bottom: 1rem;
   font-size: 0.95rem;
@@ -517,7 +509,7 @@ a:active {
 }
 
 .item-summary a {
-  color: var(--accent-primary);
+  color: var(--accent-primary) !important;
   text-decoration: none;
 }
 
@@ -535,7 +527,7 @@ a:active {
 
 .tech-tag {
   background: var(--bg-primary);
-  color: var(--text-muted);
+  color: var(--text-muted) !important;
   padding: 0.2rem 0.6rem;
   border-radius: 12px;
   font-size: 0.8rem;
@@ -546,7 +538,7 @@ a:active {
 
 .tech-tag:hover {
   background: var(--accent-primary);
-  color: var(--bg-primary);
+  color: var(--bg-primary) !important;
 }
 
 /* ===== ITEM LINKS ===== */
@@ -563,7 +555,7 @@ a:active {
   gap: 0.4rem;
   padding: 0.4rem 0.8rem;
   background: var(--bg-primary);
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   text-decoration: none;
   border-radius: 4px;
   font-size: 0.85rem;
@@ -574,7 +566,7 @@ a:active {
 
 .item-link:hover {
   background: var(--accent-primary);
-  color: var(--bg-primary);
+  color: var(--bg-primary) !important;
   border-color: var(--accent-primary);
 }
 
@@ -598,13 +590,13 @@ a:active {
 .resume-title-section h1 {
   font-size: 2.5rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   margin-bottom: 0.5rem;
 }
 
 .resume-subtitle {
   font-size: 1.2rem;
-  color: var(--text-muted);
+  color: var(--text-muted) !important;
   font-weight: 400;
 }
 
@@ -627,13 +619,13 @@ a:active {
   transition: all 0.2s ease;
   cursor: pointer;
   background: var(--bg-primary);
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
 }
 
 .download-btn:hover,
 .contact-btn:hover {
   background: var(--accent-primary);
-  color: var(--bg-primary);
+  color: var(--bg-primary) !important;
   border-color: var(--accent-primary);
   transform: translateY(-1px);
 }
@@ -648,14 +640,14 @@ a:active {
   gap: 0.75rem;
   font-size: 1.6rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border-primary);
 }
 
 .section-title i {
-  color: var(--text-muted);
+  color: var(--text-muted) !important;
   font-size: 1.4rem;
 }
 
@@ -682,27 +674,27 @@ a:active {
 .resume-item-title {
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   margin-bottom: 0.25rem;
 }
 
 .resume-item-subtitle {
   font-size: 1rem;
-  color: var(--text-muted);
+  color: var(--text-muted) !important;
   font-weight: 500;
   margin-bottom: 0.25rem;
 }
 
 .resume-item-date {
   font-size: 0.95rem;
-  color: var(--text-muted);
+  color: var(--text-muted) !important;
   font-weight: 500;
   white-space: nowrap;
   flex-shrink: 0;
 }
 
 .resume-item-description {
-  color: var(--text-secondary);
+  color: var(--text-secondary) !important;
   line-height: 1.6;
   margin-top: 0.75rem;
 }
@@ -720,7 +712,7 @@ a:active {
   margin: 0 auto;
   padding: 0 2rem;
   text-align: center;
-  color: var(--text-muted);
+  color: var(--text-muted) !important;
   font-size: 0.85rem;
 }
 
@@ -729,7 +721,7 @@ a:active {
 }
 
 .footer-nav a {
-  color: var(--text-muted);
+  color: var(--text-muted) !important;
   text-decoration: none;
   margin: 0 0.75rem;
   font-weight: 500;
@@ -738,7 +730,7 @@ a:active {
 }
 
 .footer-nav a:hover {
-  color: var(--accent-primary);
+  color: var(--accent-primary) !important;
 }
 
 .footer-container p {
@@ -846,7 +838,7 @@ a:active {
   top: -40px;
   left: 6px;
   background: var(--bg-primary);
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   padding: 8px;
   text-decoration: none;
   z-index: 1000;
@@ -862,29 +854,14 @@ a:active {
 /* Focus styles for accessibility */
 a:focus,
 button:focus {
-  outline: 2px solid var(--accent-primary);
+  outline: 2px solid var(--accent-primary) !important;
   outline-offset: 2px;
 }
 
 /* ===== REMOVE ANY POTENTIAL BLUE ELEMENTS ===== */
-/* Force override any remaining blue styles */
-* {
-  border-color: var(--border-primary) !important;
-}
-
-*:not(.fas):not(.fab):not(.far):not(.fal) {
-  color: inherit !important;
-}
-
-/* Remove browser default blue focus outlines */
-*:focus {
-  outline-color: var(--accent-primary) !important;
-}
-
-/* Remove blue from any form elements */
 input, textarea, select {
   background: var(--bg-primary);
-  color: var(--text-primary);
+  color: var(--text-primary) !important;
   border: 1px solid var(--border-primary);
 }
 

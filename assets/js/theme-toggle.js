@@ -36,6 +36,9 @@
         html.setAttribute('data-theme', newTheme);
         localStorage.setItem('theme', newTheme);
         updateToggleButton(newTheme);
+        
+        // Debug log
+        console.log('Theme toggled to:', newTheme);
     }
     
     // Initialize when DOM is ready
@@ -47,6 +50,9 @@
         const themeToggle = document.querySelector('.theme-toggle');
         if (themeToggle) {
             themeToggle.addEventListener('click', toggleTheme);
+            console.log('Theme toggle initialized with theme:', currentTheme);
+        } else {
+            console.warn('Theme toggle button not found');
         }
     }
     

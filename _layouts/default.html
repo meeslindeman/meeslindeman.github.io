@@ -10,43 +10,9 @@
     
     {% include footer.html %}
 
-    <!-- JavaScript -->
+    <!-- Main JavaScript -->
     <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
-    <script>
-        // Theme toggle functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const themeToggle = document.querySelector('.theme-toggle');
-            const body = document.body;
-            
-            // Check for saved theme preference or default to light mode
-            const currentTheme = localStorage.getItem('theme') || 'light';
-            body.setAttribute('data-theme', currentTheme);
-            
-            // Update toggle button text
-            updateToggleText(currentTheme);
-            
-            themeToggle.addEventListener('click', function() {
-                const currentTheme = body.getAttribute('data-theme');
-                const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-                
-                body.setAttribute('data-theme', newTheme);
-                localStorage.setItem('theme', newTheme);
-                updateToggleText(newTheme);
-            });
-            
-            function updateToggleText(theme) {
-                const icon = themeToggle.querySelector('i');
-                const text = themeToggle.querySelector('span');
-                
-                if (theme === 'dark') {
-                    icon.className = 'fas fa-sun';
-                    text.textContent = 'Light';
-                } else {
-                    icon.className = 'fas fa-moon';
-                    text.textContent = 'Dark';
-                }
-            }
-        });
-    </script>
+    <!-- Theme Toggle JavaScript -->
+    <script src="{{ '/assets/js/theme-toggle.js' | relative_url }}"></script>
 </body>
 </html>
