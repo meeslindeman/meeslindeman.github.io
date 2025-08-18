@@ -1,10 +1,5 @@
 <footer class="site-footer">
     <div class="footer-container">
-        <nav class="footer-nav">
-            {% for nav_item in site.navigation %}
-            <a href="{{ nav_item.url | relative_url }}">{{ nav_item.title }}</a>
-            {% endfor %}
-        </nav>
         <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
         <p>Last updated: <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: "%B %d, %Y" }}</time></p>
     </div>
