@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initPerformanceMonitoring();
     initErrorHandling();
     initAnalytics();
+    initThemeShuffle();
 });
 
 /**
@@ -196,49 +197,12 @@ function handleExternalLinks() {
 /**
  * Initialize accessibility features
  */
-// function initAccessibility() {
-//     // Add skip link functionality
-//     addSkipLink();
-    
-//     // Improve keyboard navigation
-//     improveKeyboardNavigation();
-    
-//     // Add ARIA labels where needed
-//     addAriaLabels();
-    
-//     // Handle focus management
-//     initFocusManagement();
-// }
+function initAccessibility() {
+  improveKeyboardNavigation();
+  addAriaLabels();
+  initFocusManagement();
+}
 
-/**
- * Add skip link for screen readers
- */
-// function addSkipLink() {
-//     // Check if skip link already exists
-//     if (document.querySelector('.skip-link')) return;
-    
-//     const skipLink = document.createElement('a');
-//     skipLink.href = '#main-content';
-//     skipLink.textContent = 'Skip to main content';
-//     skipLink.className = 'skip-link';
-    
-//     // Show on focus
-//     skipLink.addEventListener('focus', function() {
-//         this.style.top = '6px';
-//     });
-    
-//     skipLink.addEventListener('blur', function() {
-//         this.style.top = '-40px';
-//     });
-    
-//     document.body.insertBefore(skipLink, document.body.firstChild);
-    
-//     // Add id to main content if not present
-//     const mainContent = document.querySelector('.main-content');
-//     if (mainContent && !mainContent.id) {
-//         mainContent.id = 'main-content';
-//     }
-// }
 
 /**
  * Improve keyboard navigation
@@ -551,3 +515,110 @@ window.addEventListener('afterprint', function() {
         el.style.display = '';
     });
 });
+
+// ===== Color palette shuffle =====
+const PALETTES = {
+  warm: {
+    'color-primary': '#f59e0b',
+    'color-primary-dark': '#f97316',
+    'primary-rgb': '245, 158, 11',
+    'color-text': '#374151',
+    'color-text-light': '#6b7280',
+    'color-text-dark': '#111827',
+    'color-bg': '#fefefe',
+    'color-bg-alt': '#f9fafb',
+    'color-white': '#ffffff',
+    'color-accent-bg': '#fef3e2',
+    'color-accent-border': '#fed7aa',
+    'color-border': '#f3f4f6',
+    'color-muted': '#4b5563',
+    'color-muted-2': '#d1d5db'
+  },
+  cool: {
+    'color-primary': '#2563eb',
+    'color-primary-dark': '#3b82f6',
+    'primary-rgb': '37, 99, 235',
+    'color-text': '#374151',
+    'color-text-light': '#6b7280',
+    'color-text-dark': '#0f172a',
+    'color-bg': '#f9fafb',
+    'color-bg-alt': '#ffffff',
+    'color-white': '#ffffff',
+    'color-accent-bg': '#e0f2fe',
+    'color-accent-border': '#bae6fd',
+    'color-border': '#e5e7eb',
+    'color-muted': '#4b5563',
+    'color-muted-2': '#cbd5e1'
+  },
+  natural: {
+    'color-primary': '#10b981',
+    'color-primary-dark': '#34d399',
+    'primary-rgb': '16, 185, 129',
+    'color-text': '#374151',
+    'color-text-light': '#6b7280',
+    'color-text-dark': '#111827',
+    'color-bg': '#fdfdfb',
+    'color-bg-alt': '#ffffff',
+    'color-white': '#ffffff',
+    'color-accent-bg': '#ecfdf5',
+    'color-accent-border': '#a7f3d0',
+    'color-border': '#e5e7eb',
+    'color-muted': '#4b5563',
+    'color-muted-2': '#d1d5db'
+  },
+  modern: {
+    'color-primary': '#111827',
+    'color-primary-dark': '#f43f5e',
+    'primary-rgb': '17, 24, 39',
+    'color-text': '#111827',
+    'color-text-light': '#6b7280',
+    'color-text-dark': '#0b1220',
+    'color-bg': '#f9fafb',
+    'color-bg-alt': '#ffffff',
+    'color-white': '#ffffff',
+    'color-accent-bg': '#fef2f2',
+    'color-accent-border': '#fecdd3',
+    'color-border': '#e5e7eb',
+    'color-muted': '#374151',
+    'color-muted-2': '#d1d5db'
+  }
+};
+
+function applyPalette(name) {
+  const palette = PALETTES[name];
+  if (!palette) return;
+  const root = document.documentElement;
+  for (const [key, value] of Object.entries(palette)) {
+    root.style.setProperty(`--${key}`, value);
+  }
+  localStorage.setItem('palette', name);
+  const btn = document.querySelector('.theme-toggle');
+  if (btn) btn.setAttribute('aria-label', `Shuffle theme (current: ${name})`);
+}
+
+function pickRandomPalette(excludeName) {
+  const names = Object.keys(PALETTES).filter(n => n !== excludeName);
+  return names[Math.floor(Math.random() * names.length)];
+}
+
+function initThemeShuffle() {
+  // Apply saved palette if any
+  const saved = localStorage.getItem('palette');
+  if (saved && PALETTES[saved]) {
+    applyPalette(saved);
+  } else {
+    // ensure defaults (warm) are set on first load so CSS vars exist inline
+    applyPalette('warm');
+  }
+
+  const btn = document.querySelector('.theme-toggle');
+  if (!btn) return;
+
+  btn.addEventListener('click', function() {
+    const current = localStorage.getItem('palette') || 'warm';
+    const next = pickRandomPalette(current);
+    applyPalette(next);
+    // Optional tiny click ripple/feedback
+    btn.animate([{ transform: 'scale(0.96)' }, { transform: 'scale(1)' }], { duration: 120 });
+  });
+}

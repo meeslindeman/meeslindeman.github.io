@@ -953,3 +953,49 @@ a.external-link::after {
     content: none !important;
     display: none !important;
 }
+
+/* ===================================
+   THEME TOGGLE
+   =================================== */
+/* Theme shuffle button */
+.theme-toggle {
+  position: absolute;
+  right: 2rem;
+  top: 1.25rem;
+  background: none;
+  border: 1px solid var(--color-border);
+  padding: 0.5rem 0.6rem;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--color-text-light);
+  transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: rgba(var(--primary-rgb), 0.06);
+  color: var(--color-primary);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.theme-toggle i {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* Tweak header container so absolute button doesn't collide */
+.site-header { position: sticky; }
+.header-container { position: relative; }
+
+/* Mobile layout: place button inline and spaced */
+@media (max-width: 768px) {
+  .theme-toggle {
+    position: static;
+    margin-left: auto;
+    order: 3; /* after nav toggle & before/after nav depending on DOM */
+  }
+  .header-container {
+    padding: 0 1rem;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+}
