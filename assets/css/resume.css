@@ -37,7 +37,7 @@
 }
 
 .download-btn,
-.print-btn {
+.contact-btn {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -61,14 +61,14 @@
     transform: translateY(-1px);
 }
 
-.print-btn {
-    background: #f8f9fa;
-    color: #333;
-    border: 1px solid #e5e5e5;
+.contact-btn {
+    background: #28a745;
+    color: white;
 }
 
-.print-btn:hover {
-    background: #e9ecef;
+.contact-btn:hover {
+    background: #218838;
+    transform: translateY(-1px);
 }
 
 /* Get in Touch Section */
@@ -329,7 +329,7 @@
     }
 
     .download-btn,
-    .print-btn {
+    .contact-btn {
         flex: 1;
         justify-content: center;
     }

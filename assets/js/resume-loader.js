@@ -20,10 +20,10 @@ class ResumeLoader {
         
         try {
             const loadPromises = [
-                this.loadYAML('_data/personal.yml', 'personal'),
-                this.loadYAML('_data/resume.yml', 'resume'),
-                this.loadYAML('_data/publications.yml', 'publications'),
-                this.loadYAML('_data/projects.yml', 'projects')
+                this.loadYAML('assets/data/personal.yml', 'personal'),
+                this.loadYAML('assets/data/resume.yml', 'resume'),
+                this.loadYAML('assets/data/publications.yml', 'publications'),
+                this.loadYAML('assets/data/projects.yml', 'projects')
             ];
 
             await Promise.all(loadPromises);
@@ -452,6 +452,7 @@ class ResumeLoader {
         console.log('Resume fallback content rendered');
     }
 }
+
 
 // Initialize resume loader when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
