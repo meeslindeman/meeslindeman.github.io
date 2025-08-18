@@ -2,8 +2,7 @@
 title: Mees Lindeman
 email: mees@lindeman.nu
 description: >-
-  MSc Student in Artificial Intelligence at University of Amsterdam, 
-  exploring conceptual questions in AI systems.
+  MSc Student in Artificial Intelligence at University of Amsterdam.
 baseurl: ""
 url: "https://meeslindeman.github.io"
 
@@ -13,16 +12,12 @@ author:
   title: MSc Student, Artificial Intelligence
   institution: University of Amsterdam
   location: Amsterdam, Netherlands
-  graduation_year: 2025
 
 # Social links
 social:
   linkedin: https://linkedin.com/in/meeslindeman
   github: https://github.com/meeslindeman
   scholar: https://scholar.google.com/citations?user=YOUR_ID
-  orcid: https://orcid.org/YOUR-ORCID-ID
-  twitter: https://twitter.com/meeslindeman
-  researchgate: https://www.researchgate.net/profile/Mees-Lindeman
 
 # Build settings
 markdown: kramdown
