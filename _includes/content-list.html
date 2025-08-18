@@ -48,23 +48,40 @@
       </div>
     {% endif %}
 
-    {% assign item_url = item.url %}
-    {% if item_url or item.doi %}
+    {% assign has_any_link = item.url or item.code or item.doi %}
+    {% if has_any_link %}
       <div class="item-links">
-        {% if item_url %}
-          <a href="{{ item_url }}" target="_blank" rel="noopener noreferrer" class="item-link">
-            {% if item_url contains 'github.com' %}
+        {% if include.type == "publication" %}
+          {% if item.url %}
+            <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="item-link">
+              <i class="fas fa-file-alt"></i> Paper
+            </a>
+          {% endif %}
+
+          {% if item.code %}
+            <a href="{{ item.code }}" target="_blank" rel="noopener noreferrer" class="item-link">
               <i class="fab fa-github"></i> GitHub
-            {% else %}
-              <i class="fas fa-file-alt"></i>
-              {% if include.type == "publication" %}Paper{% else %}View Project{% endif %}
-            {% endif %}
-          </a>
-        {% endif %}
-        {% if item.doi %}
-          <a href="https://doi.org/{{ item.doi }}" target="_blank" rel="noopener noreferrer" class="item-link">
-            <i class="fas fa-link"></i> DOI
-          </a>
+            </a>
+          {% endif %}
+
+          {% if item.doi %}
+            <a href="https://doi.org/{{ item.doi }}" target="_blank" rel="noopener noreferrer" class="item-link">
+              <i class="fas fa-link"></i> DOI
+            </a>
+          {% endif %}
+
+        {% elsif include.type == "project" %}
+          {% if item.code %}
+            <a href="{{ item.code }}" target="_blank" rel="noopener noreferrer" class="item-link">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+          {% endif %}
+
+          {% if item.url %}
+            <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="item-link">
+              <i class="fas fa-globe"></i> Website
+            </a>
+          {% endif %}
         {% endif %}
       </div>
     {% endif %}

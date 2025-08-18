@@ -15,6 +15,6 @@ publications:
     year: "2025"
     type: "Journal Article" 
     url: "https://openreview.net/pdf?id=l5fXUKi8GO"
-    # doi: "10.1000/example"
-    status: "Accepted" # or "Under Review", "Preprint"
+    code: "https://github.com/sjoerdgunneweg/Reassessing-NIFA"
+    status: "Accepted" 
     summary: "Published in TMLR (2025). Selected for presentation at the 2025 Machine Learning Reproducibility Challenge held at Princeton University. This study evaluates the claims and results of <a href='https://arxiv.org/abs/2406.03052'><em>Are Your Models Still Fair? Fairness Attacks on Graph Neural Networks via Node Injections</em></a>. Assessed implementation, experimental setup, and generalizability to provide insights into the robustness of the original findings."
