@@ -1,8 +1,8 @@
 /**
- * Simple Projects Loader - Clean list display
+ * Projects Loader - Clean list display
  */
 
-class SimpleProjectsLoader {
+class ProjectsLoader {
     constructor() {
         this.projects = [];
     }
@@ -130,9 +130,9 @@ class SimpleProjectsLoader {
 
 // Initialize projects loader when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    const projectsLoader = new SimpleProjectsLoader();
+    const projectsLoader = new ProjectsLoader();
     projectsLoader.loadProjectsData();
 });
 
 // Export for use in other scripts
-window.SimpleProjectsLoader = SimpleProjectsLoader;
+window.ProjectsLoader = ProjectsLoader;

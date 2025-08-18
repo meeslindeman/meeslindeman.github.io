@@ -1,8 +1,8 @@
 /**
- * Simple Publications Loader - Clean list display
+ * Publications Loader - Clean list display
  */
 
-class SimplePublicationsLoader {
+class PublicationsLoader {
     constructor() {
         this.publications = [];
     }
@@ -141,9 +141,9 @@ class SimplePublicationsLoader {
 
 // Initialize publications loader when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
-    const publicationsLoader = new SimplePublicationsLoader();
+    const publicationsLoader = new PublicationsLoader();
     publicationsLoader.loadPublicationsData();
 });
 
 // Export for use in other scripts
-window.SimplePublicationsLoader = SimplePublicationsLoader;
+window.PublicationsLoader = PublicationsLoader;
