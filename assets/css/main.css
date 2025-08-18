@@ -375,6 +375,18 @@ img {
     align-items: center;
 }
 
+.resume-link-icon {
+  margin-left: 0.4rem;
+  font-size: 0.8em;                 /* smaller than text */
+  color: var(--color-primary);      /* use theme accent */
+  text-decoration: none;
+}
+
+.resume-link-icon:hover {
+  color: var(--color-primary-dark); /* subtle hover */
+}
+
+
 /* ===================================
    BUTTON STYLES
    =================================== */

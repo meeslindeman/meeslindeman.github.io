@@ -67,8 +67,10 @@ permalink: /resume/
         <div class="resume-project">
             <div class="resume-project__title">
             {{ project.project }}
-            {% if project.url %}
-                <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer" class="resume-link-icon">
+            {% if project.url or project.code %}
+                <a href="{{ project.url | default: project.code }}" 
+                target="_blank" rel="noopener noreferrer" 
+                class="resume-link-icon">
                 <i class="fas fa-external-link-alt"></i>
                 </a>
             {% endif %}
