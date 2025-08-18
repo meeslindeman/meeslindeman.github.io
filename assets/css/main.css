@@ -560,15 +560,15 @@ img {
 }
 
 .tag--tech {
-    background: var(--color-accent-bg);
+    background: var(--color-bg-alt);
     color: var(--color-primary);
     border: 1px solid var(--color-accent-border);
 }
 
 .tag--skill {
     background: var(--color-bg-alt);
-    color: var(--color-text);
-    border: 1px solid var(--color-border);
+    color: var(--color-primary);
+    border: 1px solid var(--color-accent-border);
 }
 
 /* ===================================

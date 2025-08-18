@@ -62,26 +62,24 @@ permalink: /resume/
         Selected Projects
     </h2>
     <div class="resume-section__content">
-    {% assign featured_projects = site.data.projects.projects | where: "featured", true | sort: 'date' | reverse | slice: 0, 3 %}
-    {% for project in featured_projects %}
-    <div class="resume-project">
-        <div class="resume-project__title">{{ project.project }}</div>
-        {% if project.misc %}
-            <div class="resume-project__meta">{{ project.misc }}</div>
-        {% endif %}
-        <div class="resume-project__meta">{{ project.role }}</div>
-        <div class="resume-project__duration">{{ project.duration }}</div>
-        {% if project.technologies %}
-            <div class="resume-project__tags">
-                {% assign techs = project.technologies | split: ', ' %}
-                {% for tech in techs %}
-                    <span class="tag tag--tech">{{ tech | strip }}</span>
-                {% endfor %}
-            </div>
-        {% endif %}
-        <div class="resume-project__description">{{ project.description }}</div>
-    </div>
-    {% endfor %}
+        {% assign featured_projects = site.data.projects.projects | where: "featured", true | sort: 'date' | reverse | slice: 0, 3 %}
+        {% for project in featured_projects %}
+        <div class="resume-project">
+            <div class="resume-project__title">{{ project.project }}</div>
+            <div class="resume-project__meta">{{ project.role }} • {{ project.duration }}</div>
+            
+            <div class="resume-project__description">{{ project.description }}</div>
+            
+            {% if project.technologies %}
+                <div class="resume-project__tags">
+                    {% assign techs = project.technologies | split: ', ' %}
+                    {% for tech in techs %}
+                        <span class="tag tag--tech">{{ tech | strip }}</span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+        {% endfor %}
     </div>
 </section>
 
