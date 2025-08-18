@@ -21,10 +21,10 @@ class DataLoader {
         
         try {
             this.loadPromises = [
-                this.loadYAML('_data/personal.yml', 'personal'),
-                this.loadYAML('_data/publications.yml', 'publications'),
-                this.loadYAML('_data/projects.yml', 'projects'),
-                this.loadYAML('_data/news.yml', 'news')
+                this.loadYAML('assets/data/personal.yml', 'personal'),
+                this.loadYAML('assets/data/publications.yml', 'publications'),
+                this.loadYAML('assets/data/projects.yml', 'projects'),
+                this.loadYAML('assets/data/news.yml', 'news')
             ];
 
             await Promise.all(this.loadPromises);
