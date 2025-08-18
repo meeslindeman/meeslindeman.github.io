@@ -48,7 +48,12 @@
       </div>
     {% endif %}
 
-    {% assign has_any_link = item.url or item.code or item.doi %}
+    {% if include.type == "publication" %}
+      {% assign has_any_link = item.url or item.code or item.doi %}
+    {% elsif include.type == "project" %}
+      {% assign has_any_link = item.url or item.code %}
+    {% endif %}
+    
     {% if has_any_link %}
       <div class="item-links">
         {% if include.type == "publication" %}

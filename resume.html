@@ -66,12 +66,11 @@ permalink: /resume/
         {% for project in featured_projects %}
         <div class="resume-project">
             <div class="resume-project__title">
+            {{ project.project }}
             {% if project.url %}
-                <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer">{{ project.project }}</a>
-            {% elsif project.code %}
-                <a href="{{ project.code }}" target="_blank" rel="noopener noreferrer">{{ project.project }}</a>
-            {% else %}
-                {{ project.project }}
+                <a href="{{ project.url }}" target="_blank" rel="noopener noreferrer" class="resume-link-icon">
+                <i class="fas fa-external-link-alt"></i>
+                </a>
             {% endif %}
             </div>
             <div class="resume-project__meta">{{ project.role }} • {{ project.duration }}</div>
@@ -100,13 +99,12 @@ permalink: /resume/
     <div class="resume-section__content">
         {% for pub in site.data.publications.publications %}
         <div class="resume-publication">
-            <div class="resume-project__title">
+            <div class="resume-publication__title">
+            {{ pub.title }}
             {% if pub.url %}
-                <a href="{{ pub.url }}" target="_blank" rel="noopener noreferrer">{{ pub.title }}</a>
-            {% elsif pub.code %}
-                <a href="{{ pub.code }}" target="_blank" rel="noopener noreferrer">{{ pub.title }}</a>
-            {% else %}
-                {{ pub.title }}
+                <a href="{{ pub.url }}" target="_blank" rel="noopener noreferrer" class="resume-link-icon">
+                <i class="fas fa-external-link-alt"></i>
+                </a>
             {% endif %}
             </div>
             {% if pub.authors %}
