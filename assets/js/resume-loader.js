@@ -284,9 +284,13 @@ class ResumeLoader {
      */
     renderProjects() {
         const container = document.getElementById('projects-content');
-        if (!container) return;
+        if (!container) {
+            console.error('Projects container not found');
+            return;
+        }
 
         const projects = this.data.projects?.projects || [];
+        console.log('All projects:', projects);
 
         if (projects.length === 0) {
             container.innerHTML = '<p>No projects available.</p>';
@@ -294,7 +298,15 @@ class ResumeLoader {
         }
 
         // Show only featured projects or top 3
-        const displayProjects = projects.filter(p => p.featured).slice(0, 3);
+        const featuredProjects = projects.filter(p => p.featured);
+        const displayProjects = featuredProjects.length > 0 ? featuredProjects.slice(0, 3) : projects.slice(0, 3);
+        
+        console.log('Featured projects for resume:', displayProjects);
+
+        if (displayProjects.length === 0) {
+            container.innerHTML = '<p>No featured projects available. Set <code>featured: true</code> in projects.yml to display projects here.</p>';
+            return;
+        }
 
         container.innerHTML = displayProjects.map(project => `
             <div class="resume-project">
@@ -312,6 +324,8 @@ class ResumeLoader {
                 ${project.misc ? `<div class="project-meta">${project.misc}</div>` : ''}
             </div>
         `).join('');
+
+        console.log('Projects rendered successfully');
     }
 
     /**
@@ -452,7 +466,6 @@ class ResumeLoader {
         console.log('Resume fallback content rendered');
     }
 }
-
 
 // Initialize resume loader when DOM is ready
 document.addEventListener('DOMContentLoaded', function() {
