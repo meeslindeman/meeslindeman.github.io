@@ -10,14 +10,9 @@
         {% endif %}
       </h3>
 
-      {%- comment -%} SECOND LINE: authors (pub) or misc (project) {%- endcomment -%}
       {% if include.type == "publication" and item.authors %}
         <div class="item-header__meta">
-          {% if item.authors contains 'Mees Lindeman' %}
-            {{ item.authors | replace: 'Mees Lindeman', '<strong>Mees Lindeman</strong>' }}
-          {% else %}
             {{ item.authors }}
-          {% endif %}
         </div>
       {% elsif include.type == "project" and item.misc %}
         <div class="item-header__meta">
@@ -32,7 +27,7 @@
           {% if item.type %} • {{ item.type }}{% endif %}
           {% if item.year %} ({{ item.year }}){% endif %}
         {% elsif include.type == "project" %}
-          {% if item.role %}<strong>{{ item.role }}</strong>{% endif %}
+          {% if item.role %}{{ item.role }}{% endif %}
           {% if item.duration %} • {{ item.duration }}{% endif %}
         {% endif %}
       </div>
