@@ -1,7 +1,7 @@
-/* ===== PURE BLACK/WHITE MINIMAL CSS ===== */
+/* ===== PURE BLACK/WHITE MINIMAL CSS - FIXED DARK MODE ===== */
 
 /* CSS Custom Properties for Theme Variables */
-html {
+:root {
   /* Light Minimal Theme - Pure Black/White */
   --bg-primary: #ffffff;
   --bg-secondary: #f8f9fa;
@@ -27,6 +27,31 @@ html {
 }
 
 /* Dark Minimal Theme - Pure White/Black */
+:root[data-theme="dark"] {
+  --bg-primary: #000000;
+  --bg-secondary: #1a1a1a;
+  --bg-tertiary: #262626;
+  --bg-sidebar: #1a1a1a;
+  
+  --text-primary: #ffffff;
+  --text-secondary: #e6e6e6;
+  --text-muted: #aaaaaa;
+  --text-light: #888888;
+  
+  --border-primary: #333333;
+  --border-secondary: #2a2a2a;
+  --border-light: #444444;
+  
+  --accent-primary: #ffffff;
+  --accent-hover: #cccccc;
+  --accent-light: #1a1a1a;
+  
+  --shadow-light: 0 2px 8px rgba(255,255,255,0.1);
+  --shadow-medium: 0 4px 16px rgba(255,255,255,0.1);
+  --shadow-heavy: 0 8px 32px rgba(255,255,255,0.1);
+}
+
+/* Alternative approach - also target html element */
 html[data-theme="dark"] {
   --bg-primary: #000000;
   --bg-secondary: #1a1a1a;
@@ -60,6 +85,9 @@ html[data-theme="dark"] {
 
 html {
   scroll-behavior: smooth;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
@@ -71,16 +99,17 @@ body {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Force color inheritance and prevent blue elements */
-* {
-  border-color: var(--border-primary) !important;
+/* Force body colors to update */
+body {
+  background-color: var(--bg-primary) !important;
+  color: var(--text-primary) !important;
 }
 
 /* ===== TYPOGRAPHY ===== */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.3;
   font-weight: 600;
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
 }
 
 h1 { font-size: 2rem; }
@@ -90,23 +119,23 @@ h4 { font-size: 1.25rem; }
 
 p {
   margin-bottom: 1rem;
-  color: var(--text-secondary) !important;
+  color: var(--text-secondary);
 }
 
 a {
-  color: var(--accent-primary) !important;
+  color: var(--accent-primary);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 a:hover {
-  color: var(--accent-hover) !important;
+  color: var(--accent-hover);
   text-decoration: underline;
 }
 
 a:visited,
 a:active {
-  color: var(--accent-primary) !important;
+  color: var(--accent-primary);
 }
 
 /* ===== HEADER NAVIGATION ===== */
@@ -133,13 +162,13 @@ a:active {
 .site-title {
   font-size: 1.3rem;
   font-weight: 600;
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
   text-decoration: none;
   transition: color 0.2s ease;
 }
 
 .site-title:hover {
-  color: var(--accent-hover) !important;
+  color: var(--accent-hover);
 }
 
 .main-nav {
@@ -156,7 +185,7 @@ a:active {
 }
 
 .main-nav a {
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
   text-decoration: none;
   font-weight: 500;
   padding: 0.5rem 0;
@@ -166,7 +195,7 @@ a:active {
 
 .main-nav a:hover,
 .main-nav a.active {
-  color: var(--accent-hover) !important;
+  color: var(--accent-hover);
 }
 
 .main-nav a.active::after {
@@ -191,14 +220,14 @@ a:active {
   gap: 0.5rem;
   font-size: 0.9rem;
   font-weight: 500;
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
   transition: all 0.2s ease;
   margin-left: 1rem;
 }
 
 .theme-toggle:hover {
   background: var(--accent-primary);
-  color: var(--bg-primary) !important;
+  color: var(--bg-primary);
   border-color: var(--accent-primary);
 }
 
@@ -211,7 +240,7 @@ a:active {
   background: none;
   border: none;
   font-size: 1.2rem;
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
   cursor: pointer;
   padding: 0.5rem;
 }
@@ -273,12 +302,12 @@ a:active {
   font-weight: 600;
   text-align: center;
   margin-bottom: 0.25rem;
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
 }
 
 .profile-info .title {
   text-align: center;
-  color: var(--text-muted) !important;
+  color: var(--text-muted);
   font-size: 0.9rem;
   margin-bottom: 1.5rem;
   font-weight: 400;
@@ -294,18 +323,18 @@ a:active {
   gap: 0.5rem;
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
-  color: var(--text-secondary) !important;
+  color: var(--text-secondary);
 }
 
 .contact-item i {
   width: 14px;
-  color: var(--text-muted) !important;
+  color: var(--text-muted);
   flex-shrink: 0;
   font-size: 0.8rem;
 }
 
 .contact-item a {
-  color: var(--accent-primary) !important;
+  color: var(--accent-primary);
   text-decoration: none;
 }
 
@@ -326,7 +355,7 @@ a:active {
   width: 32px;
   height: 32px;
   background: var(--bg-primary);
-  color: var(--text-muted) !important;
+  color: var(--text-muted);
   border-radius: 50%;
   text-decoration: none;
   transition: all 0.2s ease;
@@ -336,7 +365,7 @@ a:active {
 
 .social-links a:hover {
   background: var(--accent-primary);
-  color: var(--bg-primary) !important;
+  color: var(--bg-primary);
   border-color: var(--accent-primary);
   transform: translateY(-1px);
 }
@@ -354,7 +383,7 @@ a:active {
   font-size: 1.6rem;
   font-weight: 600;
   margin-bottom: 1rem;
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
   border-bottom: 1px solid var(--border-primary);
   padding-bottom: 0.5rem;
 }
@@ -363,7 +392,7 @@ a:active {
   font-size: 1rem;
   line-height: 1.6;
   margin-bottom: 1rem;
-  color: var(--text-secondary) !important;
+  color: var(--text-secondary);
   text-align: justify;
 }
 
@@ -377,31 +406,27 @@ a:active {
   gap: 1rem;
   margin-bottom: 0.75rem;
   padding: 1rem;
-  background: rgba(0,0,0,0.02);
+  background: var(--bg-secondary);
   border-radius: 6px;
   transition: all 0.2s ease;
   border-left: 3px solid var(--accent-primary);
 }
 
-html[data-theme="dark"] .news-item {
-  background: rgba(255,255,255,0.02);
-}
-
 .news-item:hover {
   transform: translateX(3px);
-  background: var(--bg-secondary);
+  box-shadow: var(--shadow-light);
 }
 
 .news-date {
   font-size: 0.85rem;
-  color: var(--text-muted) !important;
+  color: var(--text-muted);
   font-weight: 500;
   min-width: 80px;
   flex-shrink: 0;
 }
 
 .news-content {
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
   flex: 1;
   font-size: 0.95rem;
 }
@@ -411,6 +436,7 @@ html[data-theme="dark"] .news-item {
   max-width: 900px;
   margin: 0 auto;
   padding: 2rem;
+  background: var(--bg-primary);
 }
 
 .content-header {
@@ -423,13 +449,13 @@ html[data-theme="dark"] .news-item {
 .content-title {
   font-size: 2.2rem;
   font-weight: 600;
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
 .content-subtitle {
   font-size: 1.1rem;
-  color: var(--text-muted) !important;
+  color: var(--text-muted);
   font-weight: 400;
 }
 
@@ -464,32 +490,32 @@ html[data-theme="dark"] .news-item {
 .item-title {
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
   line-height: 1.3;
 }
 
 .item-title a {
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
   text-decoration: none;
 }
 
 .item-title a:hover {
-  color: var(--accent-hover) !important;
+  color: var(--accent-hover);
 }
 
 .item-meta {
-  color: var(--text-muted) !important;
+  color: var(--text-muted);
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
 }
 
 .item-meta strong {
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
 }
 
 .item-venue {
-  color: var(--text-muted) !important;
+  color: var(--text-muted);
   font-style: italic;
   font-size: 0.9rem;
   margin-bottom: 0.75rem;
@@ -497,7 +523,7 @@ html[data-theme="dark"] .news-item {
 
 .item-description,
 .item-summary {
-  color: var(--text-secondary) !important;
+  color: var(--text-secondary);
   line-height: 1.6;
   margin-bottom: 1rem;
   font-size: 0.95rem;
@@ -509,7 +535,7 @@ html[data-theme="dark"] .news-item {
 }
 
 .item-summary a {
-  color: var(--accent-primary) !important;
+  color: var(--accent-primary);
   text-decoration: none;
 }
 
@@ -527,7 +553,7 @@ html[data-theme="dark"] .news-item {
 
 .tech-tag {
   background: var(--bg-primary);
-  color: var(--text-muted) !important;
+  color: var(--text-muted);
   padding: 0.2rem 0.6rem;
   border-radius: 12px;
   font-size: 0.8rem;
@@ -538,7 +564,7 @@ html[data-theme="dark"] .news-item {
 
 .tech-tag:hover {
   background: var(--accent-primary);
-  color: var(--bg-primary) !important;
+  color: var(--bg-primary);
 }
 
 /* ===== ITEM LINKS ===== */
@@ -555,7 +581,7 @@ html[data-theme="dark"] .news-item {
   gap: 0.4rem;
   padding: 0.4rem 0.8rem;
   background: var(--bg-primary);
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
   text-decoration: none;
   border-radius: 4px;
   font-size: 0.85rem;
@@ -566,7 +592,7 @@ html[data-theme="dark"] .news-item {
 
 .item-link:hover {
   background: var(--accent-primary);
-  color: var(--bg-primary) !important;
+  color: var(--bg-primary);
   border-color: var(--accent-primary);
 }
 
@@ -590,13 +616,13 @@ html[data-theme="dark"] .news-item {
 .resume-title-section h1 {
   font-size: 2.5rem;
   font-weight: 600;
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
 }
 
 .resume-subtitle {
   font-size: 1.2rem;
-  color: var(--text-muted) !important;
+  color: var(--text-muted);
   font-weight: 400;
 }
 
@@ -619,13 +645,13 @@ html[data-theme="dark"] .news-item {
   transition: all 0.2s ease;
   cursor: pointer;
   background: var(--bg-primary);
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
 }
 
 .download-btn:hover,
 .contact-btn:hover {
   background: var(--accent-primary);
-  color: var(--bg-primary) !important;
+  color: var(--bg-primary);
   border-color: var(--accent-primary);
   transform: translateY(-1px);
 }
@@ -640,14 +666,14 @@ html[data-theme="dark"] .news-item {
   gap: 0.75rem;
   font-size: 1.6rem;
   font-weight: 600;
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border-primary);
 }
 
 .section-title i {
-  color: var(--text-muted) !important;
+  color: var(--text-muted);
   font-size: 1.4rem;
 }
 
@@ -674,27 +700,27 @@ html[data-theme="dark"] .news-item {
 .resume-item-title {
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
   margin-bottom: 0.25rem;
 }
 
 .resume-item-subtitle {
   font-size: 1rem;
-  color: var(--text-muted) !important;
+  color: var(--text-muted);
   font-weight: 500;
   margin-bottom: 0.25rem;
 }
 
 .resume-item-date {
   font-size: 0.95rem;
-  color: var(--text-muted) !important;
+  color: var(--text-muted);
   font-weight: 500;
   white-space: nowrap;
   flex-shrink: 0;
 }
 
 .resume-item-description {
-  color: var(--text-secondary) !important;
+  color: var(--text-secondary);
   line-height: 1.6;
   margin-top: 0.75rem;
 }
@@ -712,7 +738,7 @@ html[data-theme="dark"] .news-item {
   margin: 0 auto;
   padding: 0 2rem;
   text-align: center;
-  color: var(--text-muted) !important;
+  color: var(--text-muted);
   font-size: 0.85rem;
 }
 
@@ -721,7 +747,7 @@ html[data-theme="dark"] .news-item {
 }
 
 .footer-nav a {
-  color: var(--text-muted) !important;
+  color: var(--text-muted);
   text-decoration: none;
   margin: 0 0.75rem;
   font-weight: 500;
@@ -730,7 +756,7 @@ html[data-theme="dark"] .news-item {
 }
 
 .footer-nav a:hover {
-  color: var(--accent-primary) !important;
+  color: var(--accent-primary);
 }
 
 .footer-container p {
@@ -838,7 +864,7 @@ html[data-theme="dark"] .news-item {
   top: -40px;
   left: 6px;
   background: var(--bg-primary);
-  color: var(--text-primary) !important;
+  color: var(--text-primary);
   padding: 8px;
   text-decoration: none;
   z-index: 1000;
@@ -854,15 +880,8 @@ html[data-theme="dark"] .news-item {
 /* Focus styles for accessibility */
 a:focus,
 button:focus {
-  outline: 2px solid var(--accent-primary) !important;
+  outline: 2px solid var(--accent-primary);
   outline-offset: 2px;
-}
-
-/* ===== REMOVE ANY POTENTIAL BLUE ELEMENTS ===== */
-input, textarea, select {
-  background: var(--bg-primary);
-  color: var(--text-primary) !important;
-  border: 1px solid var(--border-primary);
 }
 
 /* ===== PRINT STYLES ===== */
