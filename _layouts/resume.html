@@ -9,25 +9,29 @@
         <!-- Resume Header -->
         <header class="resume-header">
             <div class="resume-title-section">
-                <h1 class="resume-title">{{ page.title }}</h1>
-                <p class="resume-subtitle">{{ page.subtitle }}</p>
+                <h1>{{ page.title | default: site.author.name }}</h1>
+                <p class="resume-subtitle">{{ page.subtitle | default: site.author.title }}</p>
             </div>
             <div class="resume-actions">
-                <a href="{{ '/assets/docs/cv.pdf' | relative_url }}" class="download-btn" target="_blank" rel="noopener noreferrer">
+                <a href="{{ '/assets/docs/resume.pdf' | relative_url }}" class="download-btn" target="_blank">
                     <i class="fas fa-download"></i> Download PDF
                 </a>
                 <a href="mailto:{{ site.email }}" class="contact-btn">
-                    <i class="fas fa-envelope"></i> Get in Touch
+                    <i class="fas fa-envelope"></i> Contact
                 </a>
             </div>
         </header>
 
         <!-- Resume Content -->
-        <main class="resume-content">
+        <main class="resume-main">
             {{ content }}
         </main>
     </div>
     
     {% include footer.html %}
+    
+    <!-- JavaScript -->
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+    <script src="{{ '/assets/js/theme-toggle.js' | relative_url }}"></script>
 </body>
 </html>
