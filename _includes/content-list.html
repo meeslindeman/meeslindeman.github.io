@@ -1,5 +1,8 @@
 <ul class="content-list">
   {% for item in include.items %}
+  <!-- DEBUG -->
+  <!-- type="{{ include.type }}" | code="{{ item.code | inspect }}" | url="{{ item.url | inspect }}" -->
+
   <li class="content-list__item">
     <div class="item-header">
       <h3 class="item-header__title">
@@ -48,51 +51,61 @@
       </div>
     {% endif %}
 
-    {%- assign has_any_link = false -%}
     {%- if include.type == "publication" -%}
       {%- assign has_any_link = item.url or item.code or item.doi -%}
-    {%- elsif include.type == "project" -%}
-      {%- assign has_any_link = item.url or item.code -%}
-    {%- else -%}
-      {# Fallback: treat as project if type missing #}
-      {%- assign has_any_link = item.url or item.code -%}
-    {%- endif -%}
-    
-    {% if has_any_link %}
-      <div class="item-links">
-        {% if include.type == "publication" %}
-          {% if item.url %}
+      {%- if has_any_link -%}
+        <div class="item-links">
+          {%- if item.url -%}
             <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="item-link">
               <i class="fas fa-file-alt"></i> Paper
             </a>
-          {% endif %}
-          {% if item.code %}
+          {%- endif -%}
+          {%- if item.code -%}
             <a href="{{ item.code }}" target="_blank" rel="noopener noreferrer" class="item-link">
               <i class="fab fa-github"></i> GitHub
             </a>
-          {% endif %}
-          {% if item.doi %}
+          {%- endif -%}
+          {%- if item.doi -%}
             <a href="https://doi.org/{{ item.doi }}" target="_blank" rel="noopener noreferrer" class="item-link">
               <i class="fas fa-link"></i> DOI
             </a>
-          {% endif %}
-        {% else %}
-          {% if item.code %}
-            <a href="{{ item.code }}" target="_blank" rel="noopener noreferrer" class="item-link">
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+    {%- elsif include.type == "project" -%}
+      {%- assign code_url = item.code | to_s | strip -%}
+      {%- assign plain_url = item.url | to_s | strip -%}
+
+      {%- if (code_url == "" or code_url == nil) and plain_url contains "github.com" -%}
+        {%- assign code_url = plain_url -%}
+      {%- endif -%}
+
+      {%- assign website_url = plain_url -%}
+      {%- if website_url contains "github.com" -%}
+        {%- assign website_url = "" -%}
+      {%- endif -%}
+
+      {%- if code_url != "" or website_url != "" -%}
+        <div class="item-links">
+          {%- if code_url != "" -%}
+            <a href="{{ code_url }}" target="_blank" rel="noopener noreferrer" class="item-link">
               <i class="fab fa-github"></i> GitHub
             </a>
-          {% endif %}
-          {% if item.url %}
-            <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="item-link">
+          {%- endif -%}
+          {%- if website_url != "" -%}
+            <a href="{{ website_url }}" target="_blank" rel="noopener noreferrer" class="item-link">
               <i class="fas fa-globe"></i> Website
             </a>
-          {% endif %}
-        {% endif %}
-      </div>
-    {% endif %}
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endif -%} 
+
   </li>
   {% endfor %}
 </ul>
+
 
 {% if include.items.size == 0 %}
   <div class="empty-state">
