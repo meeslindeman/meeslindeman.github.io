@@ -4,7 +4,7 @@ projects:
     duration: 2025
     technologies: Python, PyTorch, Docker, Singularity
     misc: Co-authored with Ruben Figge, Sjoerd Gunneweg, and Jurgen de Heus
-    url: "https://github.com/sjoerdgunneweg/mast3r-rvt2-integration"
+    code: "https://github.com/sjoerdgunneweg/mast3r-rvt2-integration"
     description: Investigated whether learned 3D geometry from RGB images can replace depth sensors in few-shot robotic manipulation. Integrated MASt3R, a state-of-the-art 3D reconstruction method, into the RVT-2 robotic vision pipeline to evaluate performance without RGB-D sensors. Demonstrated that learned geometry can enable robust manipulation under challenging visual conditions. Possibly offering a more flexible, cost-effective alternative to traditional calibrated setups.
     featured: true
     date: 2025-01-15
