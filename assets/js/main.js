@@ -430,23 +430,22 @@
   // Debounced resize
   window.addEventListener('resize', debounce(handleResize, 250));
 
-  // Guarded Service Worker (avoid 404 noise)
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', async function () {
-      try {
-        const swUrl = '/sw.js';
-        const res = await fetch(swUrl, { cache: 'no-store' });
-        if (res.ok) {
-          await navigator.serviceWorker.register(swUrl);
-          console.log('SW registered');
-        } else {
-          console.log('SW not found; skipping registration');
-        }
-      } catch (e) {
-        console.log('SW registration skipped:', e.message);
-      }
-    });
-  }
+//   if ('serviceWorker' in navigator) {
+//     window.addEventListener('load', async function () {
+//       try {
+//         const swUrl = '/sw.js';
+//         const res = await fetch(swUrl, { cache: 'no-store' });
+//         if (res.ok) {
+//           await navigator.serviceWorker.register(swUrl);
+//           console.log('SW registered');
+//         } else {
+//           console.log('SW not found; skipping registration');
+//         }
+//       } catch (e) {
+//         console.log('SW registration skipped:', e.message);
+//       }
+//     });
+//   }
 
   document.addEventListener('themeChange', function () {
     initThemeDependentFeatures();
