@@ -48,11 +48,15 @@
       </div>
     {% endif %}
 
-    {% if include.type == "publication" %}
-      {% assign has_any_link = item.url or item.code or item.doi %}
-    {% elsif include.type == "project" %}
-      {% assign has_any_link = item.url or item.code %}
-    {% endif %}
+    {%- assign has_any_link = false -%}
+    {%- if include.type == "publication" -%}
+      {%- assign has_any_link = item.url or item.code or item.doi -%}
+    {%- elsif include.type == "project" -%}
+      {%- assign has_any_link = item.url or item.code -%}
+    {%- else -%}
+      {# Fallback: treat as project if type missing #}
+      {%- assign has_any_link = item.url or item.code -%}
+    {%- endif -%}
     
     {% if has_any_link %}
       <div class="item-links">
@@ -62,26 +66,22 @@
               <i class="fas fa-file-alt"></i> Paper
             </a>
           {% endif %}
-
           {% if item.code %}
             <a href="{{ item.code }}" target="_blank" rel="noopener noreferrer" class="item-link">
               <i class="fab fa-github"></i> GitHub
             </a>
           {% endif %}
-
           {% if item.doi %}
             <a href="https://doi.org/{{ item.doi }}" target="_blank" rel="noopener noreferrer" class="item-link">
               <i class="fas fa-link"></i> DOI
             </a>
           {% endif %}
-
-        {% elsif include.type == "project" %}
+        {% else %}
           {% if item.code %}
             <a href="{{ item.code }}" target="_blank" rel="noopener noreferrer" class="item-link">
               <i class="fab fa-github"></i> GitHub
             </a>
           {% endif %}
-
           {% if item.url %}
             <a href="{{ item.url }}" target="_blank" rel="noopener noreferrer" class="item-link">
               <i class="fas fa-globe"></i> Website
