@@ -6,6 +6,11 @@ news:
     link: "https://openreview.net/pdf?id=l5fXUKi8GO"
   
   - date: 2025-08-18
-    type: "publication"
+    type: "misc"
     title: "Launched new GitHub Pages website"
     description: "Created a new website over the summer"
+
+  - date: 2025-08-22
+    type: "conference"
+    title: "MLRC2025"
+    description: "Attended MLRC conference at Princeton University"
