@@ -1111,3 +1111,38 @@ img {
         line-height: 1;
     }
 }
+
+/* Theme toggle button icon styling */
+.theme-toggle i {
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--color-text-light) !important; /* Force grey color */
+  transition: color 0.2s ease;
+}
+
+/* Hover state for theme toggle */
+.theme-toggle:hover i {
+  color: var(--color-primary) !important; /* Blue on hover */
+}
+
+/* Mobile theme toggle specific styling */
+.mobile-theme-toggle i {
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--color-text-light) !important; /* Force grey color */
+}
+
+.mobile-theme-toggle:hover i {
+  color: var(--color-primary) !important; /* Blue on hover */
+}
+
+/* Desktop theme toggle specific styling */
+.desktop-theme-toggle i {
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--color-text-light) !important; /* Force grey color */
+}
+
+.desktop-theme-toggle:hover i {
+  color: var(--color-primary) !important; /* Blue on hover */
+}

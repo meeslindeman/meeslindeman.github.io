@@ -150,16 +150,27 @@
     if (saved && PALETTES[saved]) {
         applyPalette(saved);
     } else {
-        applyPalette('warm'); // default
+        applyPalette('cool'); // Changed from 'warm' to 'cool' (blue default)
     }
 
     // Handle all theme toggle buttons (desktop and mobile)
     const buttons = document.querySelectorAll('.theme-toggle');
     if (buttons.length === 0) return;
 
+    // Function to reset all button icon colors to default
+    function resetButtonColors() {
+        buttons.forEach(btn => {
+            const icon = btn.querySelector('i');
+            if (icon) {
+                // Reset to default grey color
+                icon.style.color = 'var(--color-text-light)';
+            }
+        });
+    }
+
     buttons.forEach(btn => {
         btn.addEventListener('click', function () {
-            const current = localStorage.getItem('palette') || 'warm';
+            const current = localStorage.getItem('palette') || 'cool';
             const next = pickRandomPalette(current);
             applyPalette(next);
             
@@ -169,6 +180,9 @@
                 { transform: 'scale(1)' }
             ], { duration: 120 });
             
+            // Reset all button colors to grey after palette change
+            setTimeout(resetButtonColors, 150); // Small delay after animation
+            
             // Update aria-label for all buttons
             buttons.forEach(button => {
                 button.setAttribute('aria-label', `Shuffle theme (current: ${next})`);
@@ -176,11 +190,14 @@
         });
     });
 
-    // Set initial aria-label for all buttons
-    const current = localStorage.getItem('palette') || 'warm';
+    // Set initial aria-label and colors for all buttons
+    const current = localStorage.getItem('palette') || 'cool';
     buttons.forEach(btn => {
         btn.setAttribute('aria-label', `Shuffle theme (current: ${current})`);
     });
+    
+    // Ensure buttons start with grey color
+    resetButtonColors();
   }
 
   // -------------------------------
