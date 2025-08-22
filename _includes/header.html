@@ -1,9 +1,16 @@
 <header class="site-header">
     <div class="header-container">
         
-        <button class="mobile-menu-toggle" aria-expanded="false" aria-label="Toggle mobile menu">
-            <i class="fas fa-bars"></i>
-        </button>
+        <!-- Mobile header actions (hamburger + theme toggle) -->
+        <div class="mobile-header-actions">
+            <button class="mobile-menu-toggle" aria-expanded="false" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <button class="theme-toggle mobile-theme-toggle" aria-label="Shuffle color theme" title="Shuffle theme">
+                <i class="fas fa-palette" aria-hidden="true"></i>
+            </button>
+        </div>
         
         <nav class="main-nav">
             <ul>
@@ -16,7 +23,7 @@
                 </li>
                 {% endfor %}
                 <li class="nav-item-utility">
-                <button class="theme-toggle" aria-label="Shuffle color theme" title="Shuffle theme">
+                <button class="theme-toggle desktop-theme-toggle" aria-label="Shuffle color theme" title="Shuffle theme">
                     <i class="fas fa-palette" aria-hidden="true"></i>
                 </button>
                 </li>

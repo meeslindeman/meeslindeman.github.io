@@ -148,19 +148,38 @@
   function initThemeShuffle() {
     const saved = localStorage.getItem('palette');
     if (saved && PALETTES[saved]) {
-      applyPalette(saved);
+        applyPalette(saved);
     } else {
-      applyPalette('warm'); // default
+        applyPalette('warm'); // default
     }
 
-    const btn = document.querySelector('.theme-toggle');
-    if (!btn) return;
+    // Handle all theme toggle buttons (desktop and mobile)
+    const buttons = document.querySelectorAll('.theme-toggle');
+    if (buttons.length === 0) return;
 
-    btn.addEventListener('click', function () {
-      const current = localStorage.getItem('palette') || 'warm';
-      const next = pickRandomPalette(current);
-      applyPalette(next);
-      btn.animate([{ transform: 'scale(0.96)' }, { transform: 'scale(1)' }], { duration: 120 });
+    buttons.forEach(btn => {
+        btn.addEventListener('click', function () {
+            const current = localStorage.getItem('palette') || 'warm';
+            const next = pickRandomPalette(current);
+            applyPalette(next);
+            
+            // Animate the clicked button
+            btn.animate([
+                { transform: 'scale(0.96)' }, 
+                { transform: 'scale(1)' }
+            ], { duration: 120 });
+            
+            // Update aria-label for all buttons
+            buttons.forEach(button => {
+                button.setAttribute('aria-label', `Shuffle theme (current: ${next})`);
+            });
+        });
+    });
+
+    // Set initial aria-label for all buttons
+    const current = localStorage.getItem('palette') || 'warm';
+    buttons.forEach(btn => {
+        btn.setAttribute('aria-label', `Shuffle theme (current: ${current})`);
     });
   }
 

@@ -960,13 +960,6 @@ img {
 
 .footer-links a:hover { color: var(--color-primary); }
 
-/* Kill any auto-added external link icons */
-a[target="_blank"]::after,
-a.external-link::after {
-    content: none !important;
-    display: none !important;
-}
-
 /* ===================================
    THEME TOGGLE
    =================================== */
@@ -1006,4 +999,115 @@ a.external-link::after {
 .theme-toggle i {
   font-size: 1rem;
   line-height: 1;
+}
+
+/* Add this to your existing CSS file - Mobile Theme Toggle Fix */
+
+/* Mobile header actions container - hidden on desktop */
+.mobile-header-actions {
+    display: none;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Hide mobile theme toggle on desktop */
+.mobile-theme-toggle {
+    display: none;
+}
+
+/* Show desktop theme toggle on desktop */
+.desktop-theme-toggle {
+    display: inline-flex;
+}
+
+/* Update your existing mobile responsive section */
+@media (max-width: 768px) {
+    /* Header Mobile */
+    .header-container {
+        padding: 0 1rem;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Show mobile header actions */
+    .mobile-header-actions {
+        display: flex;
+    }
+
+    /* Hide the standalone mobile menu toggle (we have it in mobile-header-actions now) */
+    .header-container > .mobile-menu-toggle {
+        display: none;
+    }
+
+    /* Show mobile theme toggle, hide desktop one */
+    .mobile-theme-toggle {
+        display: inline-flex !important;
+    }
+
+    .desktop-theme-toggle {
+        display: none !important;
+    }
+
+    /* Main nav mobile behavior */
+    .main-nav { 
+        display: none;
+        position: fixed;
+        top: 80px; /* adjust based on your header height */
+        left: 0;
+        right: 0;
+        background: var(--color-white);
+        border-top: 1px solid var(--color-border);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+
+    /* When mobile menu is active */
+    .main-nav.active {
+        display: block;
+    }
+
+    .main-nav ul {
+        gap: 0;
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+
+    .main-nav a {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        display: block;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .main-nav a:last-child {
+        border-bottom: none;
+    }
+
+    /* Hide the utility nav item (desktop theme toggle) in mobile menu */
+    .main-nav .nav-item-utility {
+        display: none;
+    }
+
+    /* Ensure mobile theme toggle has proper styling */
+    .mobile-theme-toggle {
+        height: 40px;
+        padding: 0 1rem;
+        font: inherit;
+        line-height: 1;
+        color: var(--color-text-light);
+        background: none;
+        border: none;
+        border-radius: 0;
+        cursor: pointer;
+        transition: color .2s ease;
+    }
+
+    .mobile-theme-toggle:hover {
+        color: var(--color-primary);
+    }
+
+    .mobile-theme-toggle i {
+        font-size: 1rem;
+        line-height: 1;
+    }
 }
