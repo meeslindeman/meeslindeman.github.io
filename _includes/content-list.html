@@ -72,12 +72,7 @@
 
     {%- elsif include.type == "project" -%}
       {%- assign code_url = item.code | to_s | strip -%}
-      {%- assign plain_url = item.url | to_s | strip -%}
-
-      {%- if code_url == "" and website_url contains "github.com" -%}
-        {%- assign code_url = website_url -%}
-        {%- assign website_url = "" -%}
-      {%- endif -%}
+      {%- assign website_url = item.url | to_s | strip -%}
 
       {%- if code_url != "" or website_url != "" -%}
         <div class="item-links">
@@ -94,7 +89,6 @@
         </div>
       {%- endif -%}
     {%- endif -%} 
-
   </li>
   {% endfor %}
 </ul>
