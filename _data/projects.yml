@@ -13,7 +13,7 @@ projects:
     role: Creator & Instructor
     duration: 2025 &mdash; Present
     technologies: Node.js, React, Python
-    # url: "https://example.com"
+    url: "https://aifordummies.vercel.app"
     misc: Making AI concepts accessible for my colleagues
     description: AI for Dummies is an educational initiative I started to explain AI concepts to beginners. Sparked by growing interest and common misconceptions observed during my work at HvA, the project aims to deliver intuitive lessons and providing backup to workshops on topics like machine learning, probability, and generative AI.
     featured: true
