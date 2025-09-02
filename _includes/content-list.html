@@ -74,12 +74,8 @@
       {%- assign code_url = item.code | to_s | strip -%}
       {%- assign plain_url = item.url | to_s | strip -%}
 
-      {%- if (code_url == "" or code_url == nil) and plain_url contains "github.com" -%}
-        {%- assign code_url = plain_url -%}
-      {%- endif -%}
-
-      {%- assign website_url = plain_url -%}
-      {%- if website_url contains "github.com" -%}
+      {%- if code_url == "" and website_url contains "github.com" -%}
+        {%- assign code_url = website_url -%}
         {%- assign website_url = "" -%}
       {%- endif -%}
 
