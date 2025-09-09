@@ -1,7 +1,55 @@
 <footer class="site-footer">
     <div class="footer-container">
-        <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
-        <p>Last updated: <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: "%B %d, %Y" }}</time></p>
+        <!-- Contact Information -->
+        <div class="footer-contact">
+            <div class="footer-contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+            </div>
+            <div class="footer-contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>{{ site.author.location }}</span>
+            </div>
+            <div class="footer-contact-item">
+                <i class="fas fa-university"></i>
+                <span>{{ site.author.institution }}</span>
+            </div>
+        </div>
+        
+        <!-- Social Links -->
+        <div class="footer-social">
+            {% if site.social.linkedin %}
+            <a href="{{ site.social.linkedin }}" title="LinkedIn" aria-label="LinkedIn Profile" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-linkedin"></i>
+            </a>
+            {% endif %}
+            {% if site.social.github %}
+            <a href="{{ site.social.github }}" title="GitHub" aria-label="GitHub Profile" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-github"></i>
+            </a>
+            {% endif %}
+            {% if site.social.scholar %}
+            <a href="{{ site.social.scholar }}" title="Google Scholar" aria-label="Google Scholar Profile" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-graduation-cap"></i>
+            </a>
+            {% endif %}
+            {% if site.social.orcid %}
+            <a href="{{ site.social.orcid }}" title="ORCID" aria-label="ORCID Profile" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-orcid"></i>
+            </a>
+            {% endif %}
+            {% if site.social.researchgate %}
+            <a href="{{ site.social.researchgate }}" title="ResearchGate" aria-label="ResearchGate Profile" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-researchgate"></i>
+            </a>
+            {% endif %}
+        </div>
+        
+        <!-- Copyright -->
+        <div class="footer-text">
+            <p>&copy; {{ 'now' | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
+            <p>Last updated: <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: "%B %d, %Y" }}</time></p>
+        </div>
     </div>
 </footer>
 
