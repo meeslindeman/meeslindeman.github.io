@@ -2,31 +2,25 @@
 layout: default
 ---
 
-<div class="container container--home-centered">
+<div class="container">
     <!-- Profile Section -->
-    <section class="profile-hero">
-        <div class="profile-hero__photo">
+    <section class="profile">
+        <div class="profile-photo">
             <img src="{{ '/assets/images/profile.jpg' | relative_url }}" 
                  alt="{{ site.author.name }}" 
                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-            <div class="profile-hero__placeholder">
+            <div class="profile-placeholder">
                 <i class="fas fa-user"></i>
             </div>
         </div>
         
-        <h1 class="profile-hero__name">{{ site.author.name }}</h1>
-        <p class="profile-hero__title">{{ site.author.title }}</p>
-        <p class="profile-hero__institution">{{ site.author.institution }}</p>
-        
-        {% if site.author.bio_quote %}
-        <blockquote class="profile-hero__quote">
-            "{{ site.author.bio_quote }}"
-        </blockquote>
-        {% endif %}
+        <h1 class="profile-name">{{ site.author.name }}</h1>
+        <p class="profile-title">{{ site.author.title }}</p>
+        <p class="profile-institution">{{ site.author.institution }}</p>
     </section>
 
-    <!-- Main Content -->
-    <div class="home-content">
+    <!-- Content Sections -->
+    <div class="content">
         {{ content }}
     </div>
 </div>
