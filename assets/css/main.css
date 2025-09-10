@@ -1,5 +1,5 @@
 /* ===================================
-   Clean Homepage CSS - Final Version
+   Complete Site CSS - Consistent Typography
    =================================== */
 
 /* ===================================
@@ -37,7 +37,7 @@ ul { list-style: none; }
 img { max-width: 100%; height: auto; }
 
 /* ===================================
-   HEADER - BLACK NAVIGATION (BIGGER)
+   HEADER - BLACK NAVIGATION
    =================================== */
 .site-header {
     background: black;
@@ -84,7 +84,7 @@ img { max-width: 100%; height: auto; }
 .main-nav a::before {
     content: '';
     position: absolute;
-    bottom: -0.5rem;
+    bottom: -0.75rem;
     left: 50%;
     transform: translateX(-50%);
     width: 0;
@@ -104,7 +104,7 @@ img { max-width: 100%; height: auto; }
 }
 
 /* ===================================
-   HOMEPAGE CONTAINER (MORE COMPACT)
+   HOMEPAGE STYLES
    =================================== */
 .container {
     max-width: 800px;
@@ -113,9 +113,6 @@ img { max-width: 100%; height: auto; }
     text-align: center;
 }
 
-/* ===================================
-   PROFILE SECTION (CLOSER TO CONTENT)
-   =================================== */
 .profile {
     margin-bottom: 3rem;
 }
@@ -151,8 +148,9 @@ img { max-width: 100%; height: auto; }
     left: 0;
 }
 
+/* CONSISTENT: Main title size across all pages */
 .profile-name {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 600;
     color: #111827;
     margin-bottom: 0.5rem;
@@ -174,9 +172,6 @@ img { max-width: 100%; height: auto; }
     font-weight: 400;
 }
 
-/* ===================================
-   CONTENT SECTIONS (COMPACT SPACING)
-   =================================== */
 .content {
     text-align: center;
 }
@@ -191,6 +186,7 @@ img { max-width: 100%; height: auto; }
     border-bottom: none;
 }
 
+/* CONSISTENT: Section titles */
 .content-section__title {
     font-size: 1.6rem;
     font-weight: 600;
@@ -199,6 +195,7 @@ img { max-width: 100%; height: auto; }
     text-align: center;
 }
 
+/* CONSISTENT: Body text size */
 .content-section__text {
     color: #4b5563;
     line-height: 1.7;
@@ -207,12 +204,10 @@ img { max-width: 100%; height: auto; }
     margin-left: auto;
     margin-right: auto;
     text-align: center;
-    font-size: 0.9rem;
+    font-size: 1rem;
 }
 
-/* ===================================
-   NEWS LIST
-   =================================== */
+/* News List */
 .news-list {
     list-style: none;
     max-width: 600px;
@@ -243,9 +238,10 @@ img { max-width: 100%; height: auto; }
     text-align: center;
 }
 
+/* CONSISTENT: Item titles */
 .news-list__link,
 .news-list__title {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: #111827;
     margin-bottom: 0.5rem;
@@ -264,201 +260,22 @@ img { max-width: 100%; height: auto; }
 }
 
 /* ===================================
-   FOOTER (BIGGER ICONS)
+   PROJECTS & PUBLICATIONS PAGES
    =================================== */
-.site-footer {
-    background: white;
-    border-top: 1px solid #e5e7eb;
-    padding: 3rem 1rem 2rem;
-    margin-top: 4rem;
-    text-align: center;
-}
-
-.footer-container {
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-}
-
-/* Social Links - Bigger Icons */
-.footer-social {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-}
-
-.footer-social a {
-    width: 60px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #111827;
-    color: white;
-    border-radius: 50%;
-    transition: all 0.2s ease;
-    font-size: 1.4rem;
-    border: 2px solid #111827;
-}
-
-.footer-social a:hover {
-    background: #4b5563;
-    color: white;
-    border-color: #4b5563;
-    transform: translateY(-2px);
-}
-
-/* Footer Text */
-.footer-text {
-    text-align: center;
-    color: #6b7280;
-    font-size: 0.85rem;
-    line-height: 1.5;
-}
-
-.footer-text p {
-    margin-bottom: 0.25rem;
-}
-
-.footer-text p:last-child {
-    margin-bottom: 0;
-}
-
-/* ===================================
-   MOBILE RESPONSIVE
-   =================================== */
-@media (max-width: 768px) {
-    /* Header Mobile */
-    .header-container {
-        padding: 0 1rem;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .mobile-header-actions {
-        display: flex;
-    }
-
-    .header-container > .mobile-menu-toggle {
-        display: none;
-    }
-
-    .main-nav {
-        display: none;
-        position: fixed;
-        top: 120px;
-        left: 0;
-        right: 0;
-        background: black;
-        border-top: 1px solid #374151;
-        z-index: 1000;
-    }
-
-    .main-nav.active {
-        display: block;
-    }
-
-    .main-nav ul {
-        gap: 0;
-        flex-direction: column;
-        padding: 1rem 0;
-    }
-
-    .main-nav a {
-        padding: 0.75rem 1rem;
-        font-size: 0.9rem;
-        display: block;
-        border-bottom: 1px solid #374151;
-    }
-
-    .main-nav a:last-child {
-        border-bottom: none;
-    }
-
-    .main-nav a::before {
-        display: none;
-    }
-
-    /* Content Mobile */
-    .container {
-        padding: 3rem 1rem;
-    }
-
-    .profile-photo {
-        width: 150px;
-        height: 150px;
-        margin-bottom: 1.5rem;
-    }
-
-    .profile-name {
-        font-size: 2rem;
-    }
-
-    .profile-title {
-        font-size: 1rem;
-    }
-
-    .content-section {
-        padding: 2.5rem 0;
-    }
-
-    .content-section__title {
-        font-size: 1.3rem;
-    }
-
-    /* Mobile Footer */
-    .footer-social {
-        gap: 1.75rem;
-    }
-    
-    .footer-social a {
-        width: 55px;
-        height: 55px;
-        font-size: 1.3rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 2rem 1rem;
-    }
-
-    .profile-photo {
-        width: 120px;
-        height: 120px;
-    }
-
-    .profile-name {
-        font-size: 1.8rem;
-    }
-
-    .content-section {
-        padding: 2rem 0;
-    }
-}
-
-/* ===================================
-   COMPACT PROJECTS & PUBLICATIONS PAGES
-   =================================== */
-
-/* Content Container */
 .content-container {
     max-width: 900px;
     margin: 0 auto;
     padding: 2.5rem 2rem;
 }
 
-/* Page Header */
 .content-header {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid #e5e7eb;
 }
 
+/* CONSISTENT: Page titles */
 .content-title {
     font-size: 2.2rem;
     font-weight: 600;
@@ -473,13 +290,11 @@ img { max-width: 100%; height: auto; }
     margin: 0;
 }
 
-/* Main Content Area */
 .content-main {
     background: white;
     text-align: left;
 }
 
-/* Content List Styling */
 .content-list {
     list-style: none;
     margin: 0;
@@ -497,19 +312,14 @@ img { max-width: 100%; height: auto; }
     border-bottom: none;
 }
 
-.content-list__item:hover {
-    background: none;
-    border-color: #e5e7eb;
-}
-
-/* Item Header */
 .item-header {
     margin-bottom: 1rem;
     text-align: left;
 }
 
+/* CONSISTENT: Item titles */
 .item-header__title {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: #111827;
     margin-bottom: 0.5rem;
@@ -531,11 +341,11 @@ img { max-width: 100%; height: auto; }
     line-height: 1.5;
 }
 
-/* Item Content */
 .item-content {
     margin-bottom: 1rem;
 }
 
+/* CONSISTENT: Body text */
 .item-content p {
     color: #4b5563;
     line-height: 1.7;
@@ -543,7 +353,7 @@ img { max-width: 100%; height: auto; }
     margin-bottom: 0;
 }
 
-/* Style links in content to be black with underlines */
+/* Link styling */
 .item-content a,
 .item-header a {
     color: #111827;
@@ -559,7 +369,6 @@ img { max-width: 100%; height: auto; }
     text-decoration-color: #111827;
 }
 
-/* Tags */
 .item-tags {
     margin: 1rem 0;
 }
@@ -577,13 +386,6 @@ img { max-width: 100%; height: auto; }
     border: 1px solid #d1d5db;
 }
 
-.tag--tech {
-    background: #f3f4f6;
-    color: #374151;
-    border: 1px solid #d1d5db;
-}
-
-/* Item Links */
 .item-links {
     display: flex;
     gap: 1.5rem;
@@ -618,132 +420,20 @@ img { max-width: 100%; height: auto; }
     color: #111827;
 }
 
-/* Empty State */
-.empty-state {
-    text-align: center;
-    padding: 3rem 2rem;
-    color: #6b7280;
-}
-
-.empty-state i {
-    font-size: 3rem;
-    color: #9ca3af;
-    margin-bottom: 1.5rem;
-    display: block;
-}
-
-.empty-state h3 {
-    font-size: 1.3rem;
-    color: #4b5563;
-    margin-bottom: 0.75rem;
-    font-weight: 600;
-}
-
-.empty-state p {
-    font-size: 1rem;
-    line-height: 1.5;
-    margin: 0;
-}
-
 /* ===================================
-   MOBILE RESPONSIVE
+   RESUME PAGE
    =================================== */
-@media (max-width: 768px) {
-    .content-container {
-        padding: 2rem 1rem;
-    }
-
-    .content-header {
-        margin-bottom: 1.5rem;
-        padding-bottom: 1rem;
-    }
-
-    .content-title {
-        font-size: 1.8rem;
-    }
-
-    .content-subtitle {
-        font-size: 1.1rem;
-    }
-
-    .content-list__item {
-        padding: 1.25rem 0;
-    }
-
-    .item-header__title {
-        font-size: 1.2rem;
-    }
-
-    .item-header__meta,
-    .item-header__venue {
-        font-size: 0.9rem;
-    }
-
-    .item-content p {
-        font-size: 0.95rem;
-    }
-
-    .item-links {
-        gap: 1rem;
-    }
-
-    .item-link {
-        font-size: 0.9rem;
-    }
-
-    .empty-state {
-        padding: 2.5rem 1rem;
-    }
-
-    .empty-state i {
-        font-size: 2.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .content-container {
-        padding: 1.5rem 1rem;
-    }
-
-    .content-title {
-        font-size: 1.6rem;
-    }
-
-    .content-subtitle {
-        font-size: 1rem;
-    }
-
-    .content-list__item {
-        padding: 1rem 0;
-    }
-
-    .item-header__title {
-        font-size: 1.1rem;
-    }
-
-    .item-links {
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-}
-
-/* ===================================
-   COMPACT RESUME PAGE STYLING
-   =================================== */
-
-/* Resume Container */
 .container--resume {
     max-width: 900px;
     margin: 0 auto;
     padding: 2.5rem 2rem;
 }
 
-/* Resume Header */
 .resume-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid #e5e7eb;
 }
@@ -752,6 +442,7 @@ img { max-width: 100%; height: auto; }
     flex: 1;
 }
 
+/* CONSISTENT: Page titles */
 .resume-header__title {
     font-size: 2.2rem;
     font-weight: 600;
@@ -771,13 +462,11 @@ img { max-width: 100%; height: auto; }
     align-items: center;
 }
 
-/* Resume Content */
 .resume-content {
     background: white;
     text-align: left;
 }
 
-/* Resume Sections */
 .resume-section {
     margin-bottom: 2rem;
     border-bottom: 1px solid #e5e7eb;
@@ -791,11 +480,12 @@ img { max-width: 100%; height: auto; }
     margin-bottom: 0;
 }
 
+/* CONSISTENT: Section titles */
 .resume-section__title {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     font-weight: 600;
     color: #111827;
     margin-bottom: 1.5rem;
@@ -806,11 +496,6 @@ img { max-width: 100%; height: auto; }
     font-size: 1.2rem;
 }
 
-.resume-section__content {
-    /* Container for section content */
-}
-
-/* Resume Items (Jobs, Education, etc.) */
 .resume-item {
     margin-bottom: 1.25rem;
     padding-bottom: 1rem;
@@ -834,8 +519,9 @@ img { max-width: 100%; height: auto; }
     flex: 1;
 }
 
+/* CONSISTENT: Item titles */
 .resume-item__title {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: #111827;
     margin-bottom: 0.25rem;
@@ -862,13 +548,13 @@ img { max-width: 100%; height: auto; }
     margin-left: 1rem;
 }
 
+/* CONSISTENT: Body text */
 .resume-item__description {
     color: #4b5563;
     line-height: 1.7;
     font-size: 1rem;
 }
 
-/* Resume Projects */
 .resume-project {
     margin-bottom: 1.25rem;
     padding-bottom: 1rem;
@@ -881,8 +567,9 @@ img { max-width: 100%; height: auto; }
     padding-bottom: 0;
 }
 
+/* CONSISTENT: Item titles */
 .resume-project__title {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: #111827;
     margin-bottom: 0.5rem;
@@ -895,6 +582,7 @@ img { max-width: 100%; height: auto; }
     margin-bottom: 0.5rem;
 }
 
+/* CONSISTENT: Body text */
 .resume-project__description {
     color: #4b5563;
     line-height: 1.7;
@@ -906,25 +594,6 @@ img { max-width: 100%; height: auto; }
     margin-top: 0.75rem;
 }
 
-/* Style links in resume content to be black with underlines */
-.resume-item__description a,
-.resume-project__description a,
-.resume-publication__summary a {
-    color: #111827;
-    text-decoration: underline;
-    text-decoration-color: #6b7280;
-    text-underline-offset: 2px;
-    transition: all 0.2s ease;
-}
-
-.resume-item__description a:hover,
-.resume-project__description a:hover,
-.resume-publication__summary a:hover {
-    color: #111827;
-    text-decoration-color: #111827;
-}
-
-/* Resume Publications */
 .resume-publication {
     margin-bottom: 1.25rem;
     padding-bottom: 1rem;
@@ -937,8 +606,9 @@ img { max-width: 100%; height: auto; }
     padding-bottom: 0;
 }
 
+/* CONSISTENT: Item titles */
 .resume-publication__title {
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     font-weight: 600;
     color: #111827;
     margin-bottom: 0.5rem;
@@ -958,21 +628,35 @@ img { max-width: 100%; height: auto; }
     margin-bottom: 0.5rem;
 }
 
+/* CONSISTENT: Body text */
 .resume-publication__summary {
     color: #4b5563;
     line-height: 1.7;
     font-size: 1rem;
 }
 
-/* Skills Grid */
+/* Resume link styling */
+.resume-item__description a,
+.resume-project__description a,
+.resume-publication__summary a {
+    color: #111827;
+    text-decoration: underline;
+    text-decoration-color: #6b7280;
+    text-underline-offset: 2px;
+    transition: all 0.2s ease;
+}
+
+.resume-item__description a:hover,
+.resume-project__description a:hover,
+.resume-publication__summary a:hover {
+    color: #111827;
+    text-decoration-color: #111827;
+}
+
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
-}
-
-.skill-category {
-    /* Container for skill categories */
 }
 
 .skill-category__title {
@@ -986,20 +670,6 @@ img { max-width: 100%; height: auto; }
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-}
-
-/* Tags */
-.tag {
-    display: inline-block;
-    padding: 0.35rem 0.8rem;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    font-weight: 500;
-    margin-right: 0.5rem;
-    margin-bottom: 0.5rem;
-    background: #f3f4f6;
-    color: #374151;
-    border: 1px solid #d1d5db;
 }
 
 .tag--tech,
@@ -1046,7 +716,6 @@ img { max-width: 100%; height: auto; }
     border-color: #111827;
 }
 
-/* Resume Link Icons */
 .resume-link-icon {
     margin-left: 0.5rem;
     font-size: 0.8em;
@@ -1060,9 +729,191 @@ img { max-width: 100%; height: auto; }
 }
 
 /* ===================================
+   FOOTER
+   =================================== */
+.site-footer {
+    background: white;
+    border-top: 1px solid #e5e7eb;
+    padding: 3rem 1rem 2rem;
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.footer-social a {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #111827;
+    color: white;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    font-size: 1.4rem;
+    border: 2px solid #111827;
+}
+
+.footer-social a:hover {
+    background: #4b5563;
+    color: white;
+    border-color: #4b5563;
+    transform: translateY(-2px);
+}
+
+.footer-text {
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.footer-text p {
+    margin-bottom: 0.25rem;
+}
+
+.footer-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 3rem 2rem;
+    color: #6b7280;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    color: #9ca3af;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.empty-state h3 {
+    font-size: 1.3rem;
+    color: #4b5563;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.empty-state p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ===================================
    MOBILE RESPONSIVE
    =================================== */
 @media (max-width: 768px) {
+    /* Header Mobile */
+    .header-container {
+        padding: 0 1rem;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .mobile-header-actions {
+        display: flex;
+    }
+
+    .main-nav {
+        display: none;
+        position: fixed;
+        top: 120px;
+        left: 0;
+        right: 0;
+        background: black;
+        border-top: 1px solid #374151;
+        z-index: 1000;
+    }
+
+    .main-nav.active {
+        display: block;
+    }
+
+    .main-nav ul {
+        gap: 0;
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+
+    .main-nav a {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        display: block;
+        border-bottom: 1px solid #374151;
+    }
+
+    .main-nav a:last-child {
+        border-bottom: none;
+    }
+
+    .main-nav a::before {
+        display: none;
+    }
+
+    /* Homepage Mobile */
+    .container {
+        padding: 3rem 1rem;
+    }
+
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+        margin-bottom: 1.5rem;
+    }
+
+    .profile-name {
+        font-size: 1.8rem;
+    }
+
+    .content-section {
+        padding: 2.5rem 0;
+    }
+
+    .content-section__title {
+        font-size: 1.4rem;
+    }
+
+    /* Projects/Publications Mobile */
+    .content-container {
+        padding: 2rem 1rem;
+    }
+
+    .content-header {
+        margin-bottom: 2.5rem;
+        padding-bottom: 1rem;
+    }
+
+    .content-title {
+        font-size: 1.8rem;
+    }
+
+    .content-list__item {
+        padding: 1.25rem 0;
+    }
+
+    .item-header__title {
+        font-size: 1.2rem;
+    }
+
+    /* Resume Mobile */
     .container--resume {
         padding: 2rem 1rem;
     }
@@ -1071,7 +922,7 @@ img { max-width: 100%; height: auto; }
         flex-direction: column;
         gap: 1.25rem;
         text-align: center;
-        margin-bottom: 1.5rem;
+        margin-bottom: 2.5rem;
         padding-bottom: 1.25rem;
     }
 
@@ -1082,10 +933,6 @@ img { max-width: 100%; height: auto; }
 
     .resume-header__title {
         font-size: 1.8rem;
-    }
-
-    .resume-header__subtitle {
-        font-size: 1.1rem;
     }
 
     .resume-item__header {
@@ -1100,32 +947,50 @@ img { max-width: 100%; height: auto; }
         font-size: 0.85rem;
     }
 
-    .resume-item__title {
-        font-size: 1.1rem;
-    }
-
-    .resume-item__description,
-    .resume-project__description,
-    .resume-publication__summary {
-        font-size: 0.95rem;
-    }
-
-    .skills-grid {
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
+    .resume-item__title,
+    .resume-project__title,
+    .resume-publication__title {
+        font-size: 1.2rem;
     }
 
     .resume-section__title {
-        font-size: 1.3rem;
+        font-size: 1.4rem;
     }
 
-    .resume-section {
-        margin-bottom: 1.5rem;
-        padding-bottom: 1.25rem;
+    /* Footer Mobile */
+    .footer-social {
+        gap: 1.75rem;
+    }
+    
+    .footer-social a {
+        width: 55px;
+        height: 55px;
+        font-size: 1.3rem;
     }
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding: 2rem 1rem;
+    }
+
+    .profile-photo {
+        width: 120px;
+        height: 120px;
+    }
+
+    .profile-name {
+        font-size: 1.6rem;
+    }
+
+    .content-container {
+        padding: 1.5rem 1rem;
+    }
+
+    .content-title {
+        font-size: 1.6rem;
+    }
+
     .container--resume {
         padding: 1.5rem 1rem;
     }
@@ -1142,18 +1007,5 @@ img { max-width: 100%; height: auto; }
     .btn {
         width: 100%;
         justify-content: center;
-    }
-
-    .resume-item__title {
-        font-size: 1rem;
-    }
-
-    .resume-section__title {
-        font-size: 1.2rem;
-    }
-
-    .resume-section {
-        margin-bottom: 1.25rem;
-        padding-bottom: 1rem;
     }
 }
