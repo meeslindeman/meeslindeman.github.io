@@ -519,14 +519,14 @@ img { max-width: 100%; height: auto; }
 
 .item-header__meta {
     color: #6b7280;
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-bottom: 0.5rem;
     line-height: 1.5;
 }
 
 .item-header__venue {
     color: #4b5563;
-    font-size: 0.9rem;
+    font-size: 1rem;
     font-weight: 500;
     line-height: 1.5;
 }
@@ -539,8 +539,30 @@ img { max-width: 100%; height: auto; }
 .item-content p {
     color: #4b5563;
     line-height: 1.7;
-    font-size: 0.9rem;
+    font-size: 1rem;
     margin-bottom: 0;
+}
+
+/* Style links in content to be black with underlines */
+.item-content a,
+.item-header a,
+.resume-item__description a,
+.resume-project__description a,
+.resume-publication__summary a {
+    color: #111827;
+    text-decoration: underline;
+    text-decoration-color: #6b7280;
+    text-underline-offset: 2px;
+    transition: all 0.2s ease;
+}
+
+.item-content a:hover,
+.item-header a:hover,
+.resume-item__description a:hover,
+.resume-project__description a:hover,
+.resume-publication__summary a:hover {
+    color: #111827;
+    text-decoration-color: #111827;
 }
 
 /* Tags */
@@ -854,8 +876,8 @@ img { max-width: 100%; height: auto; }
 
 /* Resume Projects */
 .resume-project {
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
     border-bottom: 1px solid #f3f4f6;
 }
 
@@ -888,6 +910,24 @@ img { max-width: 100%; height: auto; }
 
 .resume-project__tags {
     margin-top: 1rem;
+}
+
+/* Style links in resume content to be black with underlines */
+.resume-item__description a,
+.resume-project__description a,
+.resume-publication__summary a {
+    color: #111827;
+    text-decoration: underline;
+    text-decoration-color: #6b7280;
+    text-underline-offset: 2px;
+    transition: all 0.2s ease;
+}
+
+.resume-item__description a:hover,
+.resume-project__description a:hover,
+.resume-publication__summary a:hover {
+    color: #111827;
+    text-decoration-color: #111827;
 }
 
 /* Resume Publications */
