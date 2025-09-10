@@ -477,6 +477,8 @@ img { max-width: 100%; height: auto; }
 .content-main {
     background: white;
     text-align: left;
+    border-top: 1px solid #e5e7eb;
+    padding-top: 2rem;
 }
 
 /* Content List Styling */
