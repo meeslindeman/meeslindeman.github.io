@@ -1,5 +1,5 @@
 /* ===================================
-   Clean Homepage CSS - Minimal Design
+   Clean Homepage CSS - Final Version
    =================================== */
 
 /* ===================================
@@ -37,11 +37,11 @@ ul { list-style: none; }
 img { max-width: 100%; height: auto; }
 
 /* ===================================
-   HEADER - BLACK NAVIGATION
+   HEADER - BLACK NAVIGATION (BIGGER)
    =================================== */
 .site-header {
     background: black;
-    padding: 1rem 0;
+    padding: 2rem 0;
     position: sticky;
     top: 0;
     z-index: 100;
@@ -84,7 +84,7 @@ img { max-width: 100%; height: auto; }
 .main-nav a::before {
     content: '';
     position: absolute;
-    bottom: -1rem;
+    bottom: -2rem;
     left: 50%;
     transform: translateX(-50%);
     width: 0;
@@ -104,20 +104,20 @@ img { max-width: 100%; height: auto; }
 }
 
 /* ===================================
-   HOMEPAGE CONTAINER
+   HOMEPAGE CONTAINER (MORE COMPACT)
    =================================== */
 .container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 4rem 2rem;
+    padding: 3rem 2rem;
     text-align: center;
 }
 
 /* ===================================
-   PROFILE SECTION
+   PROFILE SECTION (CLOSER TO CONTENT)
    =================================== */
 .profile {
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
 }
 
 .profile-photo {
@@ -175,7 +175,7 @@ img { max-width: 100%; height: auto; }
 }
 
 /* ===================================
-   CONTENT SECTIONS
+   CONTENT SECTIONS (COMPACT SPACING)
    =================================== */
 .content {
     text-align: center;
@@ -263,6 +263,70 @@ img { max-width: 100%; height: auto; }
 }
 
 /* ===================================
+   FOOTER (BIGGER ICONS)
+   =================================== */
+.site-footer {
+    background: white;
+    border-top: 1px solid #e5e7eb;
+    padding: 3rem 1rem 2rem;
+    margin-top: 4rem;
+    text-align: center;
+}
+
+.footer-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+/* Social Links - Bigger Icons */
+.footer-social {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.footer-social a {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f9fafb;
+    color: #6b7280;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    font-size: 1.4rem;
+    border: 2px solid #e5e7eb;
+}
+
+.footer-social a:hover {
+    background: #111827;
+    color: white;
+    border-color: #111827;
+    transform: translateY(-2px);
+}
+
+/* Footer Text */
+.footer-text {
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.footer-text p {
+    margin-bottom: 0.25rem;
+}
+
+.footer-text p:last-child {
+    margin-bottom: 0;
+}
+
+/* ===================================
    MOBILE RESPONSIVE
    =================================== */
 @media (max-width: 768px) {
@@ -284,7 +348,7 @@ img { max-width: 100%; height: auto; }
     .main-nav {
         display: none;
         position: fixed;
-        top: 80px;
+        top: 120px;
         left: 0;
         right: 0;
         background: black;
@@ -313,6 +377,10 @@ img { max-width: 100%; height: auto; }
         border-bottom: none;
     }
 
+    .main-nav a::before {
+        display: none;
+    }
+
     /* Content Mobile */
     .container {
         padding: 3rem 1rem;
@@ -339,6 +407,17 @@ img { max-width: 100%; height: auto; }
     .content-section__title {
         font-size: 1.3rem;
     }
+
+    /* Mobile Footer */
+    .footer-social {
+        gap: 1.75rem;
+    }
+    
+    .footer-social a {
+        width: 55px;
+        height: 55px;
+        font-size: 1.3rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -357,82 +436,5 @@ img { max-width: 100%; height: auto; }
 
     .content-section {
         padding: 2rem 0;
-    }
-}
-
-/* ===================================
-   FOOTER
-   =================================== */
-.site-footer {
-    background: white;
-    border-top: 1px solid #e5e7eb;
-    padding: 3rem 1rem 2rem;
-    margin-top: 4rem;
-    text-align: center;
-}
-
-.footer-container {
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-}
-
-/* Social Links */
-.footer-social {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-}
-
-.footer-social a {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f9fafb;
-    color: #6b7280;
-    border-radius: 50%;
-    transition: all 0.2s ease;
-    font-size: 1.2rem;
-    border: 2px solid #e5e7eb;
-}
-
-.footer-social a:hover {
-    background: #111827;
-    color: white;
-    border-color: #111827;
-    transform: translateY(-2px);
-}
-
-/* Footer Text */
-.footer-text {
-    text-align: center;
-    color: #6b7280;
-    font-size: 0.85rem;
-    line-height: 1.5;
-}
-
-.footer-text p {
-    margin-bottom: 0.25rem;
-}
-
-.footer-text p:last-child {
-    margin-bottom: 0;
-}
-
-/* Mobile Footer */
-@media (max-width: 768px) {
-    .footer-social {
-        gap: 1.25rem;
-    }
-    
-    .footer-social a {
-        width: 45px;
-        height: 45px;
-        font-size: 1.1rem;
     }
 }
