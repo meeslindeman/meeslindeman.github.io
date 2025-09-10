@@ -755,8 +755,8 @@ img { max-width: 100%; height: auto; }
 }
 
 .footer-social a {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -828,14 +828,19 @@ img { max-width: 100%; height: auto; }
         align-items: center;
     }
 
+    .mobile-menu-toggle {
+        display: block;
+    }
+
     .mobile-header-actions {
         display: flex;
+        align-items: center;
     }
 
     .main-nav {
         display: none;
         position: fixed;
-        top: 120px;
+        top: 100px;
         left: 0;
         right: 0;
         background: black;
@@ -959,13 +964,13 @@ img { max-width: 100%; height: auto; }
 
     /* Footer Mobile */
     .footer-social {
-        gap: 1.75rem;
+        gap: 1.5rem;
     }
     
     .footer-social a {
-        width: 55px;
-        height: 55px;
-        font-size: 1.3rem;
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
     }
 }
 
