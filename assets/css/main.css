@@ -296,18 +296,18 @@ img { max-width: 100%; height: auto; }
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f9fafb;
-    color: #6b7280;
+    background: #111827;
+    color: white;
     border-radius: 50%;
     transition: all 0.2s ease;
     font-size: 1.4rem;
-    border: 2px solid #e5e7eb;
+    border: 2px solid #111827;
 }
 
 .footer-social a:hover {
-    background: #111827;
+    background: #4b5563;
     color: white;
-    border-color: #111827;
+    border-color: #4b5563;
     transform: translateY(-2px);
 }
 
@@ -477,8 +477,6 @@ img { max-width: 100%; height: auto; }
 .content-main {
     background: white;
     text-align: left;
-    border-top: 1px solid #e5e7eb;
-    padding-top: 2rem;
 }
 
 /* Content List Styling */
