@@ -438,3 +438,270 @@ img { max-width: 100%; height: auto; }
         padding: 2rem 0;
     }
 }
+
+/* ===================================
+   PROJECTS & PUBLICATIONS PAGES
+   =================================== */
+
+/* Content Container */
+.content-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+/* Page Header */
+.content-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.content-title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.content-subtitle {
+    font-size: 1.2rem;
+    color: #4b5563;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* Main Content Area */
+.content-main {
+    background: white;
+}
+
+/* Content List Styling */
+.content-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.content-list__item {
+    padding: 2.5rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    transition: all 0.2s ease;
+}
+
+.content-list__item:last-child {
+    border-bottom: none;
+}
+
+.content-list__item:hover {
+    background: none;
+    border-color: #e5e7eb;
+}
+
+/* Item Header */
+.item-header {
+    margin-bottom: 1.5rem;
+}
+
+.item-header__title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+}
+
+.item-header__meta {
+    color: #6b7280;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+}
+
+.item-header__venue {
+    color: #4b5563;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* Item Content */
+.item-content {
+    margin-bottom: 1.5rem;
+}
+
+.item-content p {
+    color: #4b5563;
+    line-height: 1.7;
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+
+/* Tags */
+.item-tags {
+    margin: 1.5rem 0;
+}
+
+.tag {
+    display: inline-block;
+    padding: 0.35rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-right: 0.6rem;
+    margin-bottom: 0.6rem;
+    background: #f3f4f6;
+    color: #374151;
+    border: 1px solid #d1d5db;
+}
+
+.tag--tech {
+    background: #f3f4f6;
+    color: #374151;
+    border: 1px solid #d1d5db;
+}
+
+/* Item Links */
+.item-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+}
+
+.item-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #4b5563;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s ease;
+    text-decoration: none;
+}
+
+.item-link:hover {
+    color: #111827;
+    border-bottom-color: #111827;
+}
+
+.item-link i {
+    font-size: 0.9rem;
+    color: #6b7280;
+}
+
+.item-link:hover i {
+    color: #111827;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #6b7280;
+}
+
+.empty-state i {
+    font-size: 3rem;
+    color: #9ca3af;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.empty-state h3 {
+    font-size: 1.3rem;
+    color: #4b5563;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.empty-state p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ===================================
+   MOBILE RESPONSIVE
+   =================================== */
+@media (max-width: 768px) {
+    .content-container {
+        padding: 2.5rem 1rem;
+    }
+
+    .content-header {
+        margin-bottom: 2.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .content-title {
+        font-size: 1.8rem;
+    }
+
+    .content-subtitle {
+        font-size: 1.1rem;
+    }
+
+    .content-list__item {
+        padding: 2rem 0;
+    }
+
+    .item-header__title {
+        font-size: 1.2rem;
+    }
+
+    .item-header__meta,
+    .item-header__venue {
+        font-size: 0.9rem;
+    }
+
+    .item-content p {
+        font-size: 0.95rem;
+    }
+
+    .item-links {
+        gap: 1rem;
+    }
+
+    .item-link {
+        font-size: 0.9rem;
+    }
+
+    .empty-state {
+        padding: 3rem 1rem;
+    }
+
+    .empty-state i {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-container {
+        padding: 2rem 1rem;
+    }
+
+    .content-title {
+        font-size: 1.6rem;
+    }
+
+    .content-subtitle {
+        font-size: 1rem;
+    }
+
+    .content-list__item {
+        padding: 1.5rem 0;
+    }
+
+    .item-header__title {
+        font-size: 1.1rem;
+    }
+
+    .item-links {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+}
