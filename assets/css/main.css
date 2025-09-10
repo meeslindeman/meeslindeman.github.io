@@ -84,7 +84,7 @@ img { max-width: 100%; height: auto; }
 .main-nav a::before {
     content: '';
     position: absolute;
-    bottom: -0.75rem;
+    bottom: -0.5rem;
     left: 50%;
     transform: translateX(-50%);
     width: 0;
@@ -475,6 +475,7 @@ img { max-width: 100%; height: auto; }
 /* Main Content Area */
 .content-main {
     background: white;
+    text-align: left;
 }
 
 /* Content List Styling */
@@ -488,6 +489,7 @@ img { max-width: 100%; height: auto; }
     padding: 2.5rem 0;
     border-bottom: 1px solid #e5e7eb;
     transition: all 0.2s ease;
+    text-align: left;
 }
 
 .content-list__item:last-child {
@@ -502,6 +504,7 @@ img { max-width: 100%; height: auto; }
 /* Item Header */
 .item-header {
     margin-bottom: 1.5rem;
+    text-align: left;
 }
 
 .item-header__title {
@@ -510,6 +513,7 @@ img { max-width: 100%; height: auto; }
     color: #111827;
     margin-bottom: 0.75rem;
     line-height: 1.4;
+    text-align: left;
 }
 
 .item-header__meta {
@@ -705,3 +709,4 @@ img { max-width: 100%; height: auto; }
         gap: 0.75rem;
     }
 }
+
