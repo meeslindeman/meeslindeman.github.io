@@ -441,21 +441,21 @@ img { max-width: 100%; height: auto; }
 }
 
 /* ===================================
-   PROJECTS & PUBLICATIONS PAGES
+   COMPACT PROJECTS & PUBLICATIONS PAGES
    =================================== */
 
 /* Content Container */
 .content-container {
     max-width: 900px;
     margin: 0 auto;
-    padding: 3rem 2rem;
+    padding: 2.5rem 2rem;
 }
 
 /* Page Header */
 .content-header {
     text-align: center;
-    margin-bottom: 3rem;
-    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
     border-bottom: 1px solid #e5e7eb;
 }
 
@@ -487,7 +487,7 @@ img { max-width: 100%; height: auto; }
 }
 
 .content-list__item {
-    padding: 2.5rem 0;
+    padding: 1.5rem 0;
     border-bottom: 1px solid #e5e7eb;
     transition: all 0.2s ease;
     text-align: left;
@@ -504,7 +504,7 @@ img { max-width: 100%; height: auto; }
 
 /* Item Header */
 .item-header {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     text-align: left;
 }
 
@@ -512,7 +512,7 @@ img { max-width: 100%; height: auto; }
     font-size: 1.4rem;
     font-weight: 600;
     color: #111827;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     line-height: 1.4;
     text-align: left;
 }
@@ -520,7 +520,7 @@ img { max-width: 100%; height: auto; }
 .item-header__meta {
     color: #6b7280;
     font-size: 1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
     line-height: 1.5;
 }
 
@@ -533,7 +533,7 @@ img { max-width: 100%; height: auto; }
 
 /* Item Content */
 .item-content {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .item-content p {
@@ -545,10 +545,7 @@ img { max-width: 100%; height: auto; }
 
 /* Style links in content to be black with underlines */
 .item-content a,
-.item-header a,
-.resume-item__description a,
-.resume-project__description a,
-.resume-publication__summary a {
+.item-header a {
     color: #111827;
     text-decoration: underline;
     text-decoration-color: #6b7280;
@@ -557,17 +554,14 @@ img { max-width: 100%; height: auto; }
 }
 
 .item-content a:hover,
-.item-header a:hover,
-.resume-item__description a:hover,
-.resume-project__description a:hover,
-.resume-publication__summary a:hover {
+.item-header a:hover {
     color: #111827;
     text-decoration-color: #111827;
 }
 
 /* Tags */
 .item-tags {
-    margin: 1.5rem 0;
+    margin: 1rem 0;
 }
 
 .tag {
@@ -594,7 +588,7 @@ img { max-width: 100%; height: auto; }
     display: flex;
     gap: 1.5rem;
     flex-wrap: wrap;
-    margin-top: 1.5rem;
+    margin-top: 1rem;
 }
 
 .item-link {
@@ -627,7 +621,7 @@ img { max-width: 100%; height: auto; }
 /* Empty State */
 .empty-state {
     text-align: center;
-    padding: 4rem 2rem;
+    padding: 3rem 2rem;
     color: #6b7280;
 }
 
@@ -656,12 +650,12 @@ img { max-width: 100%; height: auto; }
    =================================== */
 @media (max-width: 768px) {
     .content-container {
-        padding: 2.5rem 1rem;
+        padding: 2rem 1rem;
     }
 
     .content-header {
-        margin-bottom: 2.5rem;
-        padding-bottom: 1.5rem;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
     }
 
     .content-title {
@@ -673,7 +667,7 @@ img { max-width: 100%; height: auto; }
     }
 
     .content-list__item {
-        padding: 2rem 0;
+        padding: 1.25rem 0;
     }
 
     .item-header__title {
@@ -698,7 +692,7 @@ img { max-width: 100%; height: auto; }
     }
 
     .empty-state {
-        padding: 3rem 1rem;
+        padding: 2.5rem 1rem;
     }
 
     .empty-state i {
@@ -708,7 +702,7 @@ img { max-width: 100%; height: auto; }
 
 @media (max-width: 480px) {
     .content-container {
-        padding: 2rem 1rem;
+        padding: 1.5rem 1rem;
     }
 
     .content-title {
@@ -720,7 +714,7 @@ img { max-width: 100%; height: auto; }
     }
 
     .content-list__item {
-        padding: 1.5rem 0;
+        padding: 1rem 0;
     }
 
     .item-header__title {
@@ -734,14 +728,14 @@ img { max-width: 100%; height: auto; }
 }
 
 /* ===================================
-   RESUME PAGE STYLING
+   COMPACT RESUME PAGE STYLING
    =================================== */
 
 /* Resume Container */
 .container--resume {
     max-width: 900px;
     margin: 0 auto;
-    padding: 3rem 2rem;
+    padding: 2.5rem 2rem;
 }
 
 /* Resume Header */
@@ -749,8 +743,8 @@ img { max-width: 100%; height: auto; }
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 3rem;
-    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
     border-bottom: 1px solid #e5e7eb;
 }
 
@@ -785,9 +779,9 @@ img { max-width: 100%; height: auto; }
 
 /* Resume Sections */
 .resume-section {
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     border-bottom: 1px solid #e5e7eb;
-    padding-bottom: 2rem;
+    padding-bottom: 1.5rem;
     text-align: left;
 }
 
@@ -804,7 +798,7 @@ img { max-width: 100%; height: auto; }
     font-size: 1.5rem;
     font-weight: 600;
     color: #111827;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .resume-section__title i {
@@ -818,8 +812,8 @@ img { max-width: 100%; height: auto; }
 
 /* Resume Items (Jobs, Education, etc.) */
 .resume-item {
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
     border-bottom: 1px solid #f3f4f6;
 }
 
@@ -833,7 +827,7 @@ img { max-width: 100%; height: auto; }
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .resume-item__main {
@@ -876,7 +870,7 @@ img { max-width: 100%; height: auto; }
 
 /* Resume Projects */
 .resume-project {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid #f3f4f6;
 }
@@ -898,18 +892,18 @@ img { max-width: 100%; height: auto; }
 .resume-project__meta {
     color: #6b7280;
     font-size: 0.9rem;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
 }
 
 .resume-project__description {
     color: #4b5563;
     line-height: 1.7;
     font-size: 1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .resume-project__tags {
-    margin-top: 1rem;
+    margin-top: 0.75rem;
 }
 
 /* Style links in resume content to be black with underlines */
@@ -932,8 +926,8 @@ img { max-width: 100%; height: auto; }
 
 /* Resume Publications */
 .resume-publication {
-    margin-bottom: 2rem;
-    padding-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 1rem;
     border-bottom: 1px solid #f3f4f6;
 }
 
@@ -961,7 +955,7 @@ img { max-width: 100%; height: auto; }
     color: #4b5563;
     font-size: 0.95rem;
     font-weight: 500;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
 }
 
 .resume-publication__summary {
@@ -974,7 +968,7 @@ img { max-width: 100%; height: auto; }
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    gap: 1.5rem;
 }
 
 .skill-category {
@@ -985,7 +979,7 @@ img { max-width: 100%; height: auto; }
     font-size: 1rem;
     font-weight: 600;
     color: #111827;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
 }
 
 .skill-category__tags {
@@ -1070,13 +1064,15 @@ img { max-width: 100%; height: auto; }
    =================================== */
 @media (max-width: 768px) {
     .container--resume {
-        padding: 2.5rem 1rem;
+        padding: 2rem 1rem;
     }
 
     .resume-header {
         flex-direction: column;
-        gap: 1.5rem;
+        gap: 1.25rem;
         text-align: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.25rem;
     }
 
     .resume-header__actions {
@@ -1116,17 +1112,22 @@ img { max-width: 100%; height: auto; }
 
     .skills-grid {
         grid-template-columns: 1fr;
-        gap: 1.5rem;
+        gap: 1.25rem;
     }
 
     .resume-section__title {
         font-size: 1.3rem;
     }
+
+    .resume-section {
+        margin-bottom: 1.5rem;
+        padding-bottom: 1.25rem;
+    }
 }
 
 @media (max-width: 480px) {
     .container--resume {
-        padding: 2rem 1rem;
+        padding: 1.5rem 1rem;
     }
 
     .resume-header__title {
@@ -1149,5 +1150,10 @@ img { max-width: 100%; height: auto; }
 
     .resume-section__title {
         font-size: 1.2rem;
+    }
+
+    .resume-section {
+        margin-bottom: 1.25rem;
+        padding-bottom: 1rem;
     }
 }
