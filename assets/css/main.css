@@ -152,7 +152,7 @@ img { max-width: 100%; height: auto; }
 }
 
 .profile-name {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 600;
     color: #111827;
     margin-bottom: 0.5rem;
@@ -758,6 +758,7 @@ img { max-width: 100%; height: auto; }
 /* Resume Content */
 .resume-content {
     background: white;
+    text-align: left;
 }
 
 /* Resume Sections */
@@ -765,6 +766,7 @@ img { max-width: 100%; height: auto; }
     margin-bottom: 3rem;
     border-bottom: 1px solid #e5e7eb;
     padding-bottom: 2rem;
+    text-align: left;
 }
 
 .resume-section:last-child {
