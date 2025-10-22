@@ -73,6 +73,7 @@
     {%- elsif include.type == "project" -%}
       {%- assign code_url = item.code | to_s | strip -%}
       {%- assign website_url = item.url | to_s | strip -%}
+      {%- assign doc_url = item.document_url | to_s | strip -%}
 
       {%- if code_url != "" or website_url != "" -%}
         <div class="item-links">
