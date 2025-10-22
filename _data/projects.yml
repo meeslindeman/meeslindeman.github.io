@@ -5,7 +5,7 @@ projects:
     technologies: Python, PyTorch, Hugging Face Transformers, Llama.cpp
     misc: Co-authored with M. van der Brugge, R. Figge, M. Hagenauer, and T. Wiegman
     code: "https://github.com/matthias-hagenauer/DL4NLP"
-    document_url: assets/docs/dl4nlp.pdf
+    # document_url: assets/docs/dl4nlp.pdf
     description: Explored how model quantization impacts machine translation (MT) performance across varying sentence difficulty levels. Using quantized variants (8-, 4-, and 2-bit) of TowerMistral and Gemma-3, evaluated across four languages, we examine how reduced precision influences both semantic and surface-level translation quality.
     featured: true
     date: 2025-10-13
@@ -16,7 +16,7 @@ projects:
     technologies: Python, PyTorch, Docker, Singularity
     misc: Co-authored with R. Figge, S. Gunneweg, and J. de Heus
     code: "https://github.com/sjoerdgunneweg/mast3r-rvt2-integration"
-    document_url: assets/docs/dl2.pdf
+    # document_url: assets/docs/dl2.pdf
     description: Investigated whether learned 3D geometry from RGB images can replace depth sensors in few-shot robotic manipulation. Integrated MASt3R, a state-of-the-art 3D reconstruction method, into the RVT-2 robotic vision pipeline to evaluate performance without RGB-D sensors. Demonstrated that learned geometry can enable robust manipulation under challenging visual conditions. Possibly offering a more flexible, cost-effective alternative to traditional calibrated setups.
     featured: true
     date: 2025-01-15
