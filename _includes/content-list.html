@@ -86,8 +86,8 @@
               <i class="fas fa-globe"></i> Website
             </a>
           {%- endif -%}
-          {%- if document_url != "" -%}
-            <a href="{{ document_url }}" target="_blank" rel="noopener noreferrer" class="item-link">
+          {%- if doc_url != "" -%}
+            <a href="{{ doc_url | relative_url }}" target="_blank" rel="noopener noreferrer" class="item-link">
               <i class="fas fa-file-alt"></i> Report
             </a>
           {%- endif -%}
