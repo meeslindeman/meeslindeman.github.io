@@ -1,16 +1,19 @@
 projects:
-  - project: BitcoinHeist ML-Ops
+  - project: BitcoinHeist MLOps
     role: Production-Ready ML/AI Course Project
     duration: 2025
     technologies: Python, PySpark, MLflow, Airflow, Docker, Flask, Prometheus, Grafana
     code: "https://github.com/meeslindeman/bitcoinheist-mlops"
     description: >
-      Built an end-to-end, production-style ML pipeline for detecting ransomware-related
-      Bitcoin addresses. Implemented distributed preprocessing, feature engineering,
-      model training with experiment tracking, API-based inference, and monitoring with
-      drift detection using PSI metrics.
+      Designed and implemented a production-style ML system for detecting
+      ransomware-related Bitcoin addresses. Built a full
+      MLOps pipeline covering data ingestion, distributed preprocessing, feature engineering,
+      model training, experiment tracking, API-based inference, telemetry, and drift monitoring.
+      The system is fully containerized and orchestrated with Airflow, exposes a live prediction
+      service, and monitors data quality and population drift using PSI metrics visualized
+      in Grafana.
     featured: true
-    date: 2025-02-01
+    date: 2025-12-16
 
   - project: Model Compression for Machine Translation in Large Language Models
     role: Deep Learning for NLP Course Project
