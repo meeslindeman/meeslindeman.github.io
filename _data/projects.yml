@@ -1,4 +1,17 @@
 projects:
+  - project: BitcoinHeist ML-Ops
+    role: Production-Ready ML/AI Course Project
+    duration: 2025
+    technologies: Python, PySpark, MLflow, Airflow, Docker, Flask, Prometheus, Grafana
+    code: "https://github.com/meeslindeman/bitcoinheist-mlops"
+    description: >
+      Built an end-to-end, production-style ML pipeline for detecting ransomware-related
+      Bitcoin addresses. Implemented distributed preprocessing, feature engineering,
+      model training with experiment tracking, API-based inference, and monitoring with
+      drift detection using PSI metrics.
+    featured: true
+    date: 2025-02-01
+
   - project: Model Compression for Machine Translation in Large Language Models
     role: Deep Learning for NLP Course Project
     duration: 2025
@@ -6,7 +19,10 @@ projects:
     misc: Co-authored with M. van der Brugge, R. Figge, M. Hagenauer, and T. Wiegman
     code: "https://github.com/matthias-hagenauer/DL4NLP"
     # document_url: assets/docs/dl4nlp.pdf
-    description: Explored how model quantization impacts machine translation (MT) performance across varying sentence difficulty levels. Using quantized variants (8-, 4-, and 2-bit) of TowerMistral and Gemma-3, evaluated across four languages, we examine how reduced precision influences both semantic and surface-level translation quality.
+    description: > 
+      Explored how model quantization impacts machine translation (MT) performance across varying sentence difficulty levels. 
+      Using quantized variants (8-, 4-, and 2-bit) of TowerMistral and Gemma-3, evaluated across four languages, 
+      we examine how reduced precision influences both semantic and surface-level translation quality.
     featured: true
     date: 2025-10-13
 

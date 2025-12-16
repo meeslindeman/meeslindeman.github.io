@@ -14,3 +14,8 @@ news:
     type: "conference"
     title: "MLRC2025"
     description: "We had the opportunity to present our work at the MLRC conference at Princeton University."
+
+  - date: 2026-12-16
+    type: "project"
+    title: "ELLIS Honours Programme"
+    description: "I have been accepted into the ELLIS Amsterdam MSc Honours Programme and will be doing a research visit at the Computer Vision Center (CVC), Barcelona, working with the Vision, Language and Reading (VLR) group as part of my MSc thesis."
