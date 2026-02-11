@@ -66,13 +66,13 @@ certificates:
 
 
 extracurricular:
-  - organization: ELLIS Amsterdam
-    role: Honours Programme
+  - organization: Honours Programme
+    role: ELLIS Unit Amsterdam
     year: 2026
     url: "https://ivi.fnwi.uva.nl/ellis/funding/ellis-msc-honours-programme/"
     summary: As a selected student in the ELLIS Honours Programme, I had opportunity to conduct an independent research project and MSc thesis under joint ELLIS supervision, including a research visit to the Computer Vision Center (CVC), Barcelona, with the Vision, Language and Reading (VLR) group.
  
-  - organization: Semester High School
+  - organization: EF High School Exchange Year
     role: Iowa, USA
     year: 2017 &mdash; 2018
     url: ""
