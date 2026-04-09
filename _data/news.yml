@@ -4,11 +4,6 @@ news:
     title: "Paper accepted to TMLR"
     description: "Our reproducibility study on fairness attacks in Graph Neural Networks has been accepted."
     link: "https://openreview.net/pdf?id=l5fXUKi8GO"
-  
-  # - date: 2025-08-18
-  #   type: "misc"
-  #   title: "Launched new GitHub Pages website"
-  #   description: "Created a new website over the summer."
 
   - date: 2025-08-22
     type: "conference"
