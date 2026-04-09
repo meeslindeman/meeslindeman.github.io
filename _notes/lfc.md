@@ -28,6 +28,24 @@ In this example we pass a random point $x = [1,2]$ trough a linear layer $FC^{2 
   <figcaption>Figure 1: Description here</figcaption>
 </figure>
 
+If we were to place multiple layers $D_{in} \rightarrow D_{out} \rightarrow \ldots$, each layer produces a new point in a new space whose coordinates are the distances from the previous layer's representation to the current layer's hyperplanes.
+
+## Lorentz Model
+
+The $n$-dimensional Lorentz model (hyperboloid model) of hyperbolic space:
+
+$$ \mathcal{L}^n_k = \{ x \in \mathbb{R}^{n+1} | \langle x,x\rangle_L = 1/k, x_0 >0   \} $$
+
+With the Minkowski inner product:
+
+$$ x \circ x = -x_t y_t + x_s^{\top} y_s$$
+
+The hyperboloid is a curved surface embedded in flat Minkowski space $\mathbb{R}^{n+1}$. 
+
+## Three approaches to a hyperbolic linear layer
+
+### Approach 1: Tangent space (Ganea[^1], Shimizu[^1])
 
 
 
+[^1]: Nair, V. & Hinton, G. (2010). Rectified Linear Units Improve Restricted Boltzmann Machines. *ICML*.
