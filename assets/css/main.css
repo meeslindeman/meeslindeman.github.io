@@ -268,6 +268,8 @@ img { max-width: 100%; height: auto; }
     padding: 2.5rem 2rem;
 }
 
+/* Shared page header style (projects, publications, notes index) */
+.page-header,
 .content-header {
     text-align: center;
     margin-bottom: 3rem;
@@ -275,7 +277,7 @@ img { max-width: 100%; height: auto; }
     border-bottom: 1px solid #e5e7eb;
 }
 
-/* CONSISTENT: Page titles */
+.page-header__title,
 .content-title {
     font-size: 2.2rem;
     font-weight: 600;
@@ -283,8 +285,9 @@ img { max-width: 100%; height: auto; }
     margin-bottom: 0.5rem;
 }
 
+.page-header__subtitle,
 .content-subtitle {
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #4b5563;
     line-height: 1.5;
     margin: 0;
@@ -855,7 +858,7 @@ img { max-width: 100%; height: auto; }
 }
 
 .note-title {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: 600;
     color: #111827;
     line-height: 1.25;
@@ -1128,6 +1131,7 @@ img { max-width: 100%; height: auto; }
         padding-bottom: 1rem;
     }
 
+    .page-header__title,
     .content-title {
         font-size: 1.8rem;
     }
@@ -1201,7 +1205,7 @@ img { max-width: 100%; height: auto; }
     }
 
     .note-title {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
     }
 
     .note-body h2 {
@@ -1227,6 +1231,7 @@ img { max-width: 100%; height: auto; }
         padding: 1.5rem 1rem;
     }
 
+    .page-header__title,
     .content-title {
         font-size: 1.6rem;
     }
