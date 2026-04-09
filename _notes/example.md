@@ -1,13 +1,15 @@
 ---
-title: Activation Functions
+title: Lorentz Linear Layers
 date: 2026-04-09
-description: A reference on common activation functions in neural networks — their definitions, properties, and when to use them.
-tags: [deep learning, neural networks]
+description: Blabla
+tags: [something]
 ---
 
 Activation functions introduce non-linearity into neural networks, enabling them to learn complex mappings. Without them, a deep network would collapse to a single linear transformation.
 
 ## ReLU
+
+![alt text](/assets/images/notes/your-image.png)
 
 The **Rectified Linear Unit** is the most widely used activation function:
 
@@ -55,6 +57,11 @@ where $\Phi(x)$ is the CDF of the standard normal distribution. In practice it i
 $$\text{GELU}(x) \approx 0.5x\left(1 + \tanh\!\left[\sqrt{\frac{2}{\pi}}\left(x + 0.044715x^3\right)\right]\right)$$
 
 Unlike ReLU, GELU is smooth and non-monotonic, which seems to help in attention-based models.
+
+The ReLU activation function[^1] is widely used in practice.
+
+[^1]: Nair, V. & Hinton, G. (2010). Rectified Linear Units Improve Restricted Boltzmann Machines. *ICML*.
+
 
 ## Comparison
 
