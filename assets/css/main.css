@@ -262,6 +262,11 @@ img { max-width: 100%; height: auto; }
 /* ===================================
    PROJECTS & PUBLICATIONS PAGES
    =================================== */
+.container--page {
+    max-width: 900px;
+    text-align: left;
+}
+
 .content-container {
     max-width: 900px;
     margin: 0 auto;
@@ -433,19 +438,12 @@ img { max-width: 100%; height: auto; }
 }
 
 .resume-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    text-align: center;
     margin-bottom: 3rem;
     padding-bottom: 1.5rem;
     border-bottom: 1px solid #e5e7eb;
 }
 
-.resume-header__info {
-    flex: 1;
-}
-
-/* CONSISTENT: Page titles */
 .resume-header__title {
     font-size: 2.2rem;
     font-weight: 600;
@@ -455,14 +453,16 @@ img { max-width: 100%; height: auto; }
 
 .resume-header__subtitle {
     color: #4b5563;
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 1.5;
+    margin-bottom: 1.25rem;
 }
 
 .resume-header__actions {
     display: flex;
     gap: 1rem;
     align-items: center;
+    justify-content: center;
 }
 
 .resume-content {
@@ -1150,16 +1150,8 @@ img { max-width: 100%; height: auto; }
     }
 
     .resume-header {
-        flex-direction: column;
-        gap: 1.25rem;
-        text-align: center;
         margin-bottom: 2.5rem;
         padding-bottom: 1.25rem;
-    }
-
-    .resume-header__actions {
-        justify-content: center;
-        width: 100%;
     }
 
     .resume-header__title {

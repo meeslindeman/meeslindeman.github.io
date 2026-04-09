@@ -1,8 +1,6 @@
 <header class="resume-header">
-    <div class="resume-header__info">
-        <h1 class="resume-header__title">{{ page.title | default: site.author.name }}</h1>
-        <p class="resume-header__subtitle">{{ page.subtitle | default: site.author.title }}</p>
-    </div>
+    <h1 class="resume-header__title">{{ page.title | default: site.author.name }}</h1>
+    <p class="resume-header__subtitle">{{ page.subtitle | default: site.author.title }}</p>
     <div class="resume-header__actions">
         <a href="{{ '/assets/docs/resume.pdf' | relative_url }}" class="btn btn--download" target="_blank">
             <i class="fas fa-download"></i>
