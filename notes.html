@@ -1,0 +1,54 @@
+---
+layout: default
+title: Notes
+description: Study notes and reference material on topics in machine learning, mathematics, and AI.
+permalink: /notes/
+---
+
+<div class="content-container">
+    <header class="content-header">
+        <h1 class="content-title">Notes</h1>
+        <p class="content-subtitle">Study material and reference notes.</p>
+    </header>
+
+    <main class="content-main">
+        {% assign sorted_notes = site.notes | sort: 'date' | reverse %}
+        {% if sorted_notes.size > 0 %}
+            <ul class="content-list">
+                {% for note in sorted_notes %}
+                <li class="content-list__item">
+                    <div class="item-header">
+                        <h2 class="item-header__title">
+                            <a href="{{ note.url | relative_url }}">{{ note.title }}</a>
+                        </h2>
+                        <div class="item-header__meta">
+                            {% if note.date %}
+                                <span>{{ note.date | date: "%B %-d, %Y" }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    {% if note.description %}
+                        <div class="item-content">
+                            <p>{{ note.description }}</p>
+                        </div>
+                    {% endif %}
+
+                    {% if note.tags and note.tags.size > 0 %}
+                        <div class="item-tags">
+                            {% for tag in note.tags %}
+                                <span class="tag">{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            {% include empty-state.html
+                icon="fa-book-open"
+                title="No notes yet"
+                message="Notes and study material will appear here." %}
+        {% endif %}
+    </main>
+</div>

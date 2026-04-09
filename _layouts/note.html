@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include head.html %}
+<body>
+    {% include header.html %}
+
+    <div class="note-container">
+        <div class="note-back">
+            <a href="{{ '/notes/' | relative_url }}" class="note-back__link">
+                <i class="fas fa-arrow-left"></i> Notes
+            </a>
+        </div>
+
+        <article class="note">
+            <header class="note-header">
+                <h1 class="note-title">{{ page.title }}</h1>
+
+                <div class="note-meta">
+                    {% if page.date %}
+                        <span class="note-meta__date">{{ page.date | date: "%B %-d, %Y" }}</span>
+                    {% endif %}
+                    {% if page.tags and page.tags.size > 0 %}
+                        <div class="note-meta__tags">
+                            {% for tag in page.tags %}
+                                <span class="tag">{{ tag }}</span>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                {% if page.description %}
+                    <p class="note-description">{{ page.description }}</p>
+                {% endif %}
+            </header>
+
+            <div class="note-body">
+                {{ content }}
+            </div>
+        </article>
+    </div>
+
+    {% include footer.html %}
+
+    <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+
+    <!-- KaTeX for math rendering -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.querySelector('.note-body'), {
+                delimiters: [
+                    { left: '$$', right: '$$', display: true },
+                    { left: '$', right: '$', display: false },
+                    { left: '\\[', right: '\\]', display: true },
+                    { left: '\\(', right: '\\)', display: false }
+                ],
+                throwOnError: false
+            });
+        });
+    </script>
+</body>
+</html>
