@@ -23,7 +23,10 @@ So, a linear layer with $D_{out} = m$ places $m$ hyperplanes in the $D_{in}$-dim
 
 In this example we pass a random point $x = [1,2]$ trough a linear layer $FC^{2 \times 3}$ without bias. 
 
-![alt text](/assets/images/notes/hyperplanes.png)
+<figure>
+  <img src="/assets/images/notes/hyperplanes.png">
+  <figcaption>Figure 1: Description here</figcaption>
+</figure>
 
 
 
