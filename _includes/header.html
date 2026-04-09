@@ -11,12 +11,14 @@
         <nav class="main-nav">
             <ul>
                 {% for nav_item in site.navigation %}
+                {% if nav_item.enabled != false %}
                 <li>
-                    <a href="{{ nav_item.url | relative_url }}" 
+                    <a href="{{ nav_item.url | relative_url }}"
                        {% if page.url == nav_item.url or (nav_item.url != '/' and page.url contains nav_item.url) %}class="active"{% endif %}>
                         {{ nav_item.title }}
                     </a>
                 </li>
+                {% endif %}
                 {% endfor %}
             </ul>
         </nav>

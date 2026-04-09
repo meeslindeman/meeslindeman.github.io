@@ -87,6 +87,7 @@ navigation:
     url: /projects/
   - title: Notes
     url: /notes/
+    enabled: true
 
 # SEO and social
 google_analytics: # Add your GA tracking ID
