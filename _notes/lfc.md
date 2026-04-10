@@ -24,7 +24,7 @@ So, a linear layer with $D_{out} = m$ places $m$ hyperplanes in the $D_{in}$-dim
 In this example we pass a random point $x = [1,2]$ trough a linear layer $FC^{2 \times 3}$ without bias. 
 
 <figure>
-  <img src="/assets/images/notes/hyperplanes.png">
+  {% include notes/euclidean.html %}
   <figcaption>Figure 1: Visualisation of the point-to-hyperplane formulation.</figcaption>
 </figure>
 
@@ -77,7 +77,7 @@ Because $v$ contains $\sinh(\sqrt{k} \cdot b \cdot \|u\|)$ and $\cosh(\ldots)$, 
 Similarly to the Euclidean version, we pass a random point $x$ trough a Lorentz linear layer $LFC^{2 \times 3}$ without bias. 
 
 <figure>
-  <img src="/assets/images/notes/lorentz_hyperplanes.png">
+  {% include notes/lorentz.html %}
   <figcaption>Figure 2: Visualisation of the hyperbolic point-to-hyperplane formulation.</figcaption>
 </figure>
 

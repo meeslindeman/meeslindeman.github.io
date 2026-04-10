@@ -1,0 +1,159 @@
+<body>
+<h2>Euclidean Hyperplanes</h2>
+<p class="sub">3 lines in ℝ² — drag <strong style="color:#378ADD">x</strong> to update signed distances</p>
+<div class="layout">
+  <canvas id="ce"></canvas>
+  <div class="sidebar">
+    <div class="z-card" id="c0" style="border-color:#7F77DD">
+      <div class="z-label">z₁ = d(x, H₁)</div>
+      <div class="z-value" id="z0" style="color:#7F77DD">—</div>
+    </div>
+    <div class="z-card" id="c1" style="border-color:#D85A30">
+      <div class="z-label">z₂ = d(x, H₂)</div>
+      <div class="z-value" id="z1" style="color:#D85A30">—</div>
+    </div>
+    <div class="z-card" id="c2" style="border-color:#BA7517">
+      <div class="z-label">z₃ = d(x, H₃)</div>
+      <div class="z-value" id="z2" style="color:#BA7517">—</div>
+    </div>
+  </div>
+</div>
+<div class="legend">
+  <div class="leg"><div class="leg-line" style="background:#7F77DD"></div>H₁</div>
+  <div class="leg"><div class="leg-line" style="background:#D85A30"></div>H₂</div>
+  <div class="leg"><div class="leg-line" style="background:#BA7517"></div>H₃</div>
+  <div class="leg"><div class="leg-dot" style="background:#378ADD;border:1.5px solid #185FA5"></div>input x</div>
+</div>
+
+<script>
+const H_COLORS = ['#7F77DD','#D85A30','#BA7517'];
+const X_COL = '#378ADD';
+const axisCol = 'rgba(255,255,255,0.12)';
+const textCol = 'rgba(255,255,255,0.7)';
+
+const planes = [
+  { a:1,    b:0.5,  c:-0.3, col:H_COLORS[0], label:'H₁' },
+  { a:-0.3, b:1,    c: 0.4, col:H_COLORS[1], label:'H₂' },
+  { a:0.7,  b:-0.8, c:-0.1, col:H_COLORS[2], label:'H₃' },
+];
+
+let px = 0.5, py = 0.3;
+let dragging = false;
+
+const c = document.getElementById('ce');
+let W, H, sc, cx, cy;
+
+function resize() {
+  const avail = Math.min(window.innerWidth - 200, window.innerHeight - 100, 400);
+  W = avail; H = avail;
+  c.width = W * devicePixelRatio;
+  c.height = H * devicePixelRatio;
+  c.style.width = W + 'px';
+  c.style.height = H + 'px';
+  cx = W / 2; cy = H / 2;
+  sc = Math.min(W, H) * 0.38;
+  draw();
+}
+
+function draw() {
+  const ctx = c.getContext('2d');
+  ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+  ctx.clearRect(0, 0, W, H);
+
+  // axes
+  ctx.strokeStyle = axisCol; ctx.lineWidth = 1; ctx.setLineDash([]);
+  ctx.beginPath(); ctx.moveTo(20, cy); ctx.lineTo(W-20, cy); ctx.stroke();
+  ctx.beginPath(); ctx.moveTo(cx, 20); ctx.lineTo(cx, H-20); ctx.stroke();
+  ctx.fillStyle = textCol; ctx.font = '11px sans-serif';
+  ctx.fillText('x₁', W-16, cy-5);
+  ctx.fillText('x₂', cx+5, 16);
+
+  // planes
+  planes.forEach(({ a, b, c: cc, col, label }) => {
+    const norm = Math.sqrt(a*a + b*b);
+    ctx.strokeStyle = col; ctx.lineWidth = 2; ctx.setLineDash([]);
+    ctx.beginPath();
+    for (let t = -2.5; t <= 2.5; t += 0.01) {
+      const x = -b/norm*t - a*cc/(norm*norm);
+      const y =  a/norm*t - b*cc/(norm*norm);
+      const sx = cx + x*sc, sy = cy - y*sc;
+      t <= -2.49 ? ctx.moveTo(sx,sy) : ctx.lineTo(sx,sy);
+    }
+    ctx.stroke();
+    const ex = -b/norm*2.2 - a*cc/(norm*norm);
+    const ey =  a/norm*2.2 - b*cc/(norm*norm);
+    ctx.fillStyle = col; ctx.font = '12px sans-serif';
+    ctx.fillText(label, cx+ex*sc+4, cy-ey*sc);
+  });
+
+  // distance lines + foot marks
+  planes.forEach(({ a, b, c: cc, col }) => {
+    const norm = Math.sqrt(a*a+b*b);
+    const dist = (a*px + b*py + cc) / norm;
+    const fx = px - a*dist/norm;
+    const fy = py - b*dist/norm;
+    ctx.strokeStyle = X_COL; ctx.lineWidth = 1; ctx.setLineDash([4,3]);
+    ctx.beginPath(); ctx.moveTo(cx+px*sc, cy-py*sc); ctx.lineTo(cx+fx*sc, cy-fy*sc); ctx.stroke();
+    ctx.setLineDash([]);
+    const perp_x = -b/norm, perp_y = a/norm;
+    ctx.strokeStyle = col; ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(cx+fx*sc - perp_x*5, cy-fy*sc + perp_y*5);
+    ctx.lineTo(cx+fx*sc + perp_x*5, cy-fy*sc - perp_y*5);
+    ctx.stroke();
+  });
+
+  // point
+  ctx.fillStyle = X_COL; ctx.strokeStyle = '#185FA5'; ctx.lineWidth = 1.5; ctx.setLineDash([]);
+  ctx.beginPath(); ctx.arc(cx+px*sc, cy-py*sc, 7, 0, 2*Math.PI); ctx.fill(); ctx.stroke();
+  ctx.fillStyle = textCol; ctx.font = '13px sans-serif';
+  ctx.fillText('x', cx+px*sc+10, cy-py*sc-4);
+
+  // update sidebar
+  planes.forEach(({ a, b, c: cc }, i) => {
+    const norm = Math.sqrt(a*a+b*b);
+    const dist = (a*px + b*py + cc) / norm;
+    const sign = dist >= 0 ? '+' : '−';
+    document.getElementById('z'+i).textContent = sign + Math.abs(dist).toFixed(3);
+  });
+}
+
+function toWorld(ex, ey) {
+  const rect = c.getBoundingClientRect();
+  return { wx: (ex - rect.left - cx) / sc, wy: -(ey - rect.top - cy) / sc };
+}
+
+function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
+
+c.addEventListener('mousedown', e => {
+  const { wx, wy } = toWorld(e.clientX, e.clientY);
+  const dx = wx - px, dy = wy - py;
+  if (Math.sqrt(dx*dx+dy*dy) < 12/sc) { dragging = true; e.preventDefault(); }
+});
+window.addEventListener('mousemove', e => {
+  if (!dragging) return;
+  const { wx, wy } = toWorld(e.clientX, e.clientY);
+  px = clamp(wx, -1.8, 1.8); py = clamp(wy, -1.8, 1.8);
+  draw();
+});
+window.addEventListener('mouseup', () => dragging = false);
+
+c.addEventListener('touchstart', e => {
+  const t = e.touches[0];
+  const { wx, wy } = toWorld(t.clientX, t.clientY);
+  const dx = wx - px, dy = wy - py;
+  if (Math.sqrt(dx*dx+dy*dy) < 18/sc) { dragging = true; e.preventDefault(); }
+}, { passive: false });
+window.addEventListener('touchmove', e => {
+  if (!dragging) return;
+  const t = e.touches[0];
+  const { wx, wy } = toWorld(t.clientX, t.clientY);
+  px = clamp(wx, -1.8, 1.8); py = clamp(wy, -1.8, 1.8);
+  draw(); e.preventDefault();
+}, { passive: false });
+window.addEventListener('touchend', () => dragging = false);
+
+window.addEventListener('resize', () => setTimeout(resize, 50));
+resize();
+</script>
+</body>
