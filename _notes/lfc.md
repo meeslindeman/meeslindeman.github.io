@@ -64,10 +64,12 @@ The scaled version (used in the layer) moves the norm inside arcsinh:
 
 $$ z = (1/\sqrt{k}) \cdot \text{arcsinh}(\sqrt{k} \cdot (x \circ v)) $$
 
-Finally, activation $h$ is applied to $z$ and a point on ... is constructed as the unique point whose signed distances to the $D_{out}$ coordinate hyperplanes equal $h(z)$:
+Finally, activation $h$ is applied to $z$ and a point on the manifold is constructed as the unique point whose signed distances to the $D_{out}$ coordinate hyperplanes equal $h(z)$:
 
 $$ \overline{y} = h(z) = h(V \cdot I_{1,n} \cdot x)$$
+
 $$ y_0 = \sqrt{1/k + \| \overline{y} \|^2_E}$$
+
 $$ y = (y_0, \overline{y}) \in \mathcal{L}^{D_{out}}_k $$
 
 Because $v$ contains $\sinh(\sqrt{k} \cdot b \cdot \|u\|)$ and $\cosh(\ldots)$, the entries of $V$ grow exponentially with $b$. Linear increase in $b$ so exponential growth in spatial output which results in linear growth in hyperbolic distance.

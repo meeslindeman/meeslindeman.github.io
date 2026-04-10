@@ -37,6 +37,7 @@
 
 {% raw %}
 <script>
+(function(){
 const H_COLORS = ['#7F77DD','#D85A30','#BA7517'];
 const X_COL = '#378ADD';
 const axisCol = 'rgba(0,0,0,0.15)';
@@ -161,5 +162,7 @@ window.addEventListener('touchend', () => dragging = false);
 
 window.addEventListener('resize', () => setTimeout(resize, 50));
 document.addEventListener('DOMContentLoaded', resize);
+})();
+
 </script>
 {% endraw %}
