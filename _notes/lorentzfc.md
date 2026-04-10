@@ -87,7 +87,7 @@ Similarly to the Euclidean version, we pass a random point $x$ trough a Lorentz 
 
 The concept is similar, hyperplanes, and thus parameters are Euclidean (optimised with Adam in $ℝⁿ$), but they specify geodesic boundaries on the manifold. The layer measures hyperbolic distances to those boundaries and maps the result back to the manifold. Same job as a Euclidean layer; hyperbolic mechanism.
 
-### &nbsp;
+---
 
 [^1]: van der Klis, R., Torres, R. C., van Spengler, M., Ding, Y., Hofmann, T., & Mettes, P. (2026). Fast and Geometrically Grounded Lorentz Neural Networks. arXiv preprint arXiv:2601.21529.
 

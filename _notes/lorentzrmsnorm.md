@@ -33,8 +33,8 @@ where gyroscalar multiplication $t \odot x = \text{Exp}_o(t \cdot \text{Log}_o(x
 
 $$ d_{\mathcal{L}}(o, t \odot x) = t d_{\mathcal{L}}(o,x)$$
 
-if follows that $\| \text{LRMSNorm}(x)\|_L$ has geodesic radius $\gamma$ exactly. As $k \to 0$, LRMSNorm reduces to Euclidean RMSNorm with a scalar $\gamma$. 
+if follows that $\text{LRMSNorm}(x)$ has geodesic radius $\gamma$ exactly. As $k \to 0$, LRMSNorm reduces to Euclidean RMSNorm with a scalar $\gamma$. 
 
-### &nbsp;
+---
 
 [^1]: Zhang, B., & Sennrich, R. (2019). Root mean square layer normalization. Advances in neural information processing systems, 32.
