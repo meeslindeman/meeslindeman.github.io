@@ -21,12 +21,14 @@ So, a linear layer with $D_{out} = m$ places $m$ hyperplanes in the $D_{in}$-dim
 
 ### Example
 
-In this example we pass a random point $x = [1,2]$ trough a linear layer $FC^{2 \times 3}$ without bias. 
+In this example we pass a random point $x$ trough a linear layer $FC^{2 \times 3}$ without bias. 
 
 <figure>
   {% include notes/euclidean.html %}
   <figcaption>Figure 1: Visualisation of the point-to-hyperplane formulation.</figcaption>
 </figure>
+
+The layer's output is defined by the signed distances, scaled with the norm of the hyperplane vector.
 
 If we were to place multiple layers $D_{in} \rightarrow D_{out} \rightarrow \ldots$, each layer produces a new point in a new space whose coordinates are the distances from the previous layer's representation to the current layer's hyperplanes.
 
@@ -85,9 +87,7 @@ Similarly to the Euclidean version, we pass a random point $x$ trough a Lorentz 
 
 The concept is similar, hyperplanes, and thus parameters are Euclidean (optimised with Adam in $ℝⁿ$), but they specify geodesic boundaries on the manifold. The layer measures hyperbolic distances to those boundaries and maps the result back to the manifold. Same job as a Euclidean layer; hyperbolic mechanism.
 
----
-
-<br>
+### &nbsp;
 
 [^1]: van der Klis, R., Torres, R. C., van Spengler, M., Ding, Y., Hofmann, T., & Mettes, P. (2026). Fast and Geometrically Grounded Lorentz Neural Networks. arXiv preprint arXiv:2601.21529.
 
