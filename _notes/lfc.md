@@ -60,6 +60,8 @@ The signed hyperbolic distance from $x ∈ \mathcal{L}^n_k$ to $H_v$:
 
 $$ d^{\text{signed}}  (x, H_v) = (1/\sqrt{k}) \cdot \text{arcsinh}(\sqrt{k} \cdot (x \circ v) / \|v\|_L) $$
 
+TEST
+
 The scaled version (used in the layer) moves the norm inside arcsinh:
 
 $$ z = (1/\sqrt{k}) \cdot \text{arcsinh}(\sqrt{k} \cdot (x \circ v)) $$
