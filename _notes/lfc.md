@@ -41,11 +41,3 @@ With the Minkowski inner product:
 $$ x \circ x = -x_t y_t + x_s^{\top} y_s$$
 
 The hyperboloid is a curved surface embedded in flat Minkowski space $\mathbb{R}^{n+1}$. 
-
-## Three approaches to a hyperbolic linear layer
-
-### Approach 1: Tangent space (Ganea[^1], Shimizu[^1])
-
-
-
-[^1]: Nair, V. & Hinton, G. (2010). Rectified Linear Units Improve Restricted Boltzmann Machines. *ICML*.
