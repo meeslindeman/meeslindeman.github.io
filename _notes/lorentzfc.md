@@ -87,5 +87,7 @@ The concept is similar, hyperplanes, and thus parameters are Euclidean (optimise
 
 ---
 
+<br>
+
 [^1]: van der Klis, R., Torres, R. C., van Spengler, M., Ding, Y., Hofmann, T., & Mettes, P. (2026). Fast and Geometrically Grounded Lorentz Neural Networks. arXiv preprint arXiv:2601.21529.
 
