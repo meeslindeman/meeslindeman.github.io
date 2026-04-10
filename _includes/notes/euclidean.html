@@ -25,6 +25,9 @@
   <div class="leg"><div class="leg-dot" style="background:#378ADD;border:1.5px solid #185FA5"></div>input x</div>
 </div>
 
+<canvas id="ce"></canvas>
+
+{% raw %}
 <script>
 const H_COLORS = ['#7F77DD','#D85A30','#BA7517'];
 const X_COL = '#378ADD';
@@ -156,4 +159,6 @@ window.addEventListener('touchend', () => dragging = false);
 window.addEventListener('resize', () => setTimeout(resize, 50));
 resize();
 </script>
+{% endraw %}
+
 </body>
