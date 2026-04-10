@@ -1,185 +1,175 @@
 <style>
-  .layout { display: flex; gap: 16px; align-items: flex-start; }
-  canvas { display: block; cursor: crosshair; border-radius: 6px; }
-  .sidebar { min-width: 140px; display: flex; flex-direction: column; gap: 10px; padding-top: 4px; }
-  .z-card { background: rgba(255,255,255,0.05); border-radius: 6px; padding: 10px 12px; border-left: 3px solid; }
-  .z-label { font-size: 11px; color: rgba(0,0,0,0.4); margin-bottom: 4px; }
-  .z-value { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
-  .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 11px; color: rgba(0,0,0,0.4); margin-top: 8px; }
-  .leg { display: flex; align-items: center; gap: 5px; }
-  .leg-line { width: 18px; height: 2px; flex-shrink: 0; }
-  .leg-dot  { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+  .lor-wrap { display: flex; gap: 16px; align-items: flex-start; max-width: 70%; margin: 2rem auto; }
+  .lor-wrap canvas { display: block; cursor: crosshair; border-radius: 6px; }
+  .lor-sidebar { min-width: 140px; display: flex; flex-direction: column; gap: 10px; padding-top: 4px; }
+  .lor-z-card { border-radius: 6px; padding: 10px 12px; border-left: 3px solid; }
+  .lor-z-label { font-size: 11px; color: rgba(0,0,0,0.4); margin-bottom: 4px; }
+  .lor-z-value { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .lor-legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 11px; color: rgba(0,0,0,0.4); margin-top: 8px; max-width: 70%; margin-left: auto; margin-right: auto; }
+  .lor-leg { display: flex; align-items: center; gap: 5px; }
+  .lor-leg-line { width: 18px; height: 2px; flex-shrink: 0; }
+  .lor-leg-dot  { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
 </style>
 
-<div class="layout">
+<div class="lor-wrap">
   <canvas id="cl"></canvas>
-  <div class="sidebar">
-    <div class="z-card" style="border-color:#7F77DD">
-      <div class="z-label">z₁ = d(x, H₁)</div>
-      <div class="z-value" id="z0" style="color:#7F77DD">—</div>
+  <div class="lor-sidebar">
+    <div class="lor-z-card" style="border-color:#7F77DD">
+      <div class="lor-z-label">z₁ = d(x, H₁)</div>
+      <div class="lor-z-value" id="lor-z0" style="color:#7F77DD">—</div>
     </div>
-    <div class="z-card" style="border-color:#D85A30">
-      <div class="z-label">z₂ = d(x, H₂)</div>
-      <div class="z-value" id="z1" style="color:#D85A30">—</div>
+    <div class="lor-z-card" style="border-color:#D85A30">
+      <div class="lor-z-label">z₂ = d(x, H₂)</div>
+      <div class="lor-z-value" id="lor-z1" style="color:#D85A30">—</div>
     </div>
-    <div class="z-card" style="border-color:#BA7517">
-      <div class="z-label">z₃ = d(x, H₃)</div>
-      <div class="z-value" id="z2" style="color:#BA7517">—</div>
+    <div class="lor-z-card" style="border-color:#BA7517">
+      <div class="lor-z-label">z₃ = d(x, H₃)</div>
+      <div class="lor-z-value" id="lor-z2" style="color:#BA7517">—</div>
     </div>
   </div>
 </div>
-<div class="legend">
-  <div class="leg"><div class="leg-line" style="background:#7F77DD"></div>H₁</div>
-  <div class="leg"><div class="leg-line" style="background:#D85A30"></div>H₂</div>
-  <div class="leg"><div class="leg-line" style="background:#BA7517"></div>H₃</div>
-  <div class="leg"><div class="leg-dot" style="background:#378ADD;border:1.5px solid #185FA5"></div>input x</div>
-  <div class="leg"><div class="leg-line" style="background:#555452;height:2px"></div>ℒ¹</div>
+<div class="lor-legend">
+  <div class="lor-leg"><div class="lor-leg-line" style="background:#7F77DD"></div>H₁</div>
+  <div class="lor-leg"><div class="lor-leg-line" style="background:#D85A30"></div>H₂</div>
+  <div class="lor-leg"><div class="lor-leg-line" style="background:#BA7517"></div>H₃</div>
+  <div class="lor-leg"><div class="lor-leg-dot" style="background:#378ADD;border:1.5px solid #185FA5"></div>input x</div>
+  <div class="lor-leg"><div class="lor-leg-line" style="background:#555452;height:2px"></div>ℒ¹</div>
 </div>
 
 {% raw %}
 <script>
 (function(){
-const H_COLORS = ['#7F77DD','#D85A30','#BA7517'];
-const X_COL = '#378ADD';
-const axisCol = 'rgba(0,0,0,0.15)';
-const textCol = 'rgba(0,0,0,0.6)';
+  const H_COLORS = ['#7F77DD','#D85A30','#BA7517'];
+  const X_COL = '#378ADD';
+  const axisCol = 'rgba(0,0,0,0.15)';
+  const textCol = 'rgba(0,0,0,0.6)';
 
-const vecs = [
-  { wt: 0.3,  wx: 1.0,  col: H_COLORS[0], label: 'H₁' },
-  { wt: -0.5, wx: 1.0,  col: H_COLORS[1], label: 'H₂' },
-  { wt: 0.75, wx: 1.0,  col: H_COLORS[2], label: 'H₃' },
-];
+  const vecs = [
+    { wt: 0.3,  wx: 1.0, col: H_COLORS[0], label: 'H₁' },
+    { wt: -0.5, wx: 1.0, col: H_COLORS[1], label: 'H₂' },
+    { wt: 0.75, wx: 1.0, col: H_COLORS[2], label: 'H₃' },
+  ];
 
-let phi = 0.0;
-let dragging = false;
+  let phi = 0.0, dragging = false;
+  let W, H, sc, cx, cy;
 
-const cv = document.getElementById('cl');
-let W, H, sc, cx, cy;
+  function init() {
+    const cv = document.getElementById('cl');
+    if (!cv) return;
 
-function resize() {
-  const avail = Math.min(cv.parentElement.clientWidth - 180, 320);
-  W = avail; H = avail;
-  cv.width  = W * devicePixelRatio;
-  cv.height = H * devicePixelRatio;
-  cv.style.width  = W + 'px';
-  cv.style.height = H + 'px';
-  cx = W * 0.5;
-  cy = H * 0.88;
-  sc = H * 0.34;
-  drawAll();
-}
-
-function lorentzInner(at, ax, bt, bx) { return -at*bt + ax*bx; }
-
-function drawAll() {
-  const ctx = cv.getContext('2d');
-  ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
-  ctx.clearRect(0, 0, W, H);
-
-  const xt = Math.cosh(phi), xx = Math.sinh(phi);
-
-  ctx.strokeStyle = axisCol; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
-  ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx - cy * 1.05, cy - cy * 1.05); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + cy * 1.05, cy - cy * 1.05); ctx.stroke();
-  ctx.setLineDash([]);
-
-  ctx.strokeStyle = axisCol; ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.moveTo(cx, cy + 8); ctx.lineTo(cx, 8); ctx.stroke();
-  ctx.beginPath(); ctx.moveTo(12, cy); ctx.lineTo(W - 8, cy); ctx.stroke();
-  ctx.fillStyle = textCol; ctx.font = '11px sans-serif';
-  ctx.fillText('t', cx + 4, 16);
-  ctx.fillText('x', W - 14, cy - 5);
-
-  const phiMax = 2.2;
-  ctx.strokeStyle = '#555452'; ctx.lineWidth = 2.5; ctx.setLineDash([]);
-  ctx.beginPath();
-  for (let p = -phiMax; p <= phiMax; p += 0.02) {
-    const tx = Math.cosh(p), sx = Math.sinh(p);
-    const px2 = cx + sx * sc, py2 = cy - tx * sc;
-    p <= -phiMax + 0.021 ? ctx.moveTo(px2, py2) : ctx.lineTo(px2, py2);
-  }
-  ctx.stroke();
-  const ltx = Math.cosh(phiMax), lsx = Math.sinh(phiMax);
-  ctx.fillStyle = 'rgba(0,0,0,0.35)'; ctx.font = '11px sans-serif';
-  ctx.fillText('ℒ¹', cx + lsx * sc + 5, cy - ltx * sc + 4);
-
-  vecs.forEach(({ wt, wx, col, label }, i) => {
-    ctx.strokeStyle = col; ctx.lineWidth = 1.5; ctx.setLineDash([6, 3]);
-    ctx.globalAlpha = 0.55;
-    if (Math.abs(wt) > 1e-6) {
-      const slope = wx / wt;
-      const xL = -cx / sc, xR = (W - cx) / sc;
-      ctx.beginPath();
-      ctx.moveTo(cx + xL * sc, cy - (slope * xL) * sc);
-      ctx.lineTo(cx + xR * sc, cy - (slope * xR) * sc);
-      ctx.stroke();
+    function resize() {
+      const avail = Math.min(cv.parentElement.clientWidth - 180, 320);
+      W = avail; H = avail;
+      cv.width = W * devicePixelRatio; cv.height = H * devicePixelRatio;
+      cv.style.width = W + 'px'; cv.style.height = H + 'px';
+      cx = W * 0.5; cy = H * 0.88;
+      sc = H * 0.34;
+      drawAll();
     }
-    ctx.globalAlpha = 1; ctx.setLineDash([]);
 
-    const tanhVal = wt / wx;
-    if (Math.abs(tanhVal) >= 1) return;
-    const iPhi = Math.atanh(tanhVal);
-    const it = Math.cosh(iPhi), ix = Math.sinh(iPhi);
+    function lorentzInner(at, ax, bt, bx) { return -at*bt + ax*bx; }
 
-    ctx.strokeStyle = X_COL; ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
-    ctx.beginPath();
-    ctx.moveTo(cx + xx * sc, cy - xt * sc);
-    ctx.lineTo(cx + ix * sc, cy - it * sc);
-    ctx.stroke();
-    ctx.setLineDash([]);
+    function drawAll() {
+      const ctx = cv.getContext('2d');
+      ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+      ctx.clearRect(0, 0, W, H);
 
-    ctx.fillStyle = col;
-    ctx.beginPath(); ctx.arc(cx + ix * sc, cy - it * sc, 5, 0, 2 * Math.PI); ctx.fill();
-    ctx.fillStyle = col; ctx.font = '12px sans-serif';
-    ctx.fillText(label, cx + ix * sc + 7, cy - it * sc - 5);
+      const xt = Math.cosh(phi), xx = Math.sinh(phi);
 
-    const z = lorentzInner(xt, xx, wt, wx);
-    const wNorm = Math.sqrt(Math.max(0, -wt * wt + wx * wx));
-    const dist = wNorm > 1e-6 ? Math.asinh(z / wNorm) : 0;
-    const sign = dist >= 0 ? '+' : '−';
-    document.getElementById('z' + i).textContent = sign + Math.abs(dist).toFixed(3);
-  });
+      ctx.strokeStyle = axisCol; ctx.lineWidth = 1; ctx.setLineDash([3,3]);
+      ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx - cy*1.05, cy - cy*1.05); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + cy*1.05, cy - cy*1.05); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.strokeStyle = axisCol; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.moveTo(cx, cy+8); ctx.lineTo(cx, 8); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(12, cy); ctx.lineTo(W-8, cy); ctx.stroke();
+      ctx.fillStyle = textCol; ctx.font = '11px sans-serif';
+      ctx.fillText('t', cx+4, 16);
+      ctx.fillText('x', W-14, cy-5);
 
-  ctx.fillStyle = X_COL; ctx.strokeStyle = '#185FA5'; ctx.lineWidth = 1.5; ctx.setLineDash([]);
-  ctx.beginPath(); ctx.arc(cx + xx * sc, cy - xt * sc, 7, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
-  ctx.fillStyle = textCol; ctx.font = '13px sans-serif';
-  ctx.fillText('x', cx + xx * sc + 10, cy - xt * sc - 5);
-}
+      const phiMax = 2.2;
+      ctx.strokeStyle = '#555452'; ctx.lineWidth = 2.5; ctx.setLineDash([]);
+      ctx.beginPath();
+      for (let p = -phiMax; p <= phiMax; p += 0.02) {
+        const tx = Math.cosh(p), sx = Math.sinh(p);
+        p <= -phiMax+0.021 ? ctx.moveTo(cx+sx*sc, cy-tx*sc) : ctx.lineTo(cx+sx*sc, cy-tx*sc);
+      }
+      ctx.stroke();
+      ctx.fillStyle = 'rgba(0,0,0,0.35)'; ctx.font = '11px sans-serif';
+      ctx.fillText('ℒ¹', cx+Math.sinh(phiMax)*sc+5, cy-Math.cosh(phiMax)*sc+4);
 
-function evtToPhi(clientX) {
-  const rect = cv.getBoundingClientRect();
-  const wx = (clientX - rect.left - cx) / sc;
-  return Math.max(-1.9, Math.min(1.9, Math.asinh(wx)));
-}
+      vecs.forEach(({ wt, wx, col, label }, i) => {
+        ctx.strokeStyle = col; ctx.lineWidth = 1.5; ctx.setLineDash([6,3]);
+        ctx.globalAlpha = 0.55;
+        if (Math.abs(wt) > 1e-6) {
+          const slope = wx/wt;
+          ctx.beginPath();
+          ctx.moveTo(cx + (-cx/sc)*sc, cy - slope*(-cx/sc)*sc);
+          ctx.lineTo(cx + ((W-cx)/sc)*sc, cy - slope*((W-cx)/sc)*sc);
+          ctx.stroke();
+        }
+        ctx.globalAlpha = 1; ctx.setLineDash([]);
 
-function nearPoint(clientX, clientY) {
-  const rect = cv.getBoundingClientRect();
-  const xt = Math.cosh(phi), xx = Math.sinh(phi);
-  const mx = (clientX - rect.left - cx) / sc;
-  const my = -(clientY - rect.top - cy) / sc;
-  return Math.sqrt((mx - xx) ** 2 + (my - xt) ** 2) < 16 / sc;
-}
+        const tanhVal = wt/wx;
+        if (Math.abs(tanhVal) >= 1) return;
+        const iPhi = Math.atanh(tanhVal);
+        const it = Math.cosh(iPhi), ix = Math.sinh(iPhi);
 
-cv.addEventListener('mousedown', e => { if (nearPoint(e.clientX, e.clientY)) { dragging = true; e.preventDefault(); } });
-window.addEventListener('mousemove', e => { if (!dragging) return; phi = evtToPhi(e.clientX); drawAll(); });
-window.addEventListener('mouseup', () => dragging = false);
+        ctx.strokeStyle = X_COL; ctx.lineWidth = 1; ctx.setLineDash([4,3]);
+        ctx.beginPath();
+        ctx.moveTo(cx+xx*sc, cy-xt*sc);
+        ctx.lineTo(cx+ix*sc, cy-it*sc);
+        ctx.stroke();
+        ctx.setLineDash([]);
 
-cv.addEventListener('touchstart', e => {
-  if (nearPoint(e.touches[0].clientX, e.touches[0].clientY)) { dragging = true; e.preventDefault(); }
-}, { passive: false });
-window.addEventListener('touchmove', e => {
-  if (!dragging) return;
-  phi = evtToPhi(e.touches[0].clientX); drawAll(); e.preventDefault();
-}, { passive: false });
-window.addEventListener('touchend', () => dragging = false);
+        ctx.fillStyle = col;
+        ctx.beginPath(); ctx.arc(cx+ix*sc, cy-it*sc, 5, 0, 2*Math.PI); ctx.fill();
+        ctx.fillStyle = col; ctx.font = '12px sans-serif';
+        ctx.fillText(label, cx+ix*sc+7, cy-it*sc-5);
 
-window.addEventListener('resize', () => setTimeout(resize, 50));
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', resize);
-} else {
-  resize();
-}
+        const z = lorentzInner(xt, xx, wt, wx);
+        const wNorm = Math.sqrt(Math.max(0, -wt*wt+wx*wx));
+        const dist = wNorm > 1e-6 ? Math.asinh(z/wNorm) : 0;
+        const sign = dist >= 0 ? '+' : '−';
+        const el = document.getElementById('lor-z'+i);
+        if (el) el.textContent = sign + Math.abs(dist).toFixed(3);
+      });
+
+      ctx.fillStyle = X_COL; ctx.strokeStyle = '#185FA5'; ctx.lineWidth = 1.5; ctx.setLineDash([]);
+      ctx.beginPath(); ctx.arc(cx+xx*sc, cy-xt*sc, 7, 0, 2*Math.PI); ctx.fill(); ctx.stroke();
+      ctx.fillStyle = textCol; ctx.font = '13px sans-serif';
+      ctx.fillText('x', cx+xx*sc+10, cy-xt*sc-5);
+    }
+
+    function evtToPhi(clientX) {
+      const rect = cv.getBoundingClientRect();
+      return Math.max(-1.9, Math.min(1.9, Math.asinh((clientX-rect.left-cx)/sc)));
+    }
+    function nearPoint(clientX, clientY) {
+      const rect = cv.getBoundingClientRect();
+      const mx = (clientX-rect.left-cx)/sc, my = -(clientY-rect.top-cy)/sc;
+      return Math.sqrt((mx-Math.sinh(phi))**2+(my-Math.cosh(phi))**2) < 16/sc;
+    }
+
+    cv.addEventListener('mousedown', e => { if (nearPoint(e.clientX,e.clientY)) { dragging=true; e.preventDefault(); } });
+    window.addEventListener('mousemove', e => { if (!dragging) return; phi=evtToPhi(e.clientX); drawAll(); });
+    window.addEventListener('mouseup', () => dragging=false);
+    cv.addEventListener('touchstart', e => {
+      if (nearPoint(e.touches[0].clientX,e.touches[0].clientY)) { dragging=true; e.preventDefault(); }
+    }, {passive:false});
+    window.addEventListener('touchmove', e => {
+      if (!dragging) return; phi=evtToPhi(e.touches[0].clientX); drawAll(); e.preventDefault();
+    }, {passive:false});
+    window.addEventListener('touchend', () => dragging=false);
+    window.addEventListener('resize', () => setTimeout(resize, 50));
+    resize();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
 })();
-
 </script>
 {% endraw %}
