@@ -762,8 +762,8 @@ img { max-width: 100%; height: auto; }
 }
 
 .footer-social a {
-    width: 60px;
-    height: 60px;
+    width: 52px;
+    height: 52px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -771,7 +771,7 @@ img { max-width: 100%; height: auto; }
     color: white;
     border-radius: 50%;
     transition: all 0.2s ease;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     border: 2px solid black;
 }
 
@@ -1200,9 +1200,9 @@ img { max-width: 100%; height: auto; }
     }
 
     .footer-social a {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
+        width: 44px;
+        height: 44px;
+        font-size: 1.05rem;
     }
 
     /* Notes Mobile */
