@@ -1,6 +1,16 @@
-<body>
-<h2>Lorentz Hyperplanes</h2>
-<p class="sub">3 geodesics on ℒ¹ — drag <strong style="color:#378ADD">x</strong> along the hyperboloid</p>
+<style>
+  .layout { display: flex; gap: 16px; align-items: flex-start; }
+  canvas { display: block; cursor: crosshair; border-radius: 6px; }
+  .sidebar { min-width: 140px; display: flex; flex-direction: column; gap: 10px; padding-top: 4px; }
+  .z-card { background: rgba(255,255,255,0.05); border-radius: 6px; padding: 10px 12px; border-left: 3px solid; }
+  .z-label { font-size: 11px; color: rgba(0,0,0,0.4); margin-bottom: 4px; }
+  .z-value { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 11px; color: rgba(0,0,0,0.4); margin-top: 8px; }
+  .leg { display: flex; align-items: center; gap: 5px; }
+  .leg-line { width: 18px; height: 2px; flex-shrink: 0; }
+  .leg-dot  { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+</style>
+
 <div class="layout">
   <canvas id="cl"></canvas>
   <div class="sidebar">
@@ -26,26 +36,20 @@
   <div class="leg"><div class="leg-line" style="background:#555452;height:2px"></div>ℒ¹</div>
 </div>
 
-<canvas id="ce"></canvas>
-
 {% raw %}
 <script>
 const H_COLORS = ['#7F77DD','#D85A30','#BA7517'];
 const X_COL = '#378ADD';
-const axisCol = 'rgba(255,255,255,0.12)';
-const textCol = 'rgba(255,255,255,0.7)';
+const axisCol = 'rgba(0,0,0,0.15)';
+const textCol = 'rgba(0,0,0,0.6)';
 
-// Each geodesic is defined by a spacelike normal vector w = (wt, wx).
-// The geodesic intersects ℒ¹ at phi = atanh(wt/wx) (if |wt/wx| < 1).
-// We choose normals so all intersections fall within phi ∈ (-1.4, 1.4).
-// Spacelike condition: -wt²+wx² > 0  →  |wt/wx| < 1
 const vecs = [
-  { wt: 0.3,  wx: 1.0,  col: H_COLORS[0], label: 'H₁' },  // atanh(0.3)  ≈ +0.31
-  { wt: -0.5, wx: 1.0,  col: H_COLORS[1], label: 'H₂' },  // atanh(-0.5) ≈ -0.55
-  { wt: 0.75, wx: 1.0,  col: H_COLORS[2], label: 'H₃' },  // atanh(0.75) ≈ +0.97
+  { wt: 0.3,  wx: 1.0,  col: H_COLORS[0], label: 'H₁' },
+  { wt: -0.5, wx: 1.0,  col: H_COLORS[1], label: 'H₂' },
+  { wt: 0.75, wx: 1.0,  col: H_COLORS[2], label: 'H₃' },
 ];
 
-let phi = 0.0;   // start at apex of hyperboloid
+let phi = 0.0;
 let dragging = false;
 
 const cv = document.getElementById('cl');
@@ -58,10 +62,9 @@ function resize() {
   cv.height = H * devicePixelRatio;
   cv.style.width  = W + 'px';
   cv.style.height = H + 'px';
-  // origin at bottom-centre, leaving room above for the hyperboloid arms
   cx = W * 0.5;
   cy = H * 0.88;
-  sc = H * 0.34;   // scale: 1 unit = sc pixels
+  sc = H * 0.34;
   drawAll();
 }
 
@@ -74,13 +77,11 @@ function drawAll() {
 
   const xt = Math.cosh(phi), xx = Math.sinh(phi);
 
-  // --- light cone (dashed) ---
   ctx.strokeStyle = axisCol; ctx.lineWidth = 1; ctx.setLineDash([3, 3]);
   ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx - cy * 1.05, cy - cy * 1.05); ctx.stroke();
   ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(cx + cy * 1.05, cy - cy * 1.05); ctx.stroke();
   ctx.setLineDash([]);
 
-  // --- axes ---
   ctx.strokeStyle = axisCol; ctx.lineWidth = 1;
   ctx.beginPath(); ctx.moveTo(cx, cy + 8); ctx.lineTo(cx, 8); ctx.stroke();
   ctx.beginPath(); ctx.moveTo(12, cy); ctx.lineTo(W - 8, cy); ctx.stroke();
@@ -88,7 +89,6 @@ function drawAll() {
   ctx.fillText('t', cx + 4, 16);
   ctx.fillText('x', W - 14, cy - 5);
 
-  // --- hyperboloid curve ---
   const phiMax = 2.2;
   ctx.strokeStyle = '#555452'; ctx.lineWidth = 2.5; ctx.setLineDash([]);
   ctx.beginPath();
@@ -98,21 +98,15 @@ function drawAll() {
     p <= -phiMax + 0.021 ? ctx.moveTo(px2, py2) : ctx.lineTo(px2, py2);
   }
   ctx.stroke();
-  // label at right end
   const ltx = Math.cosh(phiMax), lsx = Math.sinh(phiMax);
-  ctx.fillStyle = 'rgba(255,255,255,0.35)'; ctx.font = '11px sans-serif';
+  ctx.fillStyle = 'rgba(0,0,0,0.35)'; ctx.font = '11px sans-serif';
   ctx.fillText('ℒ¹', cx + lsx * sc + 5, cy - ltx * sc + 4);
 
-  // --- geodesics, foot dots, dashed lines to x ---
   vecs.forEach(({ wt, wx, col, label }, i) => {
-    // Geodesic through origin with Lorentz-normal (wt, wx):
-    // set of points (T, X) with -wt*T + wx*X = 0  →  T = (wx/wt)*X
-    // Draw as a straight line through the canvas origin (Minkowski diagram)
     ctx.strokeStyle = col; ctx.lineWidth = 1.5; ctx.setLineDash([6, 3]);
     ctx.globalAlpha = 0.55;
     if (Math.abs(wt) > 1e-6) {
-      const slope = wx / wt;   // dT/dX = wx/wt
-      // parametrise by canvas X offset
+      const slope = wx / wt;
       const xL = -cx / sc, xR = (W - cx) / sc;
       ctx.beginPath();
       ctx.moveTo(cx + xL * sc, cy - (slope * xL) * sc);
@@ -121,13 +115,11 @@ function drawAll() {
     }
     ctx.globalAlpha = 1; ctx.setLineDash([]);
 
-    // intersection with ℒ¹: phi_i = atanh(wt / wx)
     const tanhVal = wt / wx;
-    if (Math.abs(tanhVal) >= 1) return;   // shouldn't happen with our chosen normals
+    if (Math.abs(tanhVal) >= 1) return;
     const iPhi = Math.atanh(tanhVal);
     const it = Math.cosh(iPhi), ix = Math.sinh(iPhi);
 
-    // dashed connector from x to foot on geodesic
     ctx.strokeStyle = X_COL; ctx.lineWidth = 1; ctx.setLineDash([4, 3]);
     ctx.beginPath();
     ctx.moveTo(cx + xx * sc, cy - xt * sc);
@@ -135,13 +127,11 @@ function drawAll() {
     ctx.stroke();
     ctx.setLineDash([]);
 
-    // foot dot
     ctx.fillStyle = col;
     ctx.beginPath(); ctx.arc(cx + ix * sc, cy - it * sc, 5, 0, 2 * Math.PI); ctx.fill();
     ctx.fillStyle = col; ctx.font = '12px sans-serif';
     ctx.fillText(label, cx + ix * sc + 7, cy - it * sc - 5);
 
-    // signed hyperbolic distance
     const z = lorentzInner(xt, xx, wt, wx);
     const wNorm = Math.sqrt(Math.max(0, -wt * wt + wx * wx));
     const dist = wNorm > 1e-6 ? Math.asinh(z / wNorm) : 0;
@@ -149,14 +139,12 @@ function drawAll() {
     document.getElementById('z' + i).textContent = sign + Math.abs(dist).toFixed(3);
   });
 
-  // --- point x ---
   ctx.fillStyle = X_COL; ctx.strokeStyle = '#185FA5'; ctx.lineWidth = 1.5; ctx.setLineDash([]);
   ctx.beginPath(); ctx.arc(cx + xx * sc, cy - xt * sc, 7, 0, 2 * Math.PI); ctx.fill(); ctx.stroke();
   ctx.fillStyle = textCol; ctx.font = '13px sans-serif';
   ctx.fillText('x', cx + xx * sc + 10, cy - xt * sc - 5);
 }
 
-// Project mouse/touch onto hyperboloid: phi = asinh of x-world-coord
 function evtToPhi(clientX) {
   const rect = cv.getBoundingClientRect();
   const wx = (clientX - rect.left - cx) / sc;
@@ -168,8 +156,7 @@ function nearPoint(clientX, clientY) {
   const xt = Math.cosh(phi), xx = Math.sinh(phi);
   const mx = (clientX - rect.left - cx) / sc;
   const my = -(clientY - rect.top - cy) / sc;
-  const d = Math.sqrt((mx - xx) ** 2 + (my - xt) ** 2);
-  return d < 16 / sc;
+  return Math.sqrt((mx - xx) ** 2 + (my - xt) ** 2) < 16 / sc;
 }
 
 cv.addEventListener('mousedown', e => { if (nearPoint(e.clientX, e.clientY)) { dragging = true; e.preventDefault(); } });
@@ -189,5 +176,3 @@ window.addEventListener('resize', () => setTimeout(resize, 50));
 resize();
 </script>
 {% endraw %}
-
-</body>

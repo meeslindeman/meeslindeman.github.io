@@ -1,18 +1,28 @@
-<body>
-<h2>Euclidean Hyperplanes</h2>
-<p class="sub">3 lines in ℝ² — drag <strong style="color:#378ADD">x</strong> to update signed distances</p>
+<style>
+  .layout { display: flex; gap: 16px; align-items: flex-start; }
+  canvas { display: block; cursor: crosshair; border-radius: 6px; }
+  .sidebar { min-width: 140px; display: flex; flex-direction: column; gap: 10px; padding-top: 4px; }
+  .z-card { background: rgba(255,255,255,0.05); border-radius: 6px; padding: 10px 12px; border-left: 3px solid; }
+  .z-label { font-size: 11px; color: rgba(0,0,0,0.4); margin-bottom: 4px; }
+  .z-value { font-size: 20px; font-weight: 600; font-variant-numeric: tabular-nums; }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 11px; color: rgba(0,0,0,0.4); margin-top: 8px; }
+  .leg { display: flex; align-items: center; gap: 5px; }
+  .leg-line { width: 18px; height: 2px; flex-shrink: 0; }
+  .leg-dot  { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+</style>
+
 <div class="layout">
   <canvas id="ce"></canvas>
   <div class="sidebar">
-    <div class="z-card" id="c0" style="border-color:#7F77DD">
+    <div class="z-card" style="border-color:#7F77DD">
       <div class="z-label">z₁ = d(x, H₁)</div>
       <div class="z-value" id="z0" style="color:#7F77DD">—</div>
     </div>
-    <div class="z-card" id="c1" style="border-color:#D85A30">
+    <div class="z-card" style="border-color:#D85A30">
       <div class="z-label">z₂ = d(x, H₂)</div>
       <div class="z-value" id="z1" style="color:#D85A30">—</div>
     </div>
-    <div class="z-card" id="c2" style="border-color:#BA7517">
+    <div class="z-card" style="border-color:#BA7517">
       <div class="z-label">z₃ = d(x, H₃)</div>
       <div class="z-value" id="z2" style="color:#BA7517">—</div>
     </div>
@@ -25,14 +35,12 @@
   <div class="leg"><div class="leg-dot" style="background:#378ADD;border:1.5px solid #185FA5"></div>input x</div>
 </div>
 
-<canvas id="ce"></canvas>
-
 {% raw %}
 <script>
 const H_COLORS = ['#7F77DD','#D85A30','#BA7517'];
 const X_COL = '#378ADD';
-const axisCol = 'rgba(255,255,255,0.12)';
-const textCol = 'rgba(255,255,255,0.7)';
+const axisCol = 'rgba(0,0,0,0.15)';
+const textCol = 'rgba(0,0,0,0.6)';
 
 const planes = [
   { a:1,    b:0.5,  c:-0.3, col:H_COLORS[0], label:'H₁' },
@@ -63,7 +71,6 @@ function draw() {
   ctx.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
   ctx.clearRect(0, 0, W, H);
 
-  // axes
   ctx.strokeStyle = axisCol; ctx.lineWidth = 1; ctx.setLineDash([]);
   ctx.beginPath(); ctx.moveTo(20, cy); ctx.lineTo(W-20, cy); ctx.stroke();
   ctx.beginPath(); ctx.moveTo(cx, 20); ctx.lineTo(cx, H-20); ctx.stroke();
@@ -71,7 +78,6 @@ function draw() {
   ctx.fillText('x₁', W-16, cy-5);
   ctx.fillText('x₂', cx+5, 16);
 
-  // planes
   planes.forEach(({ a, b, c: cc, col, label }) => {
     const norm = Math.sqrt(a*a + b*b);
     ctx.strokeStyle = col; ctx.lineWidth = 2; ctx.setLineDash([]);
@@ -89,7 +95,6 @@ function draw() {
     ctx.fillText(label, cx+ex*sc+4, cy-ey*sc);
   });
 
-  // distance lines + foot marks
   planes.forEach(({ a, b, c: cc, col }) => {
     const norm = Math.sqrt(a*a+b*b);
     const dist = (a*px + b*py + cc) / norm;
@@ -106,13 +111,11 @@ function draw() {
     ctx.stroke();
   });
 
-  // point
   ctx.fillStyle = X_COL; ctx.strokeStyle = '#185FA5'; ctx.lineWidth = 1.5; ctx.setLineDash([]);
   ctx.beginPath(); ctx.arc(cx+px*sc, cy-py*sc, 7, 0, 2*Math.PI); ctx.fill(); ctx.stroke();
   ctx.fillStyle = textCol; ctx.font = '13px sans-serif';
   ctx.fillText('x', cx+px*sc+10, cy-py*sc-4);
 
-  // update sidebar
   planes.forEach(({ a, b, c: cc }, i) => {
     const norm = Math.sqrt(a*a+b*b);
     const dist = (a*px + b*py + cc) / norm;
@@ -160,5 +163,3 @@ window.addEventListener('resize', () => setTimeout(resize, 50));
 resize();
 </script>
 {% endraw %}
-
-</body>
