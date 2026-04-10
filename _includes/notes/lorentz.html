@@ -57,7 +57,7 @@ const cv = document.getElementById('cl');
 let W, H, sc, cx, cy;
 
 function resize() {
-  const avail = Math.min(cv.parentElement.clientWidth - 160, 420);
+  const avail = Math.min(cv.parentElement.clientWidth - 180, 320);
   W = avail; H = avail;
   cv.width  = W * devicePixelRatio;
   cv.height = H * devicePixelRatio;
@@ -174,7 +174,11 @@ window.addEventListener('touchmove', e => {
 window.addEventListener('touchend', () => dragging = false);
 
 window.addEventListener('resize', () => setTimeout(resize, 50));
-document.addEventListener('DOMContentLoaded', resize);
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', resize);
+} else {
+  resize();
+}
 })();
 
 </script>
