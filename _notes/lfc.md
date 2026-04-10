@@ -60,13 +60,11 @@ The signed hyperbolic distance from $x ∈ \mathcal{L}^n_k$ to $H_v$:
 
 $$ d^{\text{signed}}  (x, H_v) = (1/\sqrt{k}) \cdot \text{arcsinh}(\sqrt{k} \cdot (x \circ v) / \|v\|_L) $$
 
-TEST
-
 The scaled version (used in the layer) moves the norm inside arcsinh:
 
 $$ z = (1/\sqrt{k}) \cdot \text{arcsinh}(\sqrt{k} \cdot (x \circ v)) $$
 
-Finally, activation $h$ is applied to $z$ and a point on $\mathcal{L}^{D_{out}}_k$ is constructed as the unique point whose signed distances to the $D_{out}$ coordinate hyperplanes equal $h(z)$:
+Finally, activation $h$ is applied to $z$ and a point on ... is constructed as the unique point whose signed distances to the $D_{out}$ coordinate hyperplanes equal $h(z)$:
 
 $$ \overline{y} = h(z) = h(V \cdot I_{1,n} \cdot x)$$
 $$ y_0 = \sqrt{1/k + \| \overline{y} \|^2_E}$$

@@ -55,7 +55,7 @@ const c = document.getElementById('ce');
 let W, H, sc, cx, cy;
 
 function resize() {
-  const avail = Math.min(window.innerWidth - 200, window.innerHeight - 100, 400);
+  const avail = Math.min(c.parentElement.clientWidth - 160, 400);
   W = avail; H = avail;
   c.width = W * devicePixelRatio;
   c.height = H * devicePixelRatio;
@@ -160,6 +160,6 @@ window.addEventListener('touchmove', e => {
 window.addEventListener('touchend', () => dragging = false);
 
 window.addEventListener('resize', () => setTimeout(resize, 50));
-resize();
+document.addEventListener('DOMContentLoaded', resize);
 </script>
 {% endraw %}
