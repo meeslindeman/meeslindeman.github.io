@@ -34,7 +34,7 @@ description: Mees Lindeman - MSc Student in Artificial Intelligence at Universit
     
     <ul class="news-list">
         {% assign sorted_news = site.data.news.news | sort: 'date' | reverse %}
-        {% for update in sorted_news limit: 8 %}
+        {% for update in sorted_news limit: 3 %}
         <li class="news-list__item">
             <span class="news-list__date">{{ update.date | date: "%B %Y" }}</span>
             <div class="news-list__content">
