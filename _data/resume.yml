@@ -15,8 +15,8 @@ education:
   - degree: MSc &mdash; Artificial Intelligence
     uni: University of Amsterdam
     location: Amsterdam, The Netherlands
-    year: 2024 &mdash; 2026 (Expected)
-    # grade: ""
+    year: 2024 &mdash; 2026
+    grade: "GPA: 8.3/10"
     summary: Covers advanced topics in machine learning, deep learning, natural language processing, information retrieval, and reinforcement learning.
     
   - degree: BSc &mdash; Bèta Gamma, major Artificial Intelligence

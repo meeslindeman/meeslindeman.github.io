@@ -1,4 +1,9 @@
 news:
+  - date: 2026-07-21
+    type: "project"
+    title: "Graduated MSc in Artificial Intelligence"
+    description: "Successfully completed my MSc in Artificial Intelligence at the University of Amsterdam, with a focus on deep learning and computer vision."
+  
   - date: 2025-06-27
     type: "publication"
     title: "Paper accepted to TMLR"
