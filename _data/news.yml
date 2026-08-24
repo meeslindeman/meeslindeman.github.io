@@ -1,4 +1,9 @@
 news:
+  - date: 2026-08-24
+    type: "project"
+    title: "Two publications"
+    description: "Published both my theses--BSc and MSc--as papers, accepted to EMNLP 2026 and the Beyond Euclidean Workshop at ECCV 2026 respectively. I'll be heading to Malmö to present the latter in person. Check out the publications page for more details."
+
   - date: 2026-07-21
     type: "project"
     title: "Graduated MSc in Artificial Intelligence"
