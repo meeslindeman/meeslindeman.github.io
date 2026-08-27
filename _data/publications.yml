@@ -5,7 +5,7 @@ publications:
     year: "2026"
     type: "Workshop Paper"
     status: "Accepted"
-    summary: "Most hyperbolic vision architectures are only extrinsically hyperbolic: core operations like the linear layer fall back to Euclidean computation in the ambient space before re-projecting onto the manifold, a shortcut recently shown to undercut the benefits of hyperbolic geometry. We introduce LoViT, the first Intrinsic Lorentz Vision Transformer, which carries intrinsic treatment throughout the architecture, including a residual connection defined as geodesic interpolation. Trained from scratch, LoViT surpasses a Euclidean baseline and extrinsic hyperbolic transformers on CIFAR-10, CIFAR-100, and Tiny-ImageNet."
+    summary: "Most hyperbolic vision architectures are only extrinsically hyperbolic, falling back to Euclidean computation before re-projecting onto the manifold, a shortcut shown to undercut the benefits of hyperbolic geometry. We introduce LoViT, the first Intrinsic Lorentz Vision Transformer, carrying intrinsic treatment throughout, including a residual connection defined as geodesic interpolation. Trained from scratch, LoViT surpasses a Euclidean baseline and extrinsic hyperbolic transformers on CIFAR-10, CIFAR-100, and Tiny-ImageNet."
 
   - title: "On the Optimality of Kinship Naming: an Information-theoretic Approach"
     authors: "Phong Le, Mees Lindeman, Raquel G. Alhama"
